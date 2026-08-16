@@ -857,7 +857,10 @@ async function init() {
   const fetchOpts = { cache: "no-store" };
   let bust = String(Date.now());
   try {
-    const verRes = await fetch(new URL("data/version.json", siteRoot), fetchOpts);
+    const verRes = await fetch(
+      new URL(`data/version.json?t=${Date.now()}`, siteRoot),
+      fetchOpts
+    );
     if (verRes.ok) {
       const ver = await verRes.json();
       if (ver?.v) bust = ver.v;
