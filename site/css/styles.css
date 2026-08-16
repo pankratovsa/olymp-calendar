@@ -606,6 +606,25 @@ main {
   height: 3.4rem;
 }
 
+.calendar tbody tr.is-current-week > th,
+.calendar tbody tr.is-current-week > td {
+  background: rgba(37, 99, 168, 0.1);
+  box-shadow:
+    inset 0 3px 0 0 #2563a8,
+    inset 0 -3px 0 0 #2563a8;
+}
+
+.calendar tbody tr.is-current-week .week-label {
+  background: rgba(37, 99, 168, 0.14);
+  color: #1a4f8a;
+  font-weight: 700;
+}
+
+.calendar tbody tr.is-current-week:hover .week-label {
+  background: rgba(37, 99, 168, 0.18);
+}
+
+
 .calendar thead th {
   position: sticky;
   top: 0;

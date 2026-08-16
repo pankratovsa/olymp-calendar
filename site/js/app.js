@@ -810,7 +810,14 @@ function renderCalendar() {
           }><div class="cal-cell__fill">${stars}${blocks}</div></td>`;
         })
         .join("");
-      return `<tr><th class="week-label" scope="row">${label}</th>${cells}</tr>`;
+      const currentIso = state.currentDate;
+      const weekStart = toISODate(week.start);
+      const weekEnd = toISODate(week.end);
+      const isCurrentWeek =
+        currentIso >= weekStart && currentIso <= weekEnd;
+      return `<tr class="${
+        isCurrentWeek ? "is-current-week" : ""
+      }"><th class="week-label" scope="row">${label}</th>${cells}</tr>`;
     })
     .join("");
 
