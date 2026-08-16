@@ -697,7 +697,7 @@ function bindChrome() {
 }
 
 async function init() {
-  const res = await fetch("data/olympiads.json");
+  const res = await fetch(new URL("data/olympiads.json", document.baseURI));
   if (!res.ok) throw new Error("Не удалось загрузить data/olympiads.json");
   state.olympiads = await res.json();
 
