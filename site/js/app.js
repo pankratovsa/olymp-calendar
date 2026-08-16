@@ -94,28 +94,48 @@ function formatDayMonth(iso) {
   return `${d.getDate()}.${String(d.getMonth() + 1).padStart(2, "0")}`;
 }
 
+function formatTourTime(dateObj) {
+  if (!dateObj?.time) return "";
+  const tz = dateObj.timezone ? ` ${dateObj.timezone}` : "";
+  return `${dateObj.time}${tz}`;
+}
+
 function tourDateLabels(tour) {
-  if (!tour.date) return { multiDay: false, start: "", end: "" };
+  if (!tour.date) return { multiDay: false, start: "", end: "", time: "" };
   const start = tour.date.labelStart || formatDayMonth(tour.date.start);
   const end = tour.date.labelEnd || formatDayMonth(tour.date.end);
   const multiDay =
     typeof tour.date.multiDay === "boolean"
       ? tour.date.multiDay
       : tour.date.start !== tour.date.end;
-  return { multiDay, start, end };
+  const time = formatTourTime(tour.date);
+  return { multiDay, start, end, time };
 }
 
+function formatTourDateText(tour) {
+  const labels = tourDateLabels(tour);
+  if (!labels.start) return "—";
+  const range = labels.multiDay
+    ? `${labels.start} – ${labels.end}`
+    : labels.start;
+  return labels.time ? `${range}, ${labels.time}` : range;
+}
+
+
 function renderTourDates(tour) {
-  const { multiDay, start, end } = tourDateLabels(tour);
+  const { multiDay, start, end, time } = tourDateLabels(tour);
   if (!start) return "";
+  const timeHtml = time
+    ? ` <span class="tour-date__time">${escapeHtml(time)}</span>`
+    : "";
   if (!multiDay) {
-    return `<span class="tour-date tour-date--single">${escapeHtml(start)}</span>`;
+    return `<span class="tour-date tour-date--single">${escapeHtml(start)}${timeHtml}</span>`;
   }
   return `
     <span class="tour-date tour-date--range">
       <span class="tour-date__edge tour-date__edge--start">${escapeHtml(start)}</span>
       <span class="tour-date__sep">–</span>
-      <span class="tour-date__edge tour-date__edge--end">${escapeHtml(end)}</span>
+      <span class="tour-date__edge tour-date__edge--end">${escapeHtml(end)}</span>${timeHtml}
     </span>`;
 }
 
@@ -427,12 +447,7 @@ function openOlympiadDialog(olympiad) {
     : "";
   const tours = olympiad.tours
     .map((t) => {
-      const labels = tourDateLabels(t);
-      const dateText = !labels.start
-        ? "—"
-        : labels.multiDay
-          ? `${labels.start} – ${labels.end}`
-          : labels.start;
+      const dateText = formatTourDateText(t);
       const places = tourPlaces(t);
       const placeHtml = places.length
         ? `<div class="popup-tour__line">Места: ${places
@@ -554,12 +569,7 @@ function openTourDialog(olympiad, tour) {
         })
         .join("")}</dd></div>`
     : "";
-  const labels = tourDateLabels(tour);
-  const dateText = !labels.start
-    ? "—"
-    : labels.multiDay
-      ? `${labels.start} – ${labels.end}`
-      : labels.start;
+  const dateText = formatTourDateText(tour);
   document.getElementById("dialog-body").innerHTML = `
     <div><dt>Олимпиада</dt><dd>${escapeHtml(olympiad.shortTitle)}</dd></div>
     <div><dt>Формат</dt><dd>${renderMarkers(tour)}</dd></div>
@@ -734,6 +744,11 @@ function renderCalendar() {
           data-tour="${escapeHtml(tour.name)}">
           <span class="tour-block__edge tour-block__edge--start">
             <span class="tour-date tour-date--start">${escapeHtml(labels.start)}</span>
+            ${
+              labels.time
+                ? `<span class="tour-date__time">${escapeHtml(labels.time)}</span>`
+                : ""
+            }
           </span>
           <span class="tour-block__body">
             <span class="tour-block__name">${escapeHtml(tour.name)}</span>
@@ -752,6 +767,11 @@ function renderCalendar() {
         data-tour="${escapeHtml(tour.name)}">
         <span class="tour-block__body">
           <span class="tour-date tour-date--single">${escapeHtml(labels.start)}</span>
+          ${
+            labels.time
+              ? `<span class="tour-date__time">${escapeHtml(labels.time)}</span>`
+              : ""
+          }
           <span class="tour-block__name">${escapeHtml(tour.name)}</span>
           <span class="tour-block__meta">${renderMarkers(tour)}</span>
         </span>

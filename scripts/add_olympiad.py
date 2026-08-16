@@ -67,13 +67,41 @@ def parse_grades(text: str) -> list[int]:
 
 def parse_date_token(token: str) -> tuple[int, int] | None:
     token = token.strip()
-    m = re.match(r"^(\d{1,2})\.(\d{1,2})\d*$", token)
+    m = re.match(r"^(\d{1,2})\.(\d{1,2})", token)
     if not m:
         return None
     day, month = int(m.group(1)), int(m.group(2))
     if not (1 <= month <= 12 and 1 <= day <= 31):
         return None
     return day, month
+
+
+def parse_time_suffix(text: str) -> dict | None:
+    """Время после даты: только с двоеточием — 11:00, 11:00 msk (не путать с 12.10)."""
+    m = re.search(
+        r"(?<!\d)(\d{1,2}):(\d{2})\s*([A-Za-zА-Яа-яЁё]{2,5})?\s*$",
+        text.strip(),
+        flags=re.IGNORECASE,
+    )
+    if not m:
+        return None
+    hour, minute = int(m.group(1)), int(m.group(2))
+    if not (0 <= hour <= 23 and 0 <= minute <= 59):
+        return None
+    tz = m.group(3)
+    return {
+        "time": f"{hour:02d}:{minute:02d}",
+        "timezone": tz.upper() if tz else None,
+    }
+
+
+def strip_time_suffix(text: str) -> str:
+    return re.sub(
+        r"\s+\d{1,2}:\d{2}(?:\s+[A-Za-zА-Яа-яЁё]{2,5})?\s*$",
+        "",
+        text.strip(),
+        flags=re.IGNORECASE,
+    ).strip()
 
 
 def to_iso(day: int, month: int) -> str:
@@ -85,9 +113,16 @@ def format_day_month(day: int, month: int) -> str:
     return f"{day}.{month:02d}"
 
 
-def date_payload(start_iso: str, end_iso: str, raw: str, label_start: str, label_end: str) -> dict:
+def date_payload(
+    start_iso: str,
+    end_iso: str,
+    raw: str,
+    label_start: str,
+    label_end: str,
+    time_info: dict | None = None,
+) -> dict:
     multi = start_iso != end_iso
-    return {
+    payload = {
         "start": start_iso,
         "end": end_iso,
         "raw": raw,
@@ -95,14 +130,23 @@ def date_payload(start_iso: str, end_iso: str, raw: str, label_start: str, label
         "labelStart": label_start,
         "labelEnd": label_end if multi else label_start,
     }
+    if time_info:
+        payload["time"] = time_info["time"]
+        if time_info.get("timezone"):
+            payload["timezone"] = time_info["timezone"]
+    return payload
 
 
 def parse_date_range(raw: str) -> dict | None:
     raw = raw.strip()
     if not raw or raw.lower() == "online":
         return None
+
+    time_info = parse_time_suffix(raw)
+    date_only = strip_time_suffix(raw) if time_info else raw
+
     # 1.10-13.01 или 1.10 – 13.01
-    parts = re.split(r"\s*[-–—]\s*", raw)
+    parts = re.split(r"\s*[-–—]\s*", date_only)
     if len(parts) == 1:
         parsed = parse_date_token(parts[0])
         if not parsed:
@@ -110,7 +154,7 @@ def parse_date_range(raw: str) -> dict | None:
         day, month = parsed
         iso = to_iso(day, month)
         label = format_day_month(day, month)
-        return date_payload(iso, iso, raw, label, label)
+        return date_payload(iso, iso, raw, label, label, time_info)
     if len(parts) >= 2:
         a = parse_date_token(parts[0])
         b = parse_date_token(parts[1])
@@ -130,6 +174,7 @@ def parse_date_range(raw: str) -> dict | None:
             raw,
             format_day_month(*a),
             format_day_month(*b),
+            time_info,
         )
     return None
 

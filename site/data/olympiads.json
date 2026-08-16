@@ -1298,7 +1298,16 @@
         "venues": [
           "Искра (Купцова)"
         ],
-        "date": null,
+        "date": {
+          "start": "2025-11-15",
+          "end": "2025-11-15",
+          "raw": "15.11 11:00 msk",
+          "multiDay": false,
+          "labelStart": "15.11",
+          "labelEnd": "15.11",
+          "time": "11:00",
+          "timezone": "MSK"
+        },
         "announced": {
           "start": "2026-08-16",
           "end": "2026-08-16",

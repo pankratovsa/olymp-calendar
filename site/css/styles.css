@@ -865,11 +865,10 @@ main {
   align-items: center;
 }
 
-.tour-date {
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.01em;
+.tour-date__time {
+  font-weight: 600;
+  color: var(--ink-soft);
+  font-size: 0.85em;
 }
 
 .tour-date--start,
