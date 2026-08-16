@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Календарь олимпиад</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <p class="brand">Календарь олимпиад</p>
+    <label class="current-date">
+      <span class="current-date__label">Текущая дата</span>
+      <input type="date" id="current-date" />
+    </label>
+  </header>
+
+  <main>
+    <section class="section section--compact filters" aria-label="Фильтры">
+      <div class="filters-bar">
+        <div class="filters__grid" id="filters"></div>
+        <div class="filters-bar__actions">
+          <button type="button" class="chip chip--toggle" id="hide-past" aria-pressed="false">Спрятать прошедшие</button>
+          <button type="button" class="btn-text" id="reset-filters" hidden>Сбросить</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--fold" aria-label="Олимпиады">
+      <button type="button" class="fold-toggle" id="olympiads-toggle" aria-expanded="false" aria-controls="olympiads-panel">
+        <span>Олимпиады</span>
+        <span class="fold-toggle__chevron" aria-hidden="true"></span>
+      </button>
+      <div class="fold-panel" id="olympiads-panel" hidden>
+        <p class="fold-panel__hint">Клик по заголовку — попап. Стрелка на карточке — раскрытие на месте.</p>
+        <div class="cards" id="cards"></div>
+      </div>
+    </section>
+
+    <section class="section section--calendar" aria-label="Календарь">
+      <div class="section__head section__head--compact">
+        <h2>Календарь</h2>
+        <div class="legend" id="legend"></div>
+      </div>
+      <div class="calendar-wrap">
+        <table class="calendar" id="calendar">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Данные из <code>data/*.md</code> → <code>site/data/olympiads.json</code>. Добавление: <code>python3 scripts/add_olympiad.py data/file.md</code></p>
+  </footer>
+
+  <dialog class="tour-dialog" id="tour-dialog">
+    <form method="dialog" class="tour-dialog__panel">
+      <header class="tour-dialog__head">
+        <h3 id="dialog-title"></h3>
+        <button type="submit" class="tour-dialog__close" aria-label="Закрыть">×</button>
+      </header>
+      <div class="tour-dialog__body" id="dialog-body"></div>
+    </form>
+  </dialog>
+
+  <dialog class="tour-dialog olympiad-dialog" id="olympiad-dialog">
+    <form method="dialog" class="tour-dialog__panel">
+      <header class="tour-dialog__head">
+        <h3 id="olympiad-dialog-title"></h3>
+        <button type="submit" class="tour-dialog__close" aria-label="Закрыть">×</button>
+      </header>
+      <div class="tour-dialog__body" id="olympiad-dialog-body"></div>
+    </form>
+  </dialog>
+
+  <script src="js/app.js" type="module"></script>
+</body>
+</html>
