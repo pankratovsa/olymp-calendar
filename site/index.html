@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <script>
     (function () {
-      var base = "/";
-      if (/\.github\.io$/i.test(location.hostname)) {
-        var seg = location.pathname.split("/").filter(Boolean)[0];
-        if (seg) base = "/" + seg + "/";
-      }
-      document.write('<base href="' + base + '">');
+      // Только для GitHub Pages (project site: /repo-name/).
+      // Локально base не ставим — относительные пути работают от index.html.
+      if (!/\.github\.io$/i.test(location.hostname)) return;
+      var seg = location.pathname.split("/").filter(Boolean)[0];
+      if (!seg) return;
+      document.write('<base href="/' + seg + '/">');
     })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -67,7 +67,7 @@
   </main>
 
   <footer class="footer">
-    <p>Данные из <code>data/*.md</code> → <code>site/data/olympiads.json</code>. Добавление: <code>python3 scripts/add_olympiad.py data/file.md</code></p>
+    <p>Календарь школьных олимпиад</p>
   </footer>
 
   <dialog class="tour-dialog" id="tour-dialog">

@@ -697,7 +697,8 @@ function bindChrome() {
 }
 
 async function init() {
-  const res = await fetch(new URL("data/olympiads.json", document.baseURI));
+  const siteRoot = new URL("../", import.meta.url);
+  const res = await fetch(new URL("data/olympiads.json", siteRoot));
   if (!res.ok) throw new Error("Не удалось загрузить data/olympiads.json");
   state.olympiads = await res.json();
 
@@ -713,5 +714,5 @@ async function init() {
 init().catch((err) => {
   console.error(err);
   document.getElementById("cards").innerHTML =
-    `<p>Ошибка загрузки данных. Запустите <code>python3 scripts/add_olympiad.py --sync-all</code>.</p>`;
+    `<p>Не удалось загрузить данные олимпиад.</p>`;
 });

@@ -1,5 +1,389 @@
 [
   {
+    "id": "winkid",
+    "source": "data/winkid.md",
+    "title": "Winkid",
+    "shortTitle": "Winkid",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "description": "Winkid — предметные олимпиады Казанского федерального университета для школьников 1-9 классов.",
+    "website": "https://winkid.ru/",
+    "tours": [
+      {
+        "name": "Cтартовый Онлайн Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2025-09-27",
+          "end": "2025-09-27",
+          "raw": "27.09",
+          "multiDay": false,
+          "labelStart": "27.09",
+          "labelEnd": "27.09"
+        },
+        "announced": {
+          "start": "2026-06-16",
+          "end": "2026-06-16",
+          "raw": "16.06",
+          "multiDay": false,
+          "labelStart": "16.06",
+          "labelEnd": "16.06"
+        }
+      },
+      {
+        "name": "Осенний Онлайн Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2025-11-08",
+          "end": "2025-11-08",
+          "raw": "08.11",
+          "multiDay": false,
+          "labelStart": "8.11",
+          "labelEnd": "8.11"
+        },
+        "announced": {
+          "start": "2026-06-16",
+          "end": "2026-06-16",
+          "raw": "16.06",
+          "multiDay": false,
+          "labelStart": "16.06",
+          "labelEnd": "16.06"
+        }
+      },
+      {
+        "name": "Новогодний Онлайн Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2025-12-13",
+          "end": "2025-12-13",
+          "raw": "13.12",
+          "multiDay": false,
+          "labelStart": "13.12",
+          "labelEnd": "13.12"
+        },
+        "announced": {
+          "start": "2026-06-16",
+          "end": "2026-06-16",
+          "raw": "16.06",
+          "multiDay": false,
+          "labelStart": "16.06",
+          "labelEnd": "16.06"
+        }
+      },
+      {
+        "name": "Зимний Онлайн Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2026-01-31",
+          "end": "2026-01-31",
+          "raw": "31.01",
+          "multiDay": false,
+          "labelStart": "31.01",
+          "labelEnd": "31.01"
+        },
+        "announced": {
+          "start": "2026-06-16",
+          "end": "2026-06-16",
+          "raw": "16.06",
+          "multiDay": false,
+          "labelStart": "16.06",
+          "labelEnd": "16.06"
+        }
+      },
+      {
+        "name": "Весенний Онлайн Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2026-03-14",
+          "end": "2026-03-14",
+          "raw": "14.03",
+          "multiDay": false,
+          "labelStart": "14.03",
+          "labelEnd": "14.03"
+        },
+        "announced": {
+          "start": "2026-06-16",
+          "end": "2026-06-16",
+          "raw": "16.06",
+          "multiDay": false,
+          "labelStart": "16.06",
+          "labelEnd": "16.06"
+        }
+      },
+      {
+        "name": "Финальный Онлайн Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2026-04-18",
+          "end": "2026-04-18",
+          "raw": "18.04",
+          "multiDay": false,
+          "labelStart": "18.04",
+          "labelEnd": "18.04"
+        },
+        "announced": {
+          "start": "2026-06-16",
+          "end": "2026-06-16",
+          "raw": "16.06",
+          "multiDay": false,
+          "labelStart": "16.06",
+          "labelEnd": "16.06"
+        }
+      },
+      {
+        "name": "Cтартовый Очный Тур",
+        "type": "offline",
+        "city": "Казань",
+        "cities": [
+          "Казань",
+          "Набережные Челны"
+        ],
+        "places": [
+          {
+            "city": "Казань",
+            "venues": []
+          },
+          {
+            "city": "Набережные Челны",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2025-10-04",
+          "end": "2025-10-04",
+          "raw": "4.10",
+          "multiDay": false,
+          "labelStart": "4.10",
+          "labelEnd": "4.10"
+        },
+        "announced": {
+          "start": "2026-06-16",
+          "end": "2026-06-16",
+          "raw": "16.06",
+          "multiDay": false,
+          "labelStart": "16.06",
+          "labelEnd": "16.06"
+        }
+      },
+      {
+        "name": "Осенний Очный Тур",
+        "type": "offline",
+        "city": "Казань",
+        "cities": [
+          "Казань",
+          "Набережные Челны"
+        ],
+        "places": [
+          {
+            "city": "Казань",
+            "venues": []
+          },
+          {
+            "city": "Набережные Челны",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2025-11-15",
+          "end": "2025-11-15",
+          "raw": "15.11",
+          "multiDay": false,
+          "labelStart": "15.11",
+          "labelEnd": "15.11"
+        },
+        "announced": {
+          "start": "2026-06-16",
+          "end": "2026-06-16",
+          "raw": "16.06",
+          "multiDay": false,
+          "labelStart": "16.06",
+          "labelEnd": "16.06"
+        }
+      },
+      {
+        "name": "Новогодний Очный Тур",
+        "type": "offline",
+        "city": "Казань",
+        "cities": [
+          "Казань",
+          "Набережные Челны"
+        ],
+        "places": [
+          {
+            "city": "Казань",
+            "venues": []
+          },
+          {
+            "city": "Набережные Челны",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2025-12-20",
+          "end": "2025-12-20",
+          "raw": "20.12",
+          "multiDay": false,
+          "labelStart": "20.12",
+          "labelEnd": "20.12"
+        },
+        "announced": {
+          "start": "2026-06-16",
+          "end": "2026-06-16",
+          "raw": "16.06",
+          "multiDay": false,
+          "labelStart": "16.06",
+          "labelEnd": "16.06"
+        }
+      },
+      {
+        "name": "Зимний Онлайн Тур",
+        "type": "offline",
+        "city": "Казань",
+        "cities": [
+          "Казань",
+          "Набережные Челны"
+        ],
+        "places": [
+          {
+            "city": "Казань",
+            "venues": []
+          },
+          {
+            "city": "Набережные Челны",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2026-02-07",
+          "end": "2026-02-07",
+          "raw": "7.02",
+          "multiDay": false,
+          "labelStart": "7.02",
+          "labelEnd": "7.02"
+        },
+        "announced": {
+          "start": "2026-06-16",
+          "end": "2026-06-16",
+          "raw": "16.06",
+          "multiDay": false,
+          "labelStart": "16.06",
+          "labelEnd": "16.06"
+        }
+      },
+      {
+        "name": "Весенний Онлайн Тур",
+        "type": "offline",
+        "city": "Казань",
+        "cities": [
+          "Казань",
+          "Набережные Челны"
+        ],
+        "places": [
+          {
+            "city": "Казань",
+            "venues": []
+          },
+          {
+            "city": "Набережные Челны",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2026-03-21",
+          "end": "2026-03-21",
+          "raw": "21.03",
+          "multiDay": false,
+          "labelStart": "21.03",
+          "labelEnd": "21.03"
+        },
+        "announced": {
+          "start": "2026-06-16",
+          "end": "2026-06-16",
+          "raw": "16.06",
+          "multiDay": false,
+          "labelStart": "16.06",
+          "labelEnd": "16.06"
+        }
+      },
+      {
+        "name": "Финальный Онлайн Тур",
+        "type": "offline",
+        "city": "Казань",
+        "cities": [
+          "Казань",
+          "Набережные Челны"
+        ],
+        "places": [
+          {
+            "city": "Казань",
+            "venues": []
+          },
+          {
+            "city": "Набережные Челны",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2026-04-25",
+          "end": "2026-04-25",
+          "raw": "25.04",
+          "multiDay": false,
+          "labelStart": "25.04",
+          "labelEnd": "25.04"
+        },
+        "announced": {
+          "start": "2026-06-16",
+          "end": "2026-06-16",
+          "raw": "16.06",
+          "multiDay": false,
+          "labelStart": "16.06",
+          "labelEnd": "16.06"
+        }
+      }
+    ]
+  },
+  {
     "id": "belchonok_info",
     "source": "data/belchonok_info.md",
     "title": "Университетская олимпиада школьников «Бельчонок» Информатика",
@@ -163,6 +547,389 @@
           "multiDay": false,
           "labelStart": "1.10",
           "labelEnd": "1.10"
+        }
+      }
+    ]
+  },
+  {
+    "id": "open_kazan",
+    "source": "data/open_kazan.md",
+    "title": "Открытая городская олимпиада по математике г. Казани для 2-6 классов",
+    "shortTitle": "Казанской открытая городская олимпиада",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "description": "Олимпиада школьников «Бельчонок» проводится Сибирским федеральным университетом с 2012 года.\n\nОткрытая городская олимпиада по математике г. Казани для 2-6 классов проводится с 2012 года.\n\nОрганизаторами олимпиады являются Образовательный центр Одаренный Ребенок и Управление Образования г. Казани.\n\nУчаствовать в олимпиаде могут не только учащиеся г. Казани, но и школьники со всей России.",
+    "website": "https://olymp.kazan-math.info/",
+    "tours": [
+      {
+        "name": "Отборочный Тур 1",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2025-12-14",
+          "end": "2025-12-14",
+          "raw": "14.12",
+          "multiDay": false,
+          "labelStart": "14.12",
+          "labelEnd": "14.12"
+        },
+        "announced": {
+          "start": "2025-11-22",
+          "end": "2025-11-22",
+          "raw": "22.11",
+          "multiDay": false,
+          "labelStart": "22.11",
+          "labelEnd": "22.11"
+        }
+      },
+      {
+        "name": "Отборочный Тур 2",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2026-01-25",
+          "end": "2026-01-25",
+          "raw": "25.01",
+          "multiDay": false,
+          "labelStart": "25.01",
+          "labelEnd": "25.01"
+        },
+        "announced": {
+          "start": "2025-11-22",
+          "end": "2025-11-22",
+          "raw": "22.11",
+          "multiDay": false,
+          "labelStart": "22.11",
+          "labelEnd": "22.11"
+        }
+      },
+      {
+        "name": "Заключительный Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Гимназия 1"
+            ]
+          }
+        ],
+        "venues": [
+          "Гимназия 1"
+        ],
+        "date": {
+          "start": "2026-03-14",
+          "end": "2026-03-14",
+          "raw": "14.03",
+          "multiDay": false,
+          "labelStart": "14.03",
+          "labelEnd": "14.03"
+        },
+        "announced": {
+          "start": "2025-11-22",
+          "end": "2025-11-22",
+          "raw": "22.11",
+          "multiDay": false,
+          "labelStart": "22.11",
+          "labelEnd": "22.11"
+        }
+      }
+    ]
+  },
+  {
+    "id": "we_ingneers",
+    "source": "data/we_ingneers.md",
+    "title": "Городской политехнической Олимпиаде «Мы инженеры»",
+    "shortTitle": "Мы-Инженеры",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      3,
+      4,
+      7,
+      8,
+      9
+    ],
+    "description": "",
+    "website": "https://school10uspeh.minobr63.ru/my-inzhenery/",
+    "tours": [
+      {
+        "name": "Основной Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Успех"
+            ]
+          }
+        ],
+        "venues": [
+          "Успех"
+        ],
+        "date": {
+          "start": "2026-04-11",
+          "end": "2026-04-11",
+          "raw": "11.04",
+          "multiDay": false,
+          "labelStart": "11.04",
+          "labelEnd": "11.04"
+        },
+        "announced": {
+          "start": "2026-03-22",
+          "end": "2026-03-22",
+          "raw": "22.03",
+          "multiDay": false,
+          "labelStart": "22.03",
+          "labelEnd": "22.03"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ntl_2x2",
+    "source": "data/ntl_2x2.md",
+    "title": "Осеннюю математическая олимпиада НТЛ 2x2",
+    "shortTitle": "НТЛ 2x2",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "description": "Нижегородская Творческая Лаборатория 2х2 и НИУ ВШЭ Нижний Новгород в десятый раз проводят Осеннюю математическую олимпиаду.",
+    "website": "https://nn2x2.ru/",
+    "tours": [
+      {
+        "name": "Основной Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Искра"
+            ]
+          }
+        ],
+        "venues": [
+          "Искра"
+        ],
+        "date": {
+          "start": "2025-10-19",
+          "end": "2025-10-19",
+          "raw": "19.10",
+          "multiDay": false,
+          "labelStart": "19.10",
+          "labelEnd": "19.10"
+        },
+        "announced": {
+          "start": "2025-10-05",
+          "end": "2025-10-05",
+          "raw": "5.10",
+          "multiDay": false,
+          "labelStart": "5.10",
+          "labelEnd": "5.10"
+        }
+      }
+    ]
+  },
+  {
+    "id": "2x2",
+    "source": "data/2x2.md",
+    "title": "Олимпиада начальной школы 2x2",
+    "shortTitle": "Олимпиада 2x2",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      2,
+      3,
+      4
+    ],
+    "description": "Олимпиада начальной школы творческой лабаратории 2x2",
+    "website": "https://mathbaby.ru/olympiads/olimpiada-nachalnoy-shkoly",
+    "tours": [
+      {
+        "name": "Основной Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Совушка"
+            ]
+          }
+        ],
+        "venues": [
+          "Совушка"
+        ],
+        "date": {
+          "start": "2026-02-08",
+          "end": "2026-02-08",
+          "raw": "08.02",
+          "multiDay": false,
+          "labelStart": "8.02",
+          "labelEnd": "8.02"
+        },
+        "announced": {
+          "start": "2026-01-18",
+          "end": "2026-01-18",
+          "raw": "18.01",
+          "multiDay": false,
+          "labelStart": "18.01",
+          "labelEnd": "18.01"
+        }
+      }
+    ]
+  },
+  {
+    "id": "kurova",
+    "source": "data/kurova.md",
+    "title": "Региональная олимпиада школьников по математике имени В.А. Курова",
+    "shortTitle": "Олимпиада им. Курова",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "description": "Региональная олимпиада школьников по математике имени В.А. Курова для учащихся 2-8-х классов является правопреемником городской олимпиады школьников по математике имени В.А. Курова для учащихся 2-8-х классов г.о.",
+    "website": "https://xn--144-5cddaa7ejpp6aj4g.xn--p1ai/wp2016/olimpiada-im-kurova-v-a/olimpiada-im-kurova-v-a-2025/",
+    "tours": [
+      {
+        "name": "Отборочный Тур",
+        "type": "offline",
+        "city": "Школа",
+        "cities": [
+          "Школа"
+        ],
+        "places": [
+          {
+            "city": "Школа",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2026-01-22",
+          "end": "2026-01-22",
+          "raw": "22.01",
+          "multiDay": false,
+          "labelStart": "22.01",
+          "labelEnd": "22.01"
+        },
+        "announced": {
+          "start": "2026-01-14",
+          "end": "2026-01-14",
+          "raw": "14.01",
+          "multiDay": false,
+          "labelStart": "14.01",
+          "labelEnd": "14.01"
+        }
+      },
+      {
+        "name": "Заключительный Тур 3",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2026-02-28",
+          "end": "2026-02-28",
+          "raw": "28.02",
+          "multiDay": false,
+          "labelStart": "28.02",
+          "labelEnd": "28.02"
+        },
+        "announced": {
+          "start": "2026-01-22",
+          "end": "2026-01-22",
+          "raw": "22.01",
+          "multiDay": false,
+          "labelStart": "22.01",
+          "labelEnd": "22.01"
+        }
+      },
+      {
+        "name": "Заключительный Тур 2",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2026-04-11",
+          "end": "2026-04-11",
+          "raw": "11.04",
+          "multiDay": false,
+          "labelStart": "11.04",
+          "labelEnd": "11.04"
+        },
+        "announced": {
+          "start": "2026-02-28",
+          "end": "2026-02-28",
+          "raw": "28.02",
+          "multiDay": false,
+          "labelStart": "28.02",
+          "labelEnd": "28.02"
         }
       }
     ]
