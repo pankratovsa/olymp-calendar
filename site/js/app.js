@@ -58,6 +58,33 @@ function tourResolvedDates(tour) {
   };
 }
 
+function olympiadEarliestStart(olympiad) {
+  let min = null;
+  for (const t of olympiad.tours || []) {
+    const resolved = tourResolvedDates(t);
+    if (!resolved) continue;
+    if (!min || resolved.start < min) min = resolved.start;
+  }
+  return min;
+}
+
+function isWinkid(olympiad) {
+  return olympiad.id === "winkid" || /winkid/i.test(olympiad.shortTitle || "");
+}
+
+/** Раньше стартующие слева; Winkid всегда в конце. */
+function orderedOlympiads() {
+  return [...state.olympiads].sort((a, b) => {
+    const aW = isWinkid(a);
+    const bW = isWinkid(b);
+    if (aW !== bW) return aW ? 1 : -1;
+    const as = olympiadEarliestStart(a) || "9999-12-31";
+    const bs = olympiadEarliestStart(b) || "9999-12-31";
+    if (as !== bs) return as.localeCompare(bs);
+    return (a.shortTitle || "").localeCompare(b.shortTitle || "", "ru");
+  });
+}
+
 function formatShort(date) {
   return date.toLocaleDateString("ru-RU", { day: "numeric", month: "short" });
 }
@@ -110,21 +137,54 @@ function weekKey(date) {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
+function announcementDisplayDate(tour) {
+  if (!tour.announced?.start) return null;
+  const ys = academicYearStart();
+  const d = parseISO(tour.announced.start);
+  const day = d.getDate();
+  const month = d.getMonth() + 1;
+  const sept1 = `${ys}-09-01`;
+
+  // Июнь–август до учебного года — в календарном году старта сезона
+  let iso;
+  if (month >= 6 && month <= 8) {
+    iso = `${ys}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  } else {
+    iso = resolveDayMonth(day, month, ys);
+  }
+  // Раньше 1.09 → звезда на 1.09
+  return iso < sept1 ? sept1 : iso;
+}
+
 function buildWeeks(olympiads) {
   let min = null;
   let max = null;
   for (const o of olympiads) {
     for (const t of o.tours) {
       const resolved = tourResolvedDates(t);
-      if (!resolved) continue;
-      if (state.hidePast && resolved.end < state.currentDate) continue;
-      const s = parseISO(resolved.start);
-      const e = parseISO(resolved.end);
-      if (!min || s < min) min = s;
-      if (!max || e > max) max = e;
+      if (resolved) {
+        if (!(state.hidePast && resolved.end < state.currentDate)) {
+          const s = parseISO(resolved.start);
+          const e = parseISO(resolved.end);
+          if (!min || s < min) min = s;
+          if (!max || e > max) max = e;
+        }
+      }
+      const ann = announcementDisplayDate(t);
+      if (ann) {
+        if (state.hidePast && ann < state.currentDate) continue;
+        const a = parseISO(ann);
+        if (!min || a < min) min = a;
+        if (!max || a > max) max = a;
+      }
     }
   }
   if (!min || !max) return [];
+  // Календарь с начала учебного года, если есть объявления/туры
+  const ys = academicYearStart();
+  const seasonStart = parseISO(`${ys}-09-01`);
+  if (seasonStart < min) min = seasonStart;
+
   const weeks = [];
   let cursor = startOfWeek(min);
   const last = startOfWeek(max);
@@ -137,6 +197,13 @@ function buildWeeks(olympiads) {
     cursor = addDays(cursor, 7);
   }
   return weeks;
+}
+
+function announcementWeekIndex(tour, weeks) {
+  const iso = announcementDisplayDate(tour);
+  if (!iso || !weeks.length) return -1;
+  const start = startOfWeek(parseISO(iso)).getTime();
+  return weeks.findIndex((w) => w.start.getTime() === start);
 }
 
 function tourWeekSpan(tour, weeks) {
@@ -334,6 +401,7 @@ function renderFilters() {
     <span class="marker marker--online">Онлайн</span>
     <span class="marker marker--offline">Очный</span>
     <span class="marker marker--city">Город</span>
+    <span class="announce-star announce-star--legend" title="Дата объявления">★ объявление</span>
   `;
 }
 
@@ -403,7 +471,7 @@ function openOlympiadDialog(olympiad) {
 
 function renderCards() {
   const root = document.getElementById("cards");
-  root.innerHTML = state.olympiads
+  root.innerHTML = orderedOlympiads()
     .map((o) => {
       const dim = matchesFilters(o) ? "" : " is-dimmed";
       const grades =
@@ -509,21 +577,45 @@ function openTourDialog(olympiad, tour) {
   dialog.showModal();
 }
 
+function formatStackedTitle(shortTitle) {
+  return String(shortTitle || "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => `<span class="cal-th__word">${escapeHtml(word)}</span>`)
+    .join("");
+}
+
 function renderCalendar() {
-  const weeks = buildWeeks(state.olympiads);
+  const olympiads = orderedOlympiads();
+  const weeks = buildWeeks(olympiads);
   const table = document.getElementById("calendar");
   const thead = table.querySelector("thead");
   const tbody = table.querySelector("tbody");
 
   thead.innerHTML = `<tr>
-    <th>Неделя</th>
-    ${state.olympiads
-      .map((o) => `<th>${escapeHtml(o.shortTitle)}</th>`)
+    <th class="cal-corner">Неделя</th>
+    ${olympiads
+      .map(
+        (o) =>
+          `<th scope="col">
+            <button type="button" class="cal-th" data-olympiad="${escapeHtml(o.id)}" title="${escapeHtml(o.title || o.shortTitle)}">
+              ${formatStackedTitle(o.shortTitle)}
+            </button>
+          </th>`
+      )
       .join("")}
   </tr>`;
 
+  thead.querySelectorAll(".cal-th").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const olympiad = state.olympiads.find((o) => o.id === btn.dataset.olympiad);
+      if (olympiad) openOlympiadDialog(olympiad);
+    });
+  });
+
   // Многодневные туры: одна ячейка на весь диапазон недель (полный rowspan).
-  const layouts = state.olympiads.map((o) => {
+  // Звёзды объявлений — на неделе даты объявления (или 1.09, если раньше).
+  const layouts = olympiads.map((o) => {
     const map = new Map();
     const occupied = new Set();
     const sorted = [...o.tours]
@@ -544,7 +636,6 @@ function renderCalendar() {
         .find((i) => occupied.has(i));
 
       if (conflictIdx !== undefined) {
-        // Не режем rowspan: кладём тур в уже объединённую ячейку колонки
         for (let i = span.from; i >= 0; i--) {
           const cell = map.get(i);
           if (cell?.kind === "start") {
@@ -559,14 +650,73 @@ function renderCalendar() {
         kind: "start",
         rowspan: span.rowspan,
         tours: [tour],
+        announcements: [],
       });
       for (let i = span.from; i <= span.to; i++) occupied.add(i);
       for (let i = span.from + 1; i <= span.to; i++) {
         map.set(i, { kind: "skip" });
       }
     }
+
+    const starredWeeks = new Set();
+    for (const tour of o.tours) {
+      const annIso = announcementDisplayDate(tour);
+      if (!annIso) continue;
+      if (state.hidePast && annIso < state.currentDate) continue;
+      const wi = announcementWeekIndex(tour, weeks);
+      if (wi < 0 || starredWeeks.has(wi)) continue;
+      const raw = parseISO(tour.announced.start);
+      const rawMonth = raw.getMonth() + 1;
+      const entry = {
+        tourName: tour.name,
+        date: annIso,
+        label:
+          tour.announced?.labelStart ||
+          tour.announced?.raw ||
+          formatDayMonth(annIso),
+        clamped: annIso.endsWith("-09-01") && !(rawMonth === 9 && raw.getDate() === 1),
+      };
+
+      const existing = map.get(wi);
+      if (!existing) {
+        map.set(wi, {
+          kind: "start",
+          rowspan: 1,
+          tours: [],
+          announcements: [entry],
+        });
+        occupied.add(wi);
+        starredWeeks.add(wi);
+      } else if (existing.kind === "start") {
+        if (!(existing.announcements || []).length) {
+          existing.announcements = [entry];
+          starredWeeks.add(wi);
+        }
+      } else if (existing.kind === "skip") {
+        // Неделя внутри rowspan тура — одна звезда на ячейку-старт
+        for (let i = wi; i >= 0; i--) {
+          const host = map.get(i);
+          if (host?.kind === "start") {
+            if (!(host.announcements || []).length) {
+              host.announcements = [entry];
+              starredWeeks.add(wi);
+            }
+            break;
+          }
+        }
+      }
+    }
     return map;
   });
+
+  function renderAnnouncementStars(announcements, olympiad) {
+    if (!announcements?.length) return "";
+    const a = announcements[0];
+    const title = `Объявление: ${a.label}${a.clamped ? " → 1.09" : ""} (${a.tourName})`;
+    return `<button type="button" class="announce-star" title="${escapeHtml(title)}"
+      data-olympiad="${escapeHtml(olympiad.id)}" data-tour="${escapeHtml(a.tourName)}"
+      aria-label="${escapeHtml(title)}">★</button>`;
+  }
 
   function renderTourButton(olympiad, tour, multiWeek) {
     const active = matchesFilters(olympiad) && tourMatchesFilters(olympiad, tour);
@@ -611,7 +761,7 @@ function renderCalendar() {
   tbody.innerHTML = weeks
     .map((week, wi) => {
       const label = `${formatShort(week.start)} – ${formatShort(week.end)}`;
-      const cells = state.olympiads
+      const cells = olympiads
         .map((o, oi) => {
           const cell = layouts[oi].get(wi);
           if (cell?.kind === "skip") return "";
@@ -621,24 +771,30 @@ function renderCalendar() {
 
           const olympiadActive = matchesFilters(o);
           const multiWeek = cell.rowspan > 1;
-          const blocks = cell.tours
+          const stars = renderAnnouncementStars(cell.announcements, o);
+          const blocks = (cell.tours || [])
             .map((tour) => renderTourButton(o, tour, multiWeek))
             .join("");
-          const anyVisible = cell.tours.some(
+          const anyTourVisible = (cell.tours || []).some(
             (t) => olympiadActive && tourMatchesFilters(o, t)
           );
-          const cellDim = anyVisible ? "" : " is-dimmed";
+          const hasStars = (cell.announcements || []).length > 0;
+          const cellDim =
+            olympiadActive && (anyTourVisible || hasStars) ? "" : " is-dimmed";
           const spanClass = multiWeek ? " cal-cell--span" : "";
-          return `<td class="cal-cell cal-cell--filled${spanClass}${cellDim}" rowspan="${cell.rowspan}"${
+          const onlyStars = hasStars && !(cell.tours || []).length;
+          return `<td class="cal-cell cal-cell--filled${spanClass}${
+            onlyStars ? " cal-cell--announce" : ""
+          }${cellDim}" rowspan="${cell.rowspan}"${
             multiWeek ? ` style="--rowspan: ${cell.rowspan}"` : ""
-          }><div class="cal-cell__fill">${blocks}</div></td>`;
+          }><div class="cal-cell__fill">${stars}${blocks}</div></td>`;
         })
         .join("");
       return `<tr><th class="week-label" scope="row">${label}</th>${cells}</tr>`;
     })
     .join("");
 
-  tbody.querySelectorAll(".tour-block").forEach((btn) => {
+  tbody.querySelectorAll(".tour-block, .announce-star").forEach((btn) => {
     btn.addEventListener("click", () => {
       const olympiad = state.olympiads.find((o) => o.id === btn.dataset.olympiad);
       const tour = olympiad?.tours.find((t) => t.name === btn.dataset.tour);
@@ -698,7 +854,21 @@ function bindChrome() {
 
 async function init() {
   const siteRoot = new URL("../", import.meta.url);
-  const res = await fetch(new URL("data/olympiads.json", siteRoot));
+  const fetchOpts = { cache: "no-store" };
+  let bust = String(Date.now());
+  try {
+    const verRes = await fetch(new URL("data/version.json", siteRoot), fetchOpts);
+    if (verRes.ok) {
+      const ver = await verRes.json();
+      if (ver?.v) bust = ver.v;
+    }
+  } catch (_) {
+    /* offline / first run */
+  }
+  const res = await fetch(
+    new URL(`data/olympiads.json?v=${encodeURIComponent(bust)}`, siteRoot),
+    fetchOpts
+  );
   if (!res.ok) throw new Error("Не удалось загрузить data/olympiads.json");
   state.olympiads = await res.json();
 

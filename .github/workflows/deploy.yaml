@@ -24,8 +24,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Ensure Pages fallbacks
+      - name: Cache-bust assets and Pages fallbacks
         run: |
+          V="${GITHUB_SHA:-$(date +%s)}"
+          sed -i.bak "s/[?]v=[^\"]*/?v=${V}/g" site/index.html
+          rm -f site/index.html.bak
           cp site/index.html site/404.html
           touch site/.nojekyll
 

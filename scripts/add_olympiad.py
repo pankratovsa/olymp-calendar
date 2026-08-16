@@ -320,7 +320,7 @@ def parse_olympiad(md: str, source: str) -> dict:
             site = extract_website(desc)
             if site:
                 olympiad["website"] = site
-        elif level == 3 and key == "website":
+        elif level in (2, 3) and key == "website":
             olympiad["website"] = extract_website(body) or body.strip() or olympiad["website"]
 
         i += 1
@@ -338,9 +338,20 @@ def load_json() -> list[dict]:
 
 
 def save_json(items: list[dict]) -> None:
+    import hashlib
+    import time
+
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUT_PATH.write_text(
-        json.dumps(items, ensure_ascii=False, indent=2) + "\n",
+    payload = json.dumps(items, ensure_ascii=False, indent=2) + "\n"
+    OUT_PATH.write_text(payload, encoding="utf-8")
+    version = {
+        "v": hashlib.sha256(payload.encode("utf-8")).hexdigest()[:12],
+        "updatedAt": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "count": len(items),
+    }
+    version_path = OUT_PATH.parent / "version.json"
+    version_path.write_text(
+        json.dumps(version, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
 

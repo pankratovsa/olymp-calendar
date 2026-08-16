@@ -1,5 +1,58 @@
 [
   {
+    "id": "2x2",
+    "source": "data/2x2.md",
+    "title": "Олимпиада начальной школы 2x2",
+    "shortTitle": "2x2",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      2,
+      3,
+      4
+    ],
+    "description": "Олимпиада начальной школы творческой лабаратории 2x2",
+    "website": "https://mathbaby.ru/olympiads/olimpiada-nachalnoy-shkoly",
+    "tours": [
+      {
+        "name": "Основной Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Совушка"
+            ]
+          }
+        ],
+        "venues": [
+          "Совушка"
+        ],
+        "date": {
+          "start": "2026-02-08",
+          "end": "2026-02-08",
+          "raw": "08.02",
+          "multiDay": false,
+          "labelStart": "8.02",
+          "labelEnd": "8.02"
+        },
+        "announced": {
+          "start": "2026-01-18",
+          "end": "2026-01-18",
+          "raw": "18.01",
+          "multiDay": false,
+          "labelStart": "18.01",
+          "labelEnd": "18.01"
+        }
+      }
+    ]
+  },
+  {
     "id": "winkid",
     "source": "data/winkid.md",
     "title": "Winkid",
@@ -555,7 +608,7 @@
     "id": "open_kazan",
     "source": "data/open_kazan.md",
     "title": "Открытая городская олимпиада по математике г. Казани для 2-6 классов",
-    "shortTitle": "Казанской открытая городская олимпиада",
+    "shortTitle": "Казанской Открытая",
     "subjects": [
       "Математика"
     ],
@@ -655,10 +708,71 @@
     ]
   },
   {
+    "id": "kenguru",
+    "source": "data/kenguru.md",
+    "title": "Международный игровой конкурс по математике «Кенгуру",
+    "shortTitle": "Кенгуру",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "description": "Международный игровой конкурс по математике «Кенгуру",
+    "website": "https://ipokengu.ru/",
+    "tours": [
+      {
+        "name": "Основной Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "СИПКРО"
+            ]
+          }
+        ],
+        "venues": [
+          "СИПКРО"
+        ],
+        "date": {
+          "start": "2026-03-19",
+          "end": "2026-03-19",
+          "raw": "19.03",
+          "multiDay": false,
+          "labelStart": "19.03",
+          "labelEnd": "19.03"
+        },
+        "announced": {
+          "start": "2025-11-14",
+          "end": "2025-11-14",
+          "raw": "14.11",
+          "multiDay": false,
+          "labelStart": "14.11",
+          "labelEnd": "14.11"
+        }
+      }
+    ]
+  },
+  {
     "id": "we_ingneers",
     "source": "data/we_ingneers.md",
     "title": "Городской политехнической Олимпиаде «Мы инженеры»",
-    "shortTitle": "Мы-Инженеры",
+    "shortTitle": "Мы-Инженеры Успех",
     "subjects": [
       "Математика"
     ],
@@ -762,59 +876,6 @@
           "multiDay": false,
           "labelStart": "5.10",
           "labelEnd": "5.10"
-        }
-      }
-    ]
-  },
-  {
-    "id": "2x2",
-    "source": "data/2x2.md",
-    "title": "Олимпиада начальной школы 2x2",
-    "shortTitle": "Олимпиада 2x2",
-    "subjects": [
-      "Математика"
-    ],
-    "grades": [
-      2,
-      3,
-      4
-    ],
-    "description": "Олимпиада начальной школы творческой лабаратории 2x2",
-    "website": "https://mathbaby.ru/olympiads/olimpiada-nachalnoy-shkoly",
-    "tours": [
-      {
-        "name": "Основной Тур",
-        "type": "offline",
-        "city": "Самара",
-        "cities": [
-          "Самара"
-        ],
-        "places": [
-          {
-            "city": "Самара",
-            "venues": [
-              "Совушка"
-            ]
-          }
-        ],
-        "venues": [
-          "Совушка"
-        ],
-        "date": {
-          "start": "2026-02-08",
-          "end": "2026-02-08",
-          "raw": "08.02",
-          "multiDay": false,
-          "labelStart": "8.02",
-          "labelEnd": "8.02"
-        },
-        "announced": {
-          "start": "2026-01-18",
-          "end": "2026-01-18",
-          "raw": "18.01",
-          "multiDay": false,
-          "labelStart": "18.01",
-          "labelEnd": "18.01"
         }
       }
     ]
@@ -1029,7 +1090,7 @@
     "id": "shkolkovo",
     "source": "data/shkolkovo.md",
     "title": "Первая Математическая олимпиада школьников\" Школково",
-    "shortTitle": "Первая Математическая Школково",
+    "shortTitle": "Первая Математическая",
     "subjects": [
       "Математика"
     ],
@@ -1085,7 +1146,7 @@
     "id": "spb_junior",
     "source": "data/spb_junior.md",
     "title": "Санкт-Петербургская математическая олимпиада начальной школы",
-    "shortTitle": "Санкт-Петербургская математическая олимпиада начальной школы",
+    "shortTitle": "Петербургская начальной школы",
     "subjects": [
       "Математика"
     ],
@@ -1160,6 +1221,84 @@
           "labelStart": "14.02",
           "labelEnd": "14.02"
         },
+        "announced": {
+          "start": "2026-08-16",
+          "end": "2026-08-16",
+          "raw": "16.08",
+          "multiDay": false,
+          "labelStart": "16.08",
+          "labelEnd": "16.08"
+        }
+      }
+    ]
+  },
+  {
+    "id": "systematica",
+    "source": "data/systematica.md",
+    "title": "Международная олимпиада по математике «Систематика",
+    "shortTitle": "Систематика",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "description": "Международная олимпиада по математике \"Систематика\"",
+    "website": "https://systematika.org/olimpiada/math/",
+    "tours": [
+      {
+        "name": "1 Тур Онлайн",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2025-09-29",
+          "end": "2025-10-12",
+          "raw": "29.09-12.10",
+          "multiDay": true,
+          "labelStart": "29.09",
+          "labelEnd": "12.10"
+        },
+        "announced": {
+          "start": "2026-08-16",
+          "end": "2026-08-16",
+          "raw": "16.08",
+          "multiDay": false,
+          "labelStart": "16.08",
+          "labelEnd": "16.08"
+        }
+      },
+      {
+        "name": "2 Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Искра (Купцова)"
+            ]
+          }
+        ],
+        "venues": [
+          "Искра (Купцова)"
+        ],
+        "date": null,
         "announced": {
           "start": "2026-08-16",
           "end": "2026-08-16",
