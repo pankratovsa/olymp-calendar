@@ -855,8 +855,8 @@
   {
     "id": "we_ingneers",
     "source": "data/we_ingneers.md",
-    "title": "Городской политехнической Олимпиаде «Мы инженеры»",
-    "shortTitle": "Мы-Инженеры Успех",
+    "title": "Городской политехнической Олимпиаде «Мы инженеры». Успех Самара.",
+    "shortTitle": "Мы-Инженеры",
     "subjects": [
       "Математика"
     ],
@@ -889,24 +889,24 @@
           "Успех"
         ],
         "date": {
-          "start": "2026-04-11",
-          "end": "2026-04-11",
-          "raw": "11.04.2026",
+          "start": "2027-04-11",
+          "end": "2027-04-11",
+          "raw": "11.04.2027",
           "multiDay": false,
           "labelStart": "11.04",
           "labelEnd": "11.04",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         },
         "announced": {
-          "start": "2026-03-22",
-          "end": "2026-03-22",
-          "raw": "22.03.2026",
+          "start": "2027-03-22",
+          "end": "2027-03-22",
+          "raw": "22.03.2027",
           "multiDay": false,
           "labelStart": "22.03",
           "labelEnd": "22.03",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         }
       }
     ]
