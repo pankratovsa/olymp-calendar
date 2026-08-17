@@ -36,18 +36,22 @@
         "date": {
           "start": "2026-02-08",
           "end": "2026-02-08",
-          "raw": "08.02",
+          "raw": "08.02.2026",
           "multiDay": false,
           "labelStart": "8.02",
-          "labelEnd": "8.02"
+          "labelEnd": "8.02",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2026-01-18",
           "end": "2026-01-18",
-          "raw": "18.01",
+          "raw": "18.01.2026",
           "multiDay": false,
           "labelStart": "18.01",
-          "labelEnd": "18.01"
+          "labelEnd": "18.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       }
     ]
@@ -82,20 +86,24 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2025-09-27",
-          "end": "2025-09-27",
-          "raw": "27.09",
+          "start": "2026-09-27",
+          "end": "2026-09-27",
+          "raw": "27.09.2026",
           "multiDay": false,
           "labelStart": "27.09",
-          "labelEnd": "27.09"
+          "labelEnd": "27.09",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-06-16",
           "end": "2026-06-16",
-          "raw": "16.06",
+          "raw": "16.06.2026",
           "multiDay": false,
           "labelStart": "16.06",
-          "labelEnd": "16.06"
+          "labelEnd": "16.06",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -106,20 +114,24 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2025-11-08",
-          "end": "2025-11-08",
-          "raw": "08.11",
+          "start": "2026-11-08",
+          "end": "2026-11-08",
+          "raw": "08.11.2026",
           "multiDay": false,
           "labelStart": "8.11",
-          "labelEnd": "8.11"
+          "labelEnd": "8.11",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-06-16",
           "end": "2026-06-16",
-          "raw": "16.06",
+          "raw": "16.06.2026",
           "multiDay": false,
           "labelStart": "16.06",
-          "labelEnd": "16.06"
+          "labelEnd": "16.06",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -130,20 +142,24 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2025-12-13",
-          "end": "2025-12-13",
-          "raw": "13.12",
+          "start": "2026-12-13",
+          "end": "2026-12-13",
+          "raw": "13.12.2026",
           "multiDay": false,
           "labelStart": "13.12",
-          "labelEnd": "13.12"
+          "labelEnd": "13.12",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-06-16",
           "end": "2026-06-16",
-          "raw": "16.06",
+          "raw": "16.06.2026",
           "multiDay": false,
           "labelStart": "16.06",
-          "labelEnd": "16.06"
+          "labelEnd": "16.06",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -154,20 +170,24 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2026-01-31",
-          "end": "2026-01-31",
-          "raw": "31.01",
+          "start": "2027-01-31",
+          "end": "2027-01-31",
+          "raw": "31.01.2027",
           "multiDay": false,
           "labelStart": "31.01",
-          "labelEnd": "31.01"
+          "labelEnd": "31.01",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-06-16",
           "end": "2026-06-16",
-          "raw": "16.06",
+          "raw": "16.06.2026",
           "multiDay": false,
           "labelStart": "16.06",
-          "labelEnd": "16.06"
+          "labelEnd": "16.06",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -178,20 +198,24 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2026-03-14",
-          "end": "2026-03-14",
-          "raw": "14.03",
+          "start": "2027-03-14",
+          "end": "2027-03-14",
+          "raw": "14.03.2027",
           "multiDay": false,
           "labelStart": "14.03",
-          "labelEnd": "14.03"
+          "labelEnd": "14.03",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-06-16",
           "end": "2026-06-16",
-          "raw": "16.06",
+          "raw": "16.06.2026",
           "multiDay": false,
           "labelStart": "16.06",
-          "labelEnd": "16.06"
+          "labelEnd": "16.06",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -202,20 +226,24 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2026-04-18",
-          "end": "2026-04-18",
-          "raw": "18.04",
+          "start": "2027-04-18",
+          "end": "2027-04-18",
+          "raw": "18.04.2027",
           "multiDay": false,
           "labelStart": "18.04",
-          "labelEnd": "18.04"
+          "labelEnd": "18.04",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-06-16",
           "end": "2026-06-16",
-          "raw": "16.06",
+          "raw": "16.06.2026",
           "multiDay": false,
           "labelStart": "16.06",
-          "labelEnd": "16.06"
+          "labelEnd": "16.06",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -238,20 +266,24 @@
         ],
         "venues": [],
         "date": {
-          "start": "2025-10-04",
-          "end": "2025-10-04",
-          "raw": "4.10",
+          "start": "2026-10-04",
+          "end": "2026-10-04",
+          "raw": "4.10.2026",
           "multiDay": false,
           "labelStart": "4.10",
-          "labelEnd": "4.10"
+          "labelEnd": "4.10",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-06-16",
           "end": "2026-06-16",
-          "raw": "16.06",
+          "raw": "16.06.2026",
           "multiDay": false,
           "labelStart": "16.06",
-          "labelEnd": "16.06"
+          "labelEnd": "16.06",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -274,20 +306,24 @@
         ],
         "venues": [],
         "date": {
-          "start": "2025-11-15",
-          "end": "2025-11-15",
-          "raw": "15.11",
+          "start": "2026-11-15",
+          "end": "2026-11-15",
+          "raw": "15.11.2026",
           "multiDay": false,
           "labelStart": "15.11",
-          "labelEnd": "15.11"
+          "labelEnd": "15.11",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-06-16",
           "end": "2026-06-16",
-          "raw": "16.06",
+          "raw": "16.06.2026",
           "multiDay": false,
           "labelStart": "16.06",
-          "labelEnd": "16.06"
+          "labelEnd": "16.06",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -310,20 +346,24 @@
         ],
         "venues": [],
         "date": {
-          "start": "2025-12-20",
-          "end": "2025-12-20",
-          "raw": "20.12",
+          "start": "2026-12-20",
+          "end": "2026-12-20",
+          "raw": "20.12.2026",
           "multiDay": false,
           "labelStart": "20.12",
-          "labelEnd": "20.12"
+          "labelEnd": "20.12",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-06-16",
           "end": "2026-06-16",
-          "raw": "16.06",
+          "raw": "16.06.2026",
           "multiDay": false,
           "labelStart": "16.06",
-          "labelEnd": "16.06"
+          "labelEnd": "16.06",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -346,20 +386,24 @@
         ],
         "venues": [],
         "date": {
-          "start": "2026-02-07",
-          "end": "2026-02-07",
-          "raw": "7.02",
+          "start": "2027-02-07",
+          "end": "2027-02-07",
+          "raw": "7.02.2027",
           "multiDay": false,
           "labelStart": "7.02",
-          "labelEnd": "7.02"
+          "labelEnd": "7.02",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-06-16",
           "end": "2026-06-16",
-          "raw": "16.06",
+          "raw": "16.06.2026",
           "multiDay": false,
           "labelStart": "16.06",
-          "labelEnd": "16.06"
+          "labelEnd": "16.06",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -382,20 +426,24 @@
         ],
         "venues": [],
         "date": {
-          "start": "2026-03-21",
-          "end": "2026-03-21",
-          "raw": "21.03",
+          "start": "2027-03-21",
+          "end": "2027-03-21",
+          "raw": "21.03.2027",
           "multiDay": false,
           "labelStart": "21.03",
-          "labelEnd": "21.03"
+          "labelEnd": "21.03",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-06-16",
           "end": "2026-06-16",
-          "raw": "16.06",
+          "raw": "16.06.2026",
           "multiDay": false,
           "labelStart": "16.06",
-          "labelEnd": "16.06"
+          "labelEnd": "16.06",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -418,20 +466,24 @@
         ],
         "venues": [],
         "date": {
-          "start": "2026-04-25",
-          "end": "2026-04-25",
-          "raw": "25.04",
+          "start": "2027-04-25",
+          "end": "2027-04-25",
+          "raw": "25.04.2027",
           "multiDay": false,
           "labelStart": "25.04",
-          "labelEnd": "25.04"
+          "labelEnd": "25.04",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-06-16",
           "end": "2026-06-16",
-          "raw": "16.06",
+          "raw": "16.06.2026",
           "multiDay": false,
           "labelStart": "16.06",
-          "labelEnd": "16.06"
+          "labelEnd": "16.06",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       }
     ]
@@ -469,18 +521,22 @@
         "date": {
           "start": "2025-10-01",
           "end": "2026-01-13",
-          "raw": "1.10-13.01",
+          "raw": "1.10.2025-13.01.2026",
           "multiDay": true,
           "labelStart": "1.10",
-          "labelEnd": "13.01"
+          "labelEnd": "13.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2025-10-01",
           "end": "2025-10-01",
-          "raw": "1.10",
+          "raw": "1.10.2025",
           "multiDay": false,
           "labelStart": "1.10",
-          "labelEnd": "1.10"
+          "labelEnd": "1.10",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       },
       {
@@ -504,18 +560,22 @@
         "date": {
           "start": "2026-02-08",
           "end": "2026-02-08",
-          "raw": "08.020",
+          "raw": "08.02.2026",
           "multiDay": false,
           "labelStart": "8.02",
-          "labelEnd": "8.02"
+          "labelEnd": "8.02",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2025-10-01",
           "end": "2025-10-01",
-          "raw": "1.10",
+          "raw": "1.10.2025",
           "multiDay": false,
           "labelStart": "1.10",
-          "labelEnd": "1.10"
+          "labelEnd": "1.10",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       }
     ]
@@ -553,18 +613,22 @@
         "date": {
           "start": "2025-10-01",
           "end": "2026-01-13",
-          "raw": "1.10-13.01",
+          "raw": "1.10.2025-13.01.2026",
           "multiDay": true,
           "labelStart": "1.10",
-          "labelEnd": "13.01"
+          "labelEnd": "13.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2025-10-01",
           "end": "2025-10-01",
-          "raw": "1.10",
+          "raw": "1.10.2025",
           "multiDay": false,
           "labelStart": "1.10",
-          "labelEnd": "1.10"
+          "labelEnd": "1.10",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       },
       {
@@ -588,18 +652,22 @@
         "date": {
           "start": "2026-02-15",
           "end": "2026-02-15",
-          "raw": "15.02",
+          "raw": "15.02.2026",
           "multiDay": false,
           "labelStart": "15.02",
-          "labelEnd": "15.02"
+          "labelEnd": "15.02",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2025-10-01",
           "end": "2025-10-01",
-          "raw": "1.10",
+          "raw": "1.10.2025",
           "multiDay": false,
           "labelStart": "1.10",
-          "labelEnd": "1.10"
+          "labelEnd": "1.10",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       }
     ]
@@ -632,18 +700,22 @@
         "date": {
           "start": "2025-12-14",
           "end": "2025-12-14",
-          "raw": "14.12",
+          "raw": "14.12.2025",
           "multiDay": false,
           "labelStart": "14.12",
-          "labelEnd": "14.12"
+          "labelEnd": "14.12",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2025-11-22",
           "end": "2025-11-22",
-          "raw": "22.11",
+          "raw": "22.11.2025",
           "multiDay": false,
           "labelStart": "22.11",
-          "labelEnd": "22.11"
+          "labelEnd": "22.11",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       },
       {
@@ -656,18 +728,22 @@
         "date": {
           "start": "2026-01-25",
           "end": "2026-01-25",
-          "raw": "25.01",
+          "raw": "25.01.2026",
           "multiDay": false,
           "labelStart": "25.01",
-          "labelEnd": "25.01"
+          "labelEnd": "25.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2025-11-22",
           "end": "2025-11-22",
-          "raw": "22.11",
+          "raw": "22.11.2025",
           "multiDay": false,
           "labelStart": "22.11",
-          "labelEnd": "22.11"
+          "labelEnd": "22.11",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       },
       {
@@ -691,18 +767,22 @@
         "date": {
           "start": "2026-03-14",
           "end": "2026-03-14",
-          "raw": "14.03",
+          "raw": "14.03.2026",
           "multiDay": false,
           "labelStart": "14.03",
-          "labelEnd": "14.03"
+          "labelEnd": "14.03",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2025-11-22",
           "end": "2025-11-22",
-          "raw": "22.11",
+          "raw": "22.11.2025",
           "multiDay": false,
           "labelStart": "22.11",
-          "labelEnd": "22.11"
+          "labelEnd": "22.11",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       }
     ]
@@ -752,18 +832,22 @@
         "date": {
           "start": "2026-03-19",
           "end": "2026-03-19",
-          "raw": "19.03",
+          "raw": "19.03.2026",
           "multiDay": false,
           "labelStart": "19.03",
-          "labelEnd": "19.03"
+          "labelEnd": "19.03",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2025-11-14",
           "end": "2025-11-14",
-          "raw": "14.11",
+          "raw": "14.11.2025",
           "multiDay": false,
           "labelStart": "14.11",
-          "labelEnd": "14.11"
+          "labelEnd": "14.11",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       }
     ]
@@ -807,18 +891,22 @@
         "date": {
           "start": "2026-04-11",
           "end": "2026-04-11",
-          "raw": "11.04",
+          "raw": "11.04.2026",
           "multiDay": false,
           "labelStart": "11.04",
-          "labelEnd": "11.04"
+          "labelEnd": "11.04",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2026-03-22",
           "end": "2026-03-22",
-          "raw": "22.03",
+          "raw": "22.03.2026",
           "multiDay": false,
           "labelStart": "22.03",
-          "labelEnd": "22.03"
+          "labelEnd": "22.03",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       }
     ]
@@ -864,18 +952,22 @@
         "date": {
           "start": "2025-10-19",
           "end": "2025-10-19",
-          "raw": "19.10",
+          "raw": "19.10.2025",
           "multiDay": false,
           "labelStart": "19.10",
-          "labelEnd": "19.10"
+          "labelEnd": "19.10",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2025-10-05",
           "end": "2025-10-05",
-          "raw": "5.10",
+          "raw": "5.10.2025",
           "multiDay": false,
           "labelStart": "5.10",
-          "labelEnd": "5.10"
+          "labelEnd": "5.10",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       }
     ]
@@ -921,18 +1013,22 @@
         "date": {
           "start": "2026-01-22",
           "end": "2026-01-22",
-          "raw": "22.01",
+          "raw": "22.01.2026",
           "multiDay": false,
           "labelStart": "22.01",
-          "labelEnd": "22.01"
+          "labelEnd": "22.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2026-01-14",
           "end": "2026-01-14",
-          "raw": "14.01",
+          "raw": "14.01.2026",
           "multiDay": false,
           "labelStart": "14.01",
-          "labelEnd": "14.01"
+          "labelEnd": "14.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       },
       {
@@ -952,18 +1048,22 @@
         "date": {
           "start": "2026-02-28",
           "end": "2026-02-28",
-          "raw": "28.02",
+          "raw": "28.02.2026",
           "multiDay": false,
           "labelStart": "28.02",
-          "labelEnd": "28.02"
+          "labelEnd": "28.02",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2026-01-22",
           "end": "2026-01-22",
-          "raw": "22.01",
+          "raw": "22.01.2026",
           "multiDay": false,
           "labelStart": "22.01",
-          "labelEnd": "22.01"
+          "labelEnd": "22.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       },
       {
@@ -983,18 +1083,22 @@
         "date": {
           "start": "2026-04-11",
           "end": "2026-04-11",
-          "raw": "11.04",
+          "raw": "11.04.2026",
           "multiDay": false,
           "labelStart": "11.04",
-          "labelEnd": "11.04"
+          "labelEnd": "11.04",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2026-02-28",
           "end": "2026-02-28",
-          "raw": "28.02",
+          "raw": "28.02.2026",
           "multiDay": false,
           "labelStart": "28.02",
-          "labelEnd": "28.02"
+          "labelEnd": "28.02",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       }
     ]
@@ -1037,20 +1141,24 @@
           "Искра (Купцова)"
         ],
         "date": {
-          "start": "2025-09-26",
-          "end": "2025-09-26",
-          "raw": "26.09",
+          "start": "2026-09-26",
+          "end": "2026-09-26",
+          "raw": "26.09.2026",
           "multiDay": false,
           "labelStart": "26.09",
-          "labelEnd": "26.09"
+          "labelEnd": "26.09",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-07-28",
           "end": "2026-07-28",
-          "raw": "28.07",
+          "raw": "28.07.2026",
           "multiDay": false,
           "labelStart": "28.07",
-          "labelEnd": "28.07"
+          "labelEnd": "28.07",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -1068,20 +1176,24 @@
         ],
         "venues": [],
         "date": {
-          "start": "2025-11-08",
-          "end": "2025-11-08",
-          "raw": "8.11",
+          "start": "2026-11-08",
+          "end": "2026-11-08",
+          "raw": "8.11.2026",
           "multiDay": false,
           "labelStart": "8.11",
-          "labelEnd": "8.11"
+          "labelEnd": "8.11",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-07-28",
           "end": "2026-07-28",
-          "raw": "28.07",
+          "raw": "28.07.2026",
           "multiDay": false,
           "labelStart": "28.07",
-          "labelEnd": "28.07"
+          "labelEnd": "28.07",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       }
     ]
@@ -1115,29 +1227,33 @@
             "city": "Самара",
             "venues": [
               "Школа 6",
-              "ОЦ Южный Город"
+              "Живая Школа"
             ]
           }
         ],
         "venues": [
           "Школа 6",
-          "ОЦ Южный Город"
+          "Живая Школа"
         ],
         "date": {
-          "start": "2025-09-26",
-          "end": "2025-09-26",
-          "raw": "26.09",
+          "start": "2026-09-26",
+          "end": "2026-09-26",
+          "raw": "26.09.2026",
           "multiDay": false,
           "labelStart": "26.09",
-          "labelEnd": "26.09"
+          "labelEnd": "26.09",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-06-04",
           "end": "2026-06-04",
-          "raw": "04.06",
+          "raw": "04.06.2026",
           "multiDay": false,
           "labelStart": "4.06",
-          "labelEnd": "4.06"
+          "labelEnd": "4.06",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       }
     ]
@@ -1178,20 +1294,24 @@
           "Искра (Купцова) - в прошлом году"
         ],
         "date": {
-          "start": "2025-11-13",
-          "end": "2025-11-13",
-          "raw": "13.11",
+          "start": "2026-11-13",
+          "end": "2026-11-13",
+          "raw": "13.11.2026",
           "multiDay": false,
           "labelStart": "13.11",
-          "labelEnd": "13.11"
+          "labelEnd": "13.11",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-08-16",
           "end": "2026-08-16",
-          "raw": "16.08",
+          "raw": "16.08.2026",
           "multiDay": false,
           "labelStart": "16.08",
-          "labelEnd": "16.08"
+          "labelEnd": "16.08",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -1214,20 +1334,24 @@
         ],
         "venues": [],
         "date": {
-          "start": "2026-02-14",
-          "end": "2026-02-14",
-          "raw": "14.02",
+          "start": "2027-02-14",
+          "end": "2027-02-14",
+          "raw": "14.02.2027",
           "multiDay": false,
           "labelStart": "14.02",
-          "labelEnd": "14.02"
+          "labelEnd": "14.02",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-08-16",
           "end": "2026-08-16",
-          "raw": "16.08",
+          "raw": "16.08.2026",
           "multiDay": false,
           "labelStart": "16.08",
-          "labelEnd": "16.08"
+          "labelEnd": "16.08",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       }
     ]
@@ -1264,20 +1388,24 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2025-09-29",
-          "end": "2025-10-12",
-          "raw": "29.09-12.10",
+          "start": "2026-09-29",
+          "end": "2026-10-12",
+          "raw": "29.09.2026-12.10.2026",
           "multiDay": true,
           "labelStart": "29.09",
-          "labelEnd": "12.10"
+          "labelEnd": "12.10",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-08-16",
           "end": "2026-08-16",
-          "raw": "16.08",
+          "raw": "16.08.2026",
           "multiDay": false,
           "labelStart": "16.08",
-          "labelEnd": "16.08"
+          "labelEnd": "16.08",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -1299,22 +1427,26 @@
           "Искра (Купцова)"
         ],
         "date": {
-          "start": "2025-11-15",
-          "end": "2025-11-15",
-          "raw": "15.11 11:00 msk",
+          "start": "2026-11-15",
+          "end": "2026-11-15",
+          "raw": "15.11.2026 11:00 msk",
           "multiDay": false,
           "labelStart": "15.11",
           "labelEnd": "15.11",
+          "yearExplicit": true,
           "time": "11:00",
-          "timezone": "MSK"
+          "timezone": "MSK",
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-08-16",
           "end": "2026-08-16",
-          "raw": "16.08",
+          "raw": "16.08.2026",
           "multiDay": false,
           "labelStart": "16.08",
-          "labelEnd": "16.08"
+          "labelEnd": "16.08",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       }
     ]
@@ -1343,23 +1475,27 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2025-09-14",
-          "end": "2025-09-14",
-          "raw": "14.09 10:00-15:00 msk",
+          "start": "2026-09-14",
+          "end": "2026-09-14",
+          "raw": "14.09.2026 10:00-15:00 msk",
           "multiDay": false,
           "labelStart": "14.09",
           "labelEnd": "14.09",
+          "yearExplicit": true,
           "time": "10:00",
           "timeEnd": "15:00",
-          "timezone": "MSK"
+          "timezone": "MSK",
+          "accuracy": "confirmed"
         },
         "announced": {
-          "start": "2025-09-01",
-          "end": "2025-09-01",
-          "raw": "1.09",
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "raw": "1.09.2026",
           "multiDay": false,
           "labelStart": "1.09",
-          "labelEnd": "1.09"
+          "labelEnd": "1.09",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -1370,22 +1506,26 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2025-10-04",
-          "end": "2025-10-04",
-          "raw": "4.10 16:00-21:00",
+          "start": "2026-10-04",
+          "end": "2026-10-04",
+          "raw": "4.10.2026 16:00-21:00",
           "multiDay": false,
           "labelStart": "4.10",
           "labelEnd": "4.10",
+          "yearExplicit": true,
           "time": "16:00",
-          "timeEnd": "21:00"
+          "timeEnd": "21:00",
+          "accuracy": "confirmed"
         },
         "announced": {
-          "start": "2025-09-01",
-          "end": "2025-09-01",
-          "raw": "1.09",
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "raw": "1.09.2026",
           "multiDay": false,
           "labelStart": "1.09",
-          "labelEnd": "1.09"
+          "labelEnd": "1.09",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
         }
       },
       {
@@ -1410,18 +1550,22 @@
         "date": {
           "start": "2026-01-18",
           "end": "2026-01-18",
-          "raw": "18.01",
+          "raw": "18.01.2026",
           "multiDay": false,
           "labelStart": "18.01",
-          "labelEnd": "18.01"
+          "labelEnd": "18.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         },
         "announced": {
           "start": "2025-10-04",
           "end": "2025-10-04",
-          "raw": "4.10",
+          "raw": "4.10.2025",
           "multiDay": false,
           "labelStart": "4.10",
-          "labelEnd": "4.10"
+          "labelEnd": "4.10",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       }
     ]

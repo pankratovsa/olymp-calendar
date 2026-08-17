@@ -755,6 +755,44 @@ main {
   color: #8a6508;
 }
 
+.date-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.95rem;
+  height: 0.95rem;
+  margin-left: 0.15rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1;
+  border-radius: 50%;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.date-badge--confirmed {
+  color: #fff;
+  background: #16a34a;
+}
+
+.date-badge--approximate {
+  color: #fff;
+  background: #94a3b8;
+}
+
+.date-badge--legend {
+  margin-left: 0;
+  margin-right: 0.1rem;
+}
+
+.olympiad-date-badges {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+}
+
 .cal-cell--announce .cal-cell__fill {
   align-items: center;
   justify-content: center;
@@ -897,6 +935,15 @@ main {
   font-weight: 600;
   color: var(--ink-soft);
   font-size: 0.85em;
+}
+
+.tour-date--start,
+.tour-date--end,
+.tour-date--single {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.1rem;
 }
 
 .tour-date--start,

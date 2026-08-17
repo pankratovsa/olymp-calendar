@@ -65,15 +65,16 @@ def parse_grades(text: str) -> list[int]:
     return grades
 
 
-def parse_date_token(token: str) -> tuple[int, int] | None:
+def parse_date_token(token: str) -> tuple[int, int, int | None] | None:
     token = token.strip()
-    m = re.match(r"^(\d{1,2})\.(\d{1,2})", token)
+    m = re.match(r"^(\d{1,2})\.(\d{1,2})(?:\.(\d{4}))?$", token)
     if not m:
         return None
     day, month = int(m.group(1)), int(m.group(2))
+    year = int(m.group(3)) if m.group(3) else None
     if not (1 <= month <= 12 and 1 <= day <= 31):
         return None
-    return day, month
+    return day, month, year
 
 
 def parse_time_suffix(text: str) -> dict | None:
@@ -134,13 +135,45 @@ def strip_time_suffix(text: str) -> str:
     ).strip()
 
 
-def to_iso(day: int, month: int) -> str:
-    year = YEAR_START if month >= 9 else YEAR_START + 1
+def to_iso(day: int, month: int, year: int | None = None) -> str:
+    if year is None:
+        year = YEAR_START if month >= 9 else YEAR_START + 1
     return f"{year:04d}-{month:02d}-{day:02d}"
 
 
 def format_day_month(day: int, month: int) -> str:
     return f"{day}.{month:02d}"
+
+
+# Актуальное событие: дата проведения с сентября 2026; объявление — после 1.06.2026.
+EVENT_CONFIRMED_FROM = "2026-09-01"
+ANNOUNCE_CONFIRMED_AFTER = "2026-06-01"
+
+
+def announcement_accuracy(ann: dict | None) -> str:
+    if not ann or not ann.get("start"):
+        return "approximate"
+    if ann["start"] <= ANNOUNCE_CONFIRMED_AFTER:
+        return "approximate"
+    return "confirmed"
+
+
+def tour_date_accuracy(tour: dict) -> str:
+    date = tour.get("date")
+    if not date or not date.get("start"):
+        return "approximate"
+    if date["start"] < EVENT_CONFIRMED_FROM:
+        return "approximate"
+    if announcement_accuracy(tour.get("announced")) != "confirmed":
+        return "approximate"
+    return "confirmed"
+
+
+def finalize_tour(tour: dict) -> None:
+    if tour.get("date"):
+        tour["date"]["accuracy"] = tour_date_accuracy(tour)
+    if tour.get("announced"):
+        tour["announced"]["accuracy"] = announcement_accuracy(tour["announced"])
 
 
 def date_payload(
@@ -150,6 +183,7 @@ def date_payload(
     label_start: str,
     label_end: str,
     time_info: dict | None = None,
+    year_explicit: bool = False,
 ) -> dict:
     multi = start_iso != end_iso
     payload = {
@@ -159,6 +193,7 @@ def date_payload(
         "multiDay": multi,
         "labelStart": label_start,
         "labelEnd": label_end if multi else label_start,
+        "yearExplicit": year_explicit,
     }
     if time_info:
         payload["time"] = time_info["time"]
@@ -183,30 +218,34 @@ def parse_date_range(raw: str) -> dict | None:
         parsed = parse_date_token(parts[0])
         if not parsed:
             return None
-        day, month = parsed
-        iso = to_iso(day, month)
+        day, month, year = parsed
+        year_explicit = year is not None
+        iso = to_iso(day, month, year)
         label = format_day_month(day, month)
-        return date_payload(iso, iso, raw, label, label, time_info)
+        return date_payload(iso, iso, raw, label, label, time_info, year_explicit)
     if len(parts) >= 2:
         a = parse_date_token(parts[0])
         b = parse_date_token(parts[1])
         if not a or not b:
             return None
-        start = to_iso(*a)
-        end = to_iso(*b)
-        # если конец «раньше» старта из‑за года — уже учтено через month>=9
+        day_a, month_a, year_a = a
+        day_b, month_b, year_b = b
+        year_explicit = year_a is not None and year_b is not None
+        start = to_iso(day_a, month_a, year_a)
+        end = to_iso(day_b, month_b, year_b)
         if end < start:
-            d, m = b
-            end = f"{YEAR_START:04d}-{m:02d}-{d:02d}"
-            if end < start:
-                end = to_iso(*b)
+            if year_b is None:
+                end = f"{YEAR_START:04d}-{month_b:02d}-{day_b:02d}"
+            if end < start and year_a is None:
+                end = to_iso(day_b, month_b)
         return date_payload(
             start,
             end,
             raw,
-            format_day_month(*a),
-            format_day_month(*b),
+            format_day_month(day_a, month_a),
+            format_day_month(day_b, month_b),
             time_info,
+            year_explicit,
         )
     return None
 
@@ -376,6 +415,7 @@ def parse_olympiad(md: str, source: str) -> dict:
                         elif fkey == "announced":
                             tour["announced"] = parse_date_range(fbody)
                         i += 1
+                    finalize_tour(tour)
                     olympiad["tours"].append(tour)
                     continue
                 i += 1

@@ -49,13 +49,36 @@ function resolveISOToAcademic(iso, yearStart = academicYearStart()) {
   return resolveDayMonth(d.getDate(), d.getMonth() + 1, yearStart);
 }
 
+function displaySeasonYearStart() {
+  return academicYearStart();
+}
+
+/** Примерные даты (прошлый сезон) → тот же день/месяц в текущем уч. году календаря. */
+function mapToDisplaySeason(iso) {
+  const d = parseISO(iso);
+  return resolveDayMonth(d.getDate(), d.getMonth() + 1, displaySeasonYearStart());
+}
+
+function resolveDateForCalendar(dateObj) {
+  if (!dateObj?.start) return null;
+  if (dateObj.accuracy === "confirmed") {
+    return { start: dateObj.start, end: dateObj.end || dateObj.start };
+  }
+  return {
+    start: mapToDisplaySeason(dateObj.start),
+    end: mapToDisplaySeason(dateObj.end || dateObj.start),
+  };
+}
+
 function tourResolvedDates(tour) {
   if (!tour.date?.start || !tour.date?.end) return null;
-  const ys = academicYearStart();
-  return {
-    start: resolveISOToAcademic(tour.date.start, ys),
-    end: resolveISOToAcademic(tour.date.end, ys),
-  };
+  return resolveDateForCalendar(tour.date);
+}
+
+function resolvedAnnouncedDate(tour) {
+  if (!tour.announced?.start) return null;
+  const resolved = resolveDateForCalendar(tour.announced);
+  return resolved?.start ?? null;
 }
 
 function olympiadEarliestStart(olympiad) {
@@ -72,12 +95,9 @@ function isWinkid(olympiad) {
   return olympiad.id === "winkid" || /winkid/i.test(olympiad.shortTitle || "");
 }
 
-/** Раньше стартующие слева; Winkid всегда в конце. */
+/** Колонки — только по дате первого тура (раньше слева). */
 function orderedOlympiads() {
   return [...state.olympiads].sort((a, b) => {
-    const aW = isWinkid(a);
-    const bW = isWinkid(b);
-    if (aW !== bW) return aW ? 1 : -1;
     const as = olympiadEarliestStart(a) || "9999-12-31";
     const bs = olympiadEarliestStart(b) || "9999-12-31";
     if (as !== bs) return as.localeCompare(bs);
@@ -103,10 +123,23 @@ function formatTourTime(dateObj) {
   return `${range}${tz}`;
 }
 
+function renderDateAccuracy(dateObj) {
+  if (!dateObj?.accuracy) return "";
+  const confirmed = dateObj.accuracy === "confirmed";
+  const cls = confirmed
+    ? "date-badge date-badge--confirmed"
+    : "date-badge date-badge--approximate";
+  const title = confirmed
+    ? "Дата актуальная (сентябрь 2026 и позже, объявление после 1.06.2026)"
+    : "Дата примерная (прошлый уч. год или ещё не объявлено)";
+  const icon = confirmed ? "✓" : "?";
+  return `<span class="${cls}" title="${title}" aria-label="${title}">${icon}</span>`;
+}
+
 function tourDateLabels(tour) {
   if (!tour.date) return { multiDay: false, start: "", end: "", time: "" };
-  const start = tour.date.labelStart || formatDayMonth(tour.date.start);
-  const end = tour.date.labelEnd || formatDayMonth(tour.date.end);
+  const start = formatDayMonth(tour.date.start);
+  const end = formatDayMonth(tour.date.end);
   const multiDay =
     typeof tour.date.multiDay === "boolean"
       ? tour.date.multiDay
@@ -132,11 +165,11 @@ function renderTourDates(tour) {
     ? ` <span class="tour-date__time">${escapeHtml(time)}</span>`
     : "";
   if (!multiDay) {
-    return `<span class="tour-date tour-date--single">${escapeHtml(start)}${timeHtml}</span>`;
+    return `<span class="tour-date tour-date--single">${escapeHtml(start)}${renderDateAccuracy(tour.date)}${timeHtml}</span>`;
   }
   return `
     <span class="tour-date tour-date--range">
-      <span class="tour-date__edge tour-date__edge--start">${escapeHtml(start)}</span>
+      <span class="tour-date__edge tour-date__edge--start">${escapeHtml(start)}${renderDateAccuracy(tour.date)}</span>
       <span class="tour-date__sep">–</span>
       <span class="tour-date__edge tour-date__edge--end">${escapeHtml(end)}</span>${timeHtml}
     </span>`;
@@ -161,22 +194,10 @@ function weekKey(date) {
 }
 
 function announcementDisplayDate(tour) {
-  if (!tour.announced?.start) return null;
-  const ys = academicYearStart();
-  const d = parseISO(tour.announced.start);
-  const day = d.getDate();
-  const month = d.getMonth() + 1;
-  const sept1 = `${ys}-09-01`;
-
-  // Июнь–август до учебного года — в календарном году старта сезона
-  let iso;
-  if (month >= 6 && month <= 8) {
-    iso = `${ys}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-  } else {
-    iso = resolveDayMonth(day, month, ys);
-  }
-  // Раньше 1.09 → звезда на 1.09
-  return iso < sept1 ? sept1 : iso;
+  const iso = resolvedAnnouncedDate(tour);
+  if (!iso) return null;
+  const seasonStart = `${displaySeasonYearStart()}-09-01`;
+  return iso < seasonStart ? seasonStart : iso;
 }
 
 function buildWeeks(olympiads) {
@@ -203,9 +224,7 @@ function buildWeeks(olympiads) {
     }
   }
   if (!min || !max) return [];
-  // Календарь с начала учебного года, если есть объявления/туры
-  const ys = academicYearStart();
-  const seasonStart = parseISO(`${ys}-09-01`);
+  const seasonStart = parseISO(`${displaySeasonYearStart()}-09-01`);
   if (seasonStart < min) min = seasonStart;
 
   const weeks = [];
@@ -468,6 +487,8 @@ function renderFilters() {
     <span class="marker marker--online">Онлайн</span>
     <span class="marker marker--offline">Очный</span>
     <span class="marker marker--city">Город</span>
+    <span class="date-badge date-badge--confirmed date-badge--legend" title="Дата актуальная">✓</span> актуальная
+    <span class="date-badge date-badge--approximate date-badge--legend" title="Дата примерная">?</span> примерная
     <span class="announce-star announce-star--legend" title="Дата объявления">★ объявление</span>
   `;
 }
@@ -560,7 +581,7 @@ function renderCards() {
       }" data-id="${escapeHtml(o.id)}">
         <div class="card__top">
           <button type="button" class="card__header" data-olympiad="${escapeHtml(o.id)}" aria-label="Открыть «${escapeHtml(o.shortTitle)}»">
-            <h3 class="card__title">${escapeHtml(o.shortTitle)}</h3>
+            <h3 class="card__title">${escapeHtml(o.shortTitle)}${renderOlympiadDateBadges(o)}</h3>
             <p class="card__full">${escapeHtml(o.title)}</p>
           </button>
           <button type="button" class="card__toggle" aria-expanded="false" aria-controls="card-body-${escapeHtml(o.id)}" title="Развернуть">
@@ -621,13 +642,11 @@ function openTourDialog(olympiad, tour) {
     <div><dt>Олимпиада</dt><dd>${escapeHtml(olympiad.shortTitle)}</dd></div>
     <div><dt>Формат</dt><dd>${renderMarkers(tour)}</dd></div>
     ${placeBlock}
-    <div><dt>Дата проведения</dt><dd>${escapeHtml(dateText)}</dd></div>
+    <div><dt>Дата проведения</dt><dd>${escapeHtml(dateText)}${renderDateAccuracy(tour.date)}</dd></div>
     <div><dt>Дата объявления</dt><dd>${
       tour.announced
-        ? escapeHtml(
-            tour.announced.labelStart ||
-              (tour.announced.raw ?? formatDayMonth(tour.announced.start))
-          )
+        ? escapeHtml(formatDayMonth(tour.announced.start)) +
+          renderDateAccuracy(tour.announced)
         : "—"
     }</dd></div>
   `;
@@ -640,6 +659,35 @@ function formatStackedTitle(shortTitle) {
     .filter(Boolean)
     .map((word) => `<span class="cal-th__word">${escapeHtml(word)}</span>`)
     .join("");
+}
+
+function renderOlympiadDateBadges(olympiad) {
+  if (!olympiad?.tours?.length) return "";
+  let hasConfirmed = false;
+  let hasApproximate = false;
+
+  for (const t of olympiad.tours) {
+    const acc = t?.date?.accuracy;
+    if (!acc) continue;
+    if (acc === "confirmed") hasConfirmed = true;
+    if (acc === "approximate") hasApproximate = true;
+  }
+
+  if (!hasConfirmed && !hasApproximate) return "";
+
+  const parts = [];
+  if (hasConfirmed) {
+    parts.push(
+      `<span class="date-badge date-badge--confirmed" title="Дата актуальная" aria-label="Дата актуальная">✓</span>`
+    );
+  }
+  if (hasApproximate) {
+    parts.push(
+      `<span class="date-badge date-badge--approximate" title="Дата примерная" aria-label="Дата примерная">?</span>`
+    );
+  }
+
+  return `<span class="olympiad-date-badges">${parts.join("")}</span>`;
 }
 
 function renderCalendar() {
@@ -657,6 +705,7 @@ function renderCalendar() {
           `<th scope="col">
             <button type="button" class="cal-th" data-olympiad="${escapeHtml(o.id)}" title="${escapeHtml(o.title || o.shortTitle)}">
               ${formatStackedTitle(o.shortTitle)}
+              ${renderOlympiadDateBadges(o)}
             </button>
           </th>`
       )
@@ -727,10 +776,7 @@ function renderCalendar() {
       const entry = {
         tourName: tour.name,
         date: annIso,
-        label:
-          tour.announced?.labelStart ||
-          tour.announced?.raw ||
-          formatDayMonth(annIso),
+        label: formatDayMonth(annIso),
         clamped: annIso.endsWith("-09-01") && !(rawMonth === 9 && raw.getDate() === 1),
       };
 
@@ -769,6 +815,7 @@ function renderCalendar() {
   function renderAnnouncementStars(announcements, olympiad) {
     if (!announcements?.length) return "";
     const a = announcements[0];
+    const tour = olympiad.tours.find((t) => t.name === a.tourName);
     const title = `Объявление: ${a.label}${a.clamped ? " → 1.09" : ""} (${a.tourName})`;
     return `<button type="button" class="announce-star" title="${escapeHtml(title)}"
       data-olympiad="${escapeHtml(olympiad.id)}" data-tour="${escapeHtml(a.tourName)}"
@@ -790,7 +837,7 @@ function renderCalendar() {
           data-olympiad="${escapeHtml(olympiad.id)}"
           data-tour="${escapeHtml(tour.name)}">
           <span class="tour-block__edge tour-block__edge--start">
-            <span class="tour-date tour-date--start">${escapeHtml(labels.start)}</span>
+            <span class="tour-date tour-date--start">${escapeHtml(labels.start)}${renderDateAccuracy(tour.date)}</span>
             ${
               labels.time
                 ? `<span class="tour-date__time">${escapeHtml(labels.time)}</span>`
@@ -813,7 +860,7 @@ function renderCalendar() {
         data-olympiad="${escapeHtml(olympiad.id)}"
         data-tour="${escapeHtml(tour.name)}">
         <span class="tour-block__body">
-          <span class="tour-date tour-date--single">${escapeHtml(labels.start)}</span>
+          <span class="tour-date tour-date--single">${escapeHtml(labels.start)}${renderDateAccuracy(tour.date)}</span>
           ${
             labels.time
               ? `<span class="tour-date__time">${escapeHtml(labels.time)}</span>`
