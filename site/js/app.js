@@ -96,8 +96,11 @@ function formatDayMonth(iso) {
 
 function formatTourTime(dateObj) {
   if (!dateObj?.time) return "";
+  const range = dateObj.timeEnd
+    ? `${dateObj.time}–${dateObj.timeEnd}`
+    : dateObj.time;
   const tz = dateObj.timezone ? ` ${dateObj.timezone}` : "";
-  return `${dateObj.time}${tz}`;
+  return `${range}${tz}`;
 }
 
 function tourDateLabels(tour) {

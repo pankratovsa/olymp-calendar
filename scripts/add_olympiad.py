@@ -77,10 +77,33 @@ def parse_date_token(token: str) -> tuple[int, int] | None:
 
 
 def parse_time_suffix(text: str) -> dict | None:
-    """Время после даты: только с двоеточием — 11:00, 11:00 msk (не путать с 12.10)."""
+    """Время после даты: 11:00 msk или диапазон 10:00-15:00 msk (только с ':')."""
+    text = text.strip()
+    m = re.search(
+        r"(?<!\d)(\d{1,2}):(\d{2})\s*[-–—]\s*(\d{1,2}):(\d{2})\s*([A-Za-zА-Яа-яЁё]{2,5})?\s*$",
+        text,
+        flags=re.IGNORECASE,
+    )
+    if m:
+        h1, mi1 = int(m.group(1)), int(m.group(2))
+        h2, mi2 = int(m.group(3)), int(m.group(4))
+        if not (
+            0 <= h1 <= 23
+            and 0 <= mi1 <= 59
+            and 0 <= h2 <= 23
+            and 0 <= mi2 <= 59
+        ):
+            return None
+        tz = m.group(5)
+        return {
+            "time": f"{h1:02d}:{mi1:02d}",
+            "timeEnd": f"{h2:02d}:{mi2:02d}",
+            "timezone": tz.upper() if tz else None,
+        }
+
     m = re.search(
         r"(?<!\d)(\d{1,2}):(\d{2})\s*([A-Za-zА-Яа-яЁё]{2,5})?\s*$",
-        text.strip(),
+        text,
         flags=re.IGNORECASE,
     )
     if not m:
@@ -96,10 +119,17 @@ def parse_time_suffix(text: str) -> dict | None:
 
 
 def strip_time_suffix(text: str) -> str:
+    text = text.strip()
+    text = re.sub(
+        r"\s+\d{1,2}:\d{2}\s*[-–—]\s*\d{1,2}:\d{2}(?:\s+[A-Za-zА-Яа-яЁё]{2,5})?\s*$",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    ).strip()
     return re.sub(
         r"\s+\d{1,2}:\d{2}(?:\s+[A-Za-zА-Яа-яЁё]{2,5})?\s*$",
         "",
-        text.strip(),
+        text,
         flags=re.IGNORECASE,
     ).strip()
 
@@ -132,6 +162,8 @@ def date_payload(
     }
     if time_info:
         payload["time"] = time_info["time"]
+        if time_info.get("timeEnd"):
+            payload["timeEnd"] = time_info["timeEnd"]
         if time_info.get("timezone"):
             payload["timezone"] = time_info["timezone"]
     return payload
