@@ -265,8 +265,13 @@ function tourCities(tour) {
 }
 
 function tourPlaces(tour) {
-  if (Array.isArray(tour.places) && tour.places.length) return tour.places;
-  const cities = tourCities(tour);
+  if (Array.isArray(tour.places) && tour.places.length) {
+    return sortCitiesFirst(tour.places.map((p) => p.city)).map((city) => {
+      const found = tour.places.find((p) => p.city === city);
+      return found || { city, venues: [] };
+    });
+  }
+  const cities = sortCitiesFirst(tourCities(tour));
   if (!cities.length) return [];
   if (cities.length === 1) {
     return [{ city: cities[0], venues: tour.venues || [] }];
@@ -274,8 +279,33 @@ function tourPlaces(tour) {
   return cities.map((city) => ({ city, venues: [] }));
 }
 
+function sortCitiesFirst(cities) {
+  return [...cities].sort((a, b) => {
+    if (a === "Самара") return -1;
+    if (b === "Самара") return 1;
+    return a.localeCompare(b, "ru");
+  });
+}
+
+function hasFormatFilter() {
+  const { cities, types } = state.filters;
+  return types.has("online") || types.has("offline") || cities.size > 0;
+}
+
+/** Онлайн / очный+города — в одной группе, условия через ИЛИ. */
+function tourMatchesFormat(tour) {
+  if (!hasFormatFilter()) return true;
+  if (tour.type === "online") {
+    return state.filters.types.has("online");
+  }
+  if (state.filters.cities.size) {
+    return tourCities(tour).some((c) => state.filters.cities.has(c));
+  }
+  return state.filters.types.has("offline");
+}
+
 function matchesFilters(olympiad) {
-  const { cities, grades, subjects, types } = state.filters;
+  const { grades, subjects } = state.filters;
 
   if (subjects.size) {
     const ok = olympiad.subjects.some((s) => subjects.has(s));
@@ -287,16 +317,8 @@ function matchesFilters(olympiad) {
     if (!ok) return false;
   }
 
-  if (types.size) {
-    const ok = olympiad.tours.some((t) => types.has(t.type));
-    if (!ok) return false;
-  }
-
-  if (cities.size) {
-    const ok = olympiad.tours.some(
-      (t) =>
-        t.type === "offline" && tourCities(t).some((c) => cities.has(c))
-    );
+  if (hasFormatFilter()) {
+    const ok = olympiad.tours.some((t) => tourMatchesFormat(t));
     if (!ok) return false;
   }
 
@@ -305,15 +327,7 @@ function matchesFilters(olympiad) {
 
 function tourMatchesFilters(olympiad, tour) {
   if (!matchesFilters(olympiad)) return false;
-  const { cities, types } = state.filters;
-
-  if (types.size && !types.has(tour.type)) return false;
-  if (cities.size) {
-    if (tour.type !== "offline" || !tourCities(tour).some((c) => cities.has(c))) {
-      return false;
-    }
-  }
-  return true;
+  return tourMatchesFormat(tour);
 }
 
 function collectFilterOptions(olympiads) {
@@ -328,7 +342,7 @@ function collectFilterOptions(olympiads) {
     });
   }
   return {
-    cities: [...cities].sort((a, b) => a.localeCompare(b, "ru")),
+    cities: sortCitiesFirst(cities),
     grades: [...grades].sort((a, b) => a - b),
     subjects: [...subjects].sort((a, b) => a.localeCompare(b, "ru")),
     types: [
@@ -343,11 +357,41 @@ function renderMarkers(tour) {
   const typeClass = tour.type === "online" ? "marker--online" : "marker--offline";
   let html = `<span class="marker ${typeClass}">${typeLabel}</span>`;
   if (tour.type === "offline") {
-    for (const city of tourCities(tour)) {
+    for (const city of sortCitiesFirst(tourCities(tour))) {
       html += `<span class="marker marker--city">${escapeHtml(city)}</span>`;
     }
   }
   return html;
+}
+
+function allFilterCities() {
+  return collectFilterOptions(state.olympiads).cities;
+}
+
+function toggleFilterChip(group, value) {
+  if (group === "types" && value === "offline") {
+    if (state.filters.types.has("offline")) {
+      state.filters.types.delete("offline");
+      state.filters.cities.clear();
+    } else {
+      state.filters.types.add("offline");
+      allFilterCities().forEach((c) => state.filters.cities.add(c));
+    }
+    return;
+  }
+
+  if (group === "cities") {
+    const set = state.filters.cities;
+    if (set.has(value)) set.delete(value);
+    else set.add(value);
+    if (set.size === 0) state.filters.types.delete("offline");
+    else state.filters.types.add("offline");
+    return;
+  }
+
+  const set = state.filters[group];
+  if (set.has(value)) set.delete(value);
+  else set.add(value);
 }
 
 function escapeHtml(str) {
@@ -358,50 +402,54 @@ function escapeHtml(str) {
     .replace(/"/g, "&quot;");
 }
 
+function chipHtml(group, item) {
+  const active = state.filters[group].has(item.id) ? " is-active" : "";
+  return `
+    <button type="button" class="chip${active}" data-group="${group}" data-value="${escapeHtml(item.id)}">
+      ${escapeHtml(item.label)}
+    </button>`;
+}
+
 function renderFilters() {
   const opts = collectFilterOptions(state.olympiads);
   const root = document.getElementById("filters");
+
+  const formatChips = [
+    ...opts.types.map((item) => chipHtml("types", item)),
+    opts.cities.length
+      ? `<span class="filter-chips__sep" aria-hidden="true"></span>`
+      : "",
+    ...opts.cities.map((c) => chipHtml("cities", { id: c, label: c })),
+  ].join("");
 
   const groups = [
     {
       key: "subjects",
       label: "Предметы",
-      items: opts.subjects.map((s) => ({ id: s, label: s })),
+      html: opts.subjects.map((s) => chipHtml("subjects", { id: s, label: s })).join(""),
     },
     {
       key: "grades",
       label: "Классы",
-      items: opts.grades.map((g) => ({ id: String(g), label: `${g} кл.` })),
+      html: opts.grades
+        .map((g) => chipHtml("grades", { id: String(g), label: `${g} кл.` }))
+        .join(""),
     },
     {
-      key: "types",
+      key: "format",
       label: "Формат",
-      items: opts.types,
-    },
-    {
-      key: "cities",
-      label: "Города",
-      items: opts.cities.map((c) => ({ id: c, label: c })),
+      html: formatChips,
     },
   ];
 
   root.innerHTML = groups
-    .filter((g) => g.items.length)
+    .filter((g) => g.html.trim())
     .map(
       (g) => `
       <div class="filter-group" data-group="${g.key}">
         <div class="filter-group__label">${g.label}</div>
         <div class="filter-chips">
-          ${g.items
-            .map(
-              (item) => `
-            <button type="button" class="chip${
-              state.filters[g.key].has(item.id) ? " is-active" : ""
-            }" data-group="${g.key}" data-value="${escapeHtml(item.id)}">
-              ${escapeHtml(item.label)}
-            </button>`
-            )
-            .join("")}
+          ${g.html}
         </div>
       </div>`
     )
@@ -409,12 +457,8 @@ function renderFilters() {
 
   root.querySelectorAll(".chip").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const group = btn.dataset.group;
-      const value = btn.dataset.value;
-      const set = state.filters[group];
-      if (set.has(value)) set.delete(value);
-      else set.add(value);
-      btn.classList.toggle("is-active");
+      toggleFilterChip(btn.dataset.group, btn.dataset.value);
+      renderFilters();
       updateResetVisibility();
       applyFilters();
     });
@@ -847,10 +891,10 @@ function applyFilters() {
 function resetFilters() {
   Object.values(state.filters).forEach((s) => s.clear());
   state.hidePast = false;
-  document.querySelectorAll(".chip.is-active").forEach((c) => c.classList.remove("is-active"));
   const hidePastBtn = document.getElementById("hide-past");
   hidePastBtn.setAttribute("aria-pressed", "false");
   hidePastBtn.classList.remove("is-active");
+  renderFilters();
   updateResetVisibility();
   applyFilters();
 }

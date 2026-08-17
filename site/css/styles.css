@@ -187,6 +187,15 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem;
+  align-items: center;
+}
+
+.filter-chips__sep {
+  width: 1px;
+  align-self: stretch;
+  min-height: 1.4rem;
+  margin: 0 0.2rem;
+  background: var(--line);
 }
 
 .filters-bar__actions {
