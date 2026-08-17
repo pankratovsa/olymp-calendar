@@ -136,7 +136,7 @@ function renderDateAccuracy(dateObj) {
   return `<span class="${cls}" title="${title}" aria-label="${title}">${icon}</span>`;
 }
 
-function tourDateLabels(tour) {
+function tourDateLabels(tour, { includeTime = true } = {}) {
   if (!tour.date) return { multiDay: false, start: "", end: "", time: "" };
   const start = formatDayMonth(tour.date.start);
   const end = formatDayMonth(tour.date.end);
@@ -144,7 +144,7 @@ function tourDateLabels(tour) {
     typeof tour.date.multiDay === "boolean"
       ? tour.date.multiDay
       : tour.date.start !== tour.date.end;
-  const time = formatTourTime(tour.date);
+  const time = includeTime ? formatTourTime(tour.date) : "";
   return { multiDay, start, end, time };
 }
 
@@ -766,11 +766,11 @@ function renderCalendar() {
 
     const starredWeeks = new Set();
     for (const tour of o.tours) {
+      if (!tour.announced?.start) continue;
+      if (state.hidePast && isTourPast(tour)) continue;
       const annIso = announcementDisplayDate(tour);
       if (!annIso) continue;
       if (state.hidePast && annIso < state.currentDate) continue;
-      const wi = announcementWeekIndex(tour, weeks);
-      if (wi < 0 || starredWeeks.has(wi)) continue;
       const raw = parseISO(tour.announced.start);
       const rawMonth = raw.getMonth() + 1;
       const entry = {
@@ -779,6 +779,23 @@ function renderCalendar() {
         label: formatDayMonth(annIso),
         clamped: annIso.endsWith("-09-01") && !(rawMonth === 9 && raw.getDate() === 1),
       };
+
+      const tourSpan = tourWeekSpan(tour, weeks);
+      if (tourSpan) {
+        const host = map.get(tourSpan.from);
+        if (host?.kind === "start") {
+          if (!host.announcements) host.announcements = [];
+          if (!host.announcements.some((a) => a.tourName === tour.name)) {
+            host.announcements.push(entry);
+          }
+        }
+        continue;
+      }
+
+      // Тур не на календаре — звезда в неделе объявления.
+      const wi = announcementWeekIndex(tour, weeks);
+      if (wi < 0 || starredWeeks.has(wi)) continue;
+      starredWeeks.add(wi);
 
       const existing = map.get(wi);
       if (!existing) {
@@ -789,60 +806,57 @@ function renderCalendar() {
           announcements: [entry],
         });
         occupied.add(wi);
-        starredWeeks.add(wi);
       } else if (existing.kind === "start") {
-        if (!(existing.announcements || []).length) {
-          existing.announcements = [entry];
-          starredWeeks.add(wi);
-        }
-      } else if (existing.kind === "skip") {
-        // Неделя внутри rowspan тура — одна звезда на ячейку-старт
-        for (let i = wi; i >= 0; i--) {
-          const host = map.get(i);
-          if (host?.kind === "start") {
-            if (!(host.announcements || []).length) {
-              host.announcements = [entry];
-              starredWeeks.add(wi);
-            }
-            break;
-          }
+        if (!existing.announcements) existing.announcements = [];
+        if (!existing.announcements.some((a) => a.tourName === tour.name)) {
+          existing.announcements.push(entry);
         }
       }
     }
     return map;
   });
 
-  function renderAnnouncementStars(announcements, olympiad) {
-    if (!announcements?.length) return "";
-    const a = announcements[0];
-    const tour = olympiad.tours.find((t) => t.name === a.tourName);
-    const title = `Объявление: ${a.label}${a.clamped ? " → 1.09" : ""} (${a.tourName})`;
+  function announcementTitle(entry) {
+    return `Объявление: ${entry.label}${entry.clamped ? " → 1.09" : ""} (${entry.tourName})`;
+  }
+
+  function renderAnnouncementStarButton(entry, olympiad) {
+    const title = announcementTitle(entry);
     return `<button type="button" class="announce-star" title="${escapeHtml(title)}"
-      data-olympiad="${escapeHtml(olympiad.id)}" data-tour="${escapeHtml(a.tourName)}"
+      data-olympiad="${escapeHtml(olympiad.id)}" data-tour="${escapeHtml(entry.tourName)}"
       aria-label="${escapeHtml(title)}">★</button>`;
   }
 
-  function renderTourButton(olympiad, tour, multiWeek) {
+  function renderTourAnnouncementMarker(entry) {
+    if (!entry) return "";
+    const title = announcementTitle(entry);
+    return `<span class="tour-block__announce announce-star announce-star--on-tour" title="${escapeHtml(title)}" aria-hidden="true">★</span>`;
+  }
+
+  function findTourAnnouncement(cell, tourName) {
+    return (cell.announcements || []).find((a) => a.tourName === tourName) || null;
+  }
+
+  function renderTourButton(olympiad, tour, multiWeek, announcement) {
     const active = matchesFilters(olympiad) && tourMatchesFilters(olympiad, tour);
     const dim = active ? "" : " is-dimmed";
-    const labels = tourDateLabels(tour);
+    const labels = tourDateLabels(tour, { includeTime: false });
     const typeClass =
       tour.type === "online" ? "tour-block--online" : "tour-block--offline";
     const spanClass = multiWeek || labels.multiDay ? " tour-block--span" : "";
+    const annMarker = renderTourAnnouncementMarker(announcement);
+    const annTitle = announcement ? ` — ${announcementTitle(announcement)}` : "";
 
     if (labels.multiDay) {
       return `
         <button type="button"
           class="tour-block ${typeClass}${spanClass}${dim}"
           data-olympiad="${escapeHtml(olympiad.id)}"
-          data-tour="${escapeHtml(tour.name)}">
+          data-tour="${escapeHtml(tour.name)}"
+          title="${escapeHtml(tour.name + annTitle)}">
+          ${annMarker}
           <span class="tour-block__edge tour-block__edge--start">
             <span class="tour-date tour-date--start">${escapeHtml(labels.start)}${renderDateAccuracy(tour.date)}</span>
-            ${
-              labels.time
-                ? `<span class="tour-date__time">${escapeHtml(labels.time)}</span>`
-                : ""
-            }
           </span>
           <span class="tour-block__body">
             <span class="tour-block__name">${escapeHtml(tour.name)}</span>
@@ -858,14 +872,11 @@ function renderCalendar() {
       <button type="button"
         class="tour-block ${typeClass}${dim}"
         data-olympiad="${escapeHtml(olympiad.id)}"
-        data-tour="${escapeHtml(tour.name)}">
+        data-tour="${escapeHtml(tour.name)}"
+        title="${escapeHtml(tour.name + annTitle)}">
+        ${annMarker}
         <span class="tour-block__body">
           <span class="tour-date tour-date--single">${escapeHtml(labels.start)}${renderDateAccuracy(tour.date)}</span>
-          ${
-            labels.time
-              ? `<span class="tour-date__time">${escapeHtml(labels.time)}</span>`
-              : ""
-          }
           <span class="tour-block__name">${escapeHtml(tour.name)}</span>
           <span class="tour-block__meta">${renderMarkers(tour)}</span>
         </span>
@@ -885,9 +896,22 @@ function renderCalendar() {
 
           const olympiadActive = matchesFilters(o);
           const multiWeek = cell.rowspan > 1;
-          const stars = renderAnnouncementStars(cell.announcements, o);
+          const tourNames = new Set((cell.tours || []).map((t) => t.name));
+          const standaloneAnnouncements = (cell.announcements || []).filter(
+            (a) => !tourNames.has(a.tourName)
+          );
+          const stars = standaloneAnnouncements
+            .map((entry) => renderAnnouncementStarButton(entry, o))
+            .join("");
           const blocks = (cell.tours || [])
-            .map((tour) => renderTourButton(o, tour, multiWeek))
+            .map((tour) =>
+              renderTourButton(
+                o,
+                tour,
+                multiWeek,
+                findTourAnnouncement(cell, tour.name)
+              )
+            )
             .join("");
           const anyTourVisible = (cell.tours || []).some(
             (t) => olympiadActive && tourMatchesFilters(o, t)
@@ -896,7 +920,7 @@ function renderCalendar() {
           const cellDim =
             olympiadActive && (anyTourVisible || hasStars) ? "" : " is-dimmed";
           const spanClass = multiWeek ? " cal-cell--span" : "";
-          const onlyStars = hasStars && !(cell.tours || []).length;
+          const onlyStars = standaloneAnnouncements.length > 0 && !(cell.tours || []).length;
           return `<td class="cal-cell cal-cell--filled${spanClass}${
             onlyStars ? " cal-cell--announce" : ""
           }${cellDim}" rowspan="${cell.rowspan}"${

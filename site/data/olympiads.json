@@ -889,24 +889,24 @@
           "Успех"
         ],
         "date": {
-          "start": "2027-04-11",
-          "end": "2027-04-11",
-          "raw": "11.04.2027",
+          "start": "2026-04-11",
+          "end": "2026-04-11",
+          "raw": "11.04.2026",
           "multiDay": false,
           "labelStart": "11.04",
           "labelEnd": "11.04",
           "yearExplicit": true,
-          "accuracy": "confirmed"
+          "accuracy": "approximate"
         },
         "announced": {
-          "start": "2027-03-22",
-          "end": "2027-03-22",
-          "raw": "22.03.2027",
+          "start": "2026-03-22",
+          "end": "2026-03-22",
+          "raw": "22.03.2026",
           "multiDay": false,
           "labelStart": "22.03",
           "labelEnd": "22.03",
           "yearExplicit": true,
-          "accuracy": "confirmed"
+          "accuracy": "approximate"
         }
       }
     ]

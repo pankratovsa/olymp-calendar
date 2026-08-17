@@ -537,6 +537,8 @@ main {
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .marker::before {
@@ -608,11 +610,12 @@ main {
 .calendar td {
   border-bottom: 1px solid var(--line);
   border-right: 1px solid var(--line);
-  vertical-align: top;
+  vertical-align: stretch;
 }
 
 .calendar tbody tr {
-  height: 3.4rem;
+  min-height: 3.4rem;
+  height: auto;
 }
 
 .calendar tbody tr.is-current-week > th,
@@ -641,9 +644,9 @@ main {
   background: #e4ebe5;
   padding: 0.25rem 0.15rem 0.4rem;
   height: auto;
-  width: 4.25rem;
-  min-width: 4.25rem;
-  max-width: 4.75rem;
+  width: 5.75rem;
+  min-width: 5.75rem;
+  max-width: 7rem;
   vertical-align: bottom;
   text-align: center;
   font-family: var(--font-display);
@@ -793,6 +796,15 @@ main {
   vertical-align: middle;
 }
 
+.announce-star--on-tour {
+  cursor: inherit;
+  pointer-events: none;
+}
+
+.announce-star--on-tour:hover {
+  transform: none;
+}
+
 .cal-cell--announce .cal-cell__fill {
   align-items: center;
   justify-content: center;
@@ -811,6 +823,8 @@ main {
 
 .cal-cell--filled {
   position: relative;
+  padding: 0;
+  height: 100%;
 }
 
 .cal-cell--span {
@@ -821,40 +835,67 @@ main {
 .cal-cell__fill {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0;
+  min-height: 3.4rem;
   height: 100%;
-  min-height: 100%;
+  box-sizing: border-box;
 }
 
 .cal-cell--span .cal-cell__fill {
   position: absolute;
-  inset: 0.25rem;
-  height: auto;
+  inset: 0;
   min-height: 0;
+  height: auto;
 }
 
-.cal-cell--span .tour-block {
+.cal-cell--span .tour-block,
+.cal-cell--filled .tour-block {
   flex: 1 1 auto;
   align-self: stretch;
+  width: 100%;
+  min-height: 0;
+  height: auto;
+}
+
+.cal-cell--filled .tour-block:only-child,
+.cal-cell--span .tour-block:only-child {
+  flex: 1 1 100%;
   min-height: 100%;
   height: 100%;
 }
 
+.cal-cell--filled .tour-block + .tour-block,
+.cal-cell--filled .announce-star + .tour-block {
+  margin-top: 0;
+  border-top: 1px solid rgba(19, 36, 28, 0.08);
+}
+
 .tour-block {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 0.35rem;
+  justify-content: flex-start;
+  gap: 0;
+  box-sizing: border-box;
   width: 100%;
-  min-height: 2.8rem;
+  min-height: 0;
   padding: 0;
   border: 0;
+  border-radius: 0;
   text-align: left;
   font: inherit;
   cursor: pointer;
   color: var(--ink);
-  transition: filter 0.2s ease, transform 0.2s ease;
-  overflow: hidden;
+  transition: filter 0.2s ease;
+  overflow: visible;
+}
+
+.tour-block__announce {
+  position: absolute;
+  top: 0.1rem;
+  right: 0.15rem;
+  z-index: 1;
+  line-height: 1;
 }
 
 .tour-block--span {
@@ -863,7 +904,6 @@ main {
 
 .tour-block:hover {
   filter: brightness(0.97);
-  transform: scale(1.01);
 }
 
 .tour-block:focus-visible {
@@ -884,16 +924,19 @@ main {
 .tour-block__body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 0.25rem;
-  padding: 0.45rem 0.55rem;
+  justify-content: flex-start;
+  gap: 0.2rem;
+  padding: 0.4rem 0.45rem;
   flex: 1 1 auto;
+  min-width: 0;
 }
 
 .tour-block__edge {
   display: flex;
   align-items: center;
-  padding: 0.35rem 0.55rem;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  padding: 0.3rem 0.45rem;
   font-weight: 700;
   flex: 0 0 auto;
 }
@@ -920,15 +963,36 @@ main {
 
 .tour-block__name {
   font-weight: 600;
-  font-size: 0.84rem;
-  line-height: 1.25;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
 }
 
 .tour-block__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 0.55rem;
+  gap: 0.2rem 0.3rem;
   align-items: center;
+}
+
+.tour-block__meta .marker {
+  font-size: 0.62rem;
+  gap: 0.18rem;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.tour-block__meta .marker::before {
+  width: 0.42rem;
+  height: 0.42rem;
+}
+
+.tour-block__meta .marker--city::before {
+  border-left-width: 0.2rem;
+  border-right-width: 0.2rem;
+  border-bottom-width: 0.34rem;
 }
 
 .tour-date__time {
