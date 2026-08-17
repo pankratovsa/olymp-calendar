@@ -248,6 +248,62 @@ function announcementWeekIndex(tour, weeks) {
   return weeks.findIndex((w) => w.start.getTime() === start);
 }
 
+/** Звезда на туре только если дата объявления совпадает с датой тура. */
+function shouldMergeAnnouncementOnTour(tour) {
+  const annIso = announcementDisplayDate(tour);
+  const resolved = tourResolvedDates(tour);
+  if (!annIso || !resolved) return false;
+  return annIso === resolved.start;
+}
+
+function announcementIntersectsTour(tour, weeks) {
+  const annWi = announcementWeekIndex(tour, weeks);
+  const tourSpan = tourWeekSpan(tour, weeks);
+  if (annWi < 0 || !tourSpan) return { annWi, tourSpan, intersects: false };
+  const intersects = annWi >= tourSpan.from && annWi <= tourSpan.to;
+  return { annWi, tourSpan, intersects };
+}
+
+function placeStandaloneAnnouncement(map, occupied, annWi, entry) {
+  const existing = map.get(annWi);
+  if (existing?.kind === "skip") return false;
+
+  if (!existing) {
+    map.set(annWi, {
+      kind: "start",
+      rowspan: 1,
+      tours: [],
+      announcements: [entry],
+    });
+    occupied.add(annWi);
+  } else if (existing.kind === "start") {
+    if (!existing.announcements) existing.announcements = [];
+    if (existing.announcements.some((a) => !a.onTour)) return false;
+    existing.announcements.push(entry);
+  } else {
+    return false;
+  }
+  return true;
+}
+
+function placeAnnouncementOnTourHost(map, tourSpan, entry) {
+  const host = map.get(tourSpan.from);
+  if (host?.kind !== "start") return false;
+  if (!host.announcements) host.announcements = [];
+  if (host.announcements.some((a) => a.onTour)) return false;
+  host.announcements.push({ ...entry, onTour: true });
+  return true;
+}
+
+function placeAnnouncementBesideSpanningTour(map, tourSpan, entry) {
+  const host = map.get(tourSpan.from);
+  if (host?.kind !== "start") return false;
+  if (!host.announcements) host.announcements = [];
+  if (host.announcements.some((a) => !a.onTour)) return false;
+  host.announcements.push(entry);
+  return true;
+}
+
 function tourWeekSpan(tour, weeks) {
   const resolved = tourResolvedDates(tour);
   if (!resolved || !weeks.length) return null;
@@ -778,39 +834,41 @@ function renderCalendar() {
         date: annIso,
         label: formatDayMonth(annIso),
         clamped: annIso.endsWith("-09-01") && !(rawMonth === 9 && raw.getDate() === 1),
+        onTour: false,
       };
 
-      const tourSpan = tourWeekSpan(tour, weeks);
-      if (tourSpan) {
-        const host = map.get(tourSpan.from);
-        if (host?.kind === "start") {
-          if (!host.announcements) host.announcements = [];
-          if (!host.announcements.some((a) => a.tourName === tour.name)) {
-            host.announcements.push(entry);
-          }
+      const { annWi, tourSpan, intersects } = announcementIntersectsTour(tour, weeks);
+      if (annWi < 0 || starredWeeks.has(annWi)) continue;
+
+      const mergeOnTour = intersects && shouldMergeAnnouncementOnTour(tour);
+
+      if (mergeOnTour && tourSpan) {
+        if (placeAnnouncementOnTourHost(map, tourSpan, entry)) {
+          starredWeeks.add(annWi);
         }
         continue;
       }
 
-      // Тур не на календаре — звезда в неделе объявления.
-      const wi = announcementWeekIndex(tour, weeks);
-      if (wi < 0 || starredWeeks.has(wi)) continue;
-      starredWeeks.add(wi);
-
-      const existing = map.get(wi);
-      if (!existing) {
-        map.set(wi, {
-          kind: "start",
-          rowspan: 1,
-          tours: [],
-          announcements: [entry],
-        });
-        occupied.add(wi);
-      } else if (existing.kind === "start") {
-        if (!existing.announcements) existing.announcements = [];
-        if (!existing.announcements.some((a) => a.tourName === tour.name)) {
-          existing.announcements.push(entry);
+      // Недели не пересекаются — отдельная звезда в неделе объявления.
+      // Пересекаются, но даты разные — одна отдельная звезда (не на туре).
+      if (!intersects) {
+        if (placeStandaloneAnnouncement(map, occupied, annWi, entry)) {
+          starredWeeks.add(annWi);
         }
+        continue;
+      }
+
+      // Пересечение внутри rowspan, ячейка «skip» — звезда у хост-ячейки тура.
+      const existing = map.get(annWi);
+      if (existing?.kind === "skip" && tourSpan) {
+        if (placeAnnouncementBesideSpanningTour(map, tourSpan, entry)) {
+          starredWeeks.add(annWi);
+        }
+        continue;
+      }
+
+      if (placeStandaloneAnnouncement(map, occupied, annWi, entry)) {
+        starredWeeks.add(annWi);
       }
     }
     return map;
@@ -834,7 +892,10 @@ function renderCalendar() {
   }
 
   function findTourAnnouncement(cell, tourName) {
-    return (cell.announcements || []).find((a) => a.tourName === tourName) || null;
+    return (
+      (cell.announcements || []).find((a) => a.tourName === tourName && a.onTour) ||
+      null
+    );
   }
 
   function renderTourButton(olympiad, tour, multiWeek, announcement) {
@@ -896,9 +957,8 @@ function renderCalendar() {
 
           const olympiadActive = matchesFilters(o);
           const multiWeek = cell.rowspan > 1;
-          const tourNames = new Set((cell.tours || []).map((t) => t.name));
           const standaloneAnnouncements = (cell.announcements || []).filter(
-            (a) => !tourNames.has(a.tourName)
+            (a) => !a.onTour
           );
           const stars = standaloneAnnouncements
             .map((entry) => renderAnnouncementStarButton(entry, o))
