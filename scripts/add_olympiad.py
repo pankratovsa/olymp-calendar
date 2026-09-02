@@ -15,6 +15,7 @@ import argparse
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -162,7 +163,8 @@ def format_day_month(day: int, month: int) -> str:
     return f"{day}.{month:02d}"
 
 
-# Актуальное событие: дата проведения с сентября 2026; объявление — после 1.06.2026.
+# Актуальное = 2026–2027 уч. год:
+# событие с 1.09.2026; объявление строго после 1.06.2026.
 EVENT_CONFIRMED_FROM = "2026-09-01"
 ANNOUNCE_CONFIRMED_AFTER = "2026-06-01"
 
@@ -175,11 +177,20 @@ def announcement_accuracy(ann: dict | None) -> str:
     return "confirmed"
 
 
+def tour_in_confirmed_season(date: dict) -> bool:
+    """Тур в 2026–2027, если старт (и конец диапазона) не раньше 1.09.2026."""
+    start = date.get("start")
+    if not start or start < EVENT_CONFIRMED_FROM:
+        return False
+    end = date.get("end") or start
+    return end >= EVENT_CONFIRMED_FROM
+
+
 def tour_date_accuracy(tour: dict) -> str:
     date = tour.get("date")
     if not date or not date.get("start"):
         return "approximate"
-    if date["start"] < EVENT_CONFIRMED_FROM:
+    if not tour_in_confirmed_season(date):
         return "approximate"
     if announcement_accuracy(tour.get("announced")) != "confirmed":
         return "approximate"
@@ -221,6 +232,33 @@ def date_payload(
     return payload
 
 
+def align_range_years(
+    day_a: int,
+    month_a: int,
+    year_a: int | None,
+    day_b: int,
+    month_b: int,
+    year_b: int | None,
+) -> tuple[int | None, int | None]:
+    """Если годы по краям диапазона отличаются на 1, а дни/месяцы — короткий
+    интервал в одном году (15.10.2025-5.11.2026 → 15.10.2026-5.11.2026)."""
+    if year_a is None or year_b is None or year_b != year_a + 1:
+        return year_a, year_b
+    try:
+        same_year_start = date(year_b, month_a, day_a)
+        end_d = date(year_b, month_b, day_b)
+        long_start = date(year_a, month_a, day_a)
+    except ValueError:
+        return year_a, year_b
+    if same_year_start > end_d:
+        return year_a, year_b
+    short_days = (end_d - same_year_start).days
+    long_days = (end_d - long_start).days
+    if short_days <= 90 and long_days >= 180:
+        return year_b, year_b
+    return year_a, year_b
+
+
 def parse_date_range(raw: str) -> dict | None:
     raw = raw.strip()
     if not raw or raw.lower() == "online":
@@ -247,6 +285,9 @@ def parse_date_range(raw: str) -> dict | None:
             return None
         day_a, month_a, year_a = a
         day_b, month_b, year_b = b
+        year_a, year_b = align_range_years(
+            day_a, month_a, year_a, day_b, month_b, year_b
+        )
         year_explicit = year_a is not None and year_b is not None
         start = to_iso(day_a, month_a, year_a)
         end = to_iso(day_b, month_b, year_b)

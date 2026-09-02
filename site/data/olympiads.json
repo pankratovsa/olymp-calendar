@@ -1630,14 +1630,14 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2025-10-15",
+          "start": "2026-10-15",
           "end": "2026-11-05",
-          "raw": "15.10.2025-5.11.2026",
+          "raw": "15.10.2026-5.11.2026",
           "multiDay": true,
           "labelStart": "15.10",
           "labelEnd": "5.11",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         },
         "announced": {
           "start": "2026-09-02",
