@@ -65,6 +65,13 @@ body {
   background: rgba(246, 248, 245, 0.72);
 }
 
+.topbar__lead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.55rem 1.1rem;
+}
+
 .brand {
   margin: 0;
   font-family: var(--font-display);
@@ -73,6 +80,36 @@ body {
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--accent-deep);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.85rem;
+  align-items: center;
+}
+
+.site-nav__link {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 0.15rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav__link:hover {
+  color: var(--accent-deep);
+}
+
+.site-nav__link.is-active {
+  color: var(--accent-deep);
+  border-bottom-color: var(--accent);
+}
+
+.site-nav__link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .current-date {
@@ -819,6 +856,12 @@ main {
 
 .cal-cell--empty {
   background: transparent;
+}
+
+.cal-empty {
+  padding: 1.25rem 0.85rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
 }
 
 .cal-cell--filled {

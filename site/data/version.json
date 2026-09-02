@@ -1,5 +1,15 @@
 {
-  "v": "ac1f8bcaf368",
-  "updatedAt": "2026-08-17T17:57:27Z",
-  "count": 14
+  "v": "1f44a137e99b",
+  "updatedAt": "2026-09-02T19:29:12Z",
+  "count": 18,
+  "olympiads": {
+    "v": "1f44a137e99b",
+    "updatedAt": "2026-09-02T19:29:12Z",
+    "count": 18
+  },
+  "conferences": {
+    "v": "f919569433d8",
+    "updatedAt": "2026-09-02T19:29:12Z",
+    "count": 1
+  }
 }

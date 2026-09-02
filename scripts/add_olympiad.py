@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Добавить олимпиаду из MD-файла в site/data/olympiads.json без пересборки HTML.
+"""Добавить олимпиаду или конференцию из MD в JSON без пересборки HTML.
 
 Использование:
-  python3 scripts/add_olympiad.py data/new_olymp.md
-  python3 scripts/add_olympiad.py --sync-all   # все файлы из data/
+  python3 scripts/add_olympiad.py data/olymps/new_olymp.md
+  python3 scripts/add_olympiad.py data/conferences/new_conf.md
+  python3 scripts/add_olympiad.py --sync-all   # data/olymps и data/conferences
 
-Страница читает только olympiads.json — HTML/CSS/JS не трогаются.
+Сайт читает site/data/olympiads.json и site/data/conferences.json.
 """
 
 from __future__ import annotations
@@ -18,7 +19,21 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
-OUT_PATH = ROOT / "site" / "data" / "olympiads.json"
+SITE_DATA = ROOT / "site" / "data"
+VERSION_PATH = SITE_DATA / "version.json"
+
+KINDS = {
+    "olympiads": {
+        "dir": DATA_DIR / "olymps",
+        "out": SITE_DATA / "olympiads.json",
+        "label": "олимпиад",
+    },
+    "conferences": {
+        "dir": DATA_DIR / "conferences",
+        "out": SITE_DATA / "conferences.json",
+        "label": "конференций",
+    },
+}
 
 # Учебный год в JSON — ориентир; на сайте день/месяц пересчитываются
 # относительно выбранной «текущей даты» (сен–дек = yearStart, янв–авг = yearStart+1).
@@ -32,6 +47,8 @@ SECTION_ALIASES = {
     "описание": "description",
     "сайт": "website",
     "туры": "tours",
+    "мероприятия": "tours",
+    "сессии": "tours",
 }
 
 TOUR_ALIASES = {
@@ -448,26 +465,55 @@ def parse_olympiad(md: str, source: str) -> dict:
     return olympiad
 
 
-def load_json() -> list[dict]:
-    if not OUT_PATH.exists():
+def detect_kind(path: Path) -> str:
+    resolved = path.expanduser().resolve()
+    try:
+        rel = resolved.relative_to(DATA_DIR.resolve())
+    except ValueError:
+        return "olympiads"
+    first = rel.parts[0] if rel.parts else ""
+    if first == "conferences":
+        return "conferences"
+    return "olympiads"
+
+
+def load_json(kind: str = "olympiads") -> list[dict]:
+    out = KINDS[kind]["out"]
+    if not out.exists():
         return []
-    return json.loads(OUT_PATH.read_text(encoding="utf-8"))
+    return json.loads(out.read_text(encoding="utf-8"))
 
 
-def save_json(items: list[dict]) -> None:
+def load_version() -> dict:
+    if not VERSION_PATH.exists():
+        return {}
+    try:
+        data = json.loads(VERSION_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def save_json(items: list[dict], kind: str = "olympiads") -> None:
     import hashlib
     import time
 
-    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    cfg = KINDS[kind]
+    cfg["out"].parent.mkdir(parents=True, exist_ok=True)
     payload = json.dumps(items, ensure_ascii=False, indent=2) + "\n"
-    OUT_PATH.write_text(payload, encoding="utf-8")
-    version = {
+    cfg["out"].write_text(payload, encoding="utf-8")
+    stamp = {
         "v": hashlib.sha256(payload.encode("utf-8")).hexdigest()[:12],
         "updatedAt": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "count": len(items),
     }
-    version_path = OUT_PATH.parent / "version.json"
-    version_path.write_text(
+    version = load_version()
+    version[kind] = stamp
+    if kind == "olympiads":
+        version["v"] = stamp["v"]
+        version["updatedAt"] = stamp["updatedAt"]
+        version["count"] = stamp["count"]
+    VERSION_PATH.write_text(
         json.dumps(version, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
@@ -490,27 +536,37 @@ def add_file(path: Path, items: list[dict]) -> list[dict]:
     return upsert(olympiad, items)
 
 
+def sync_kind(kind: str) -> int:
+    cfg = KINDS[kind]
+    cfg["dir"].mkdir(parents=True, exist_ok=True)
+    items: list[dict] = []
+    files = sorted(cfg["dir"].glob("*.md"))
+    for path in files:
+        items = add_file(path, items)
+        print(f"+ {path.relative_to(ROOT)} → {path.stem}")
+    save_json(items, kind)
+    print(
+        f"Записано {len(items)} {cfg['label']} → {cfg['out'].relative_to(ROOT)}"
+    )
+    return len(items)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("md_file", nargs="?", help="Путь к MD-файлу олимпиады")
+    parser.add_argument("md_file", nargs="?", help="Путь к MD-файлу")
     parser.add_argument(
         "--sync-all",
         action="store_true",
-        help="Пересобрать JSON из всех *.md в data/",
+        help="Пересобрать JSON из data/olymps и data/conferences",
     )
     args = parser.parse_args()
 
     if args.sync_all:
-        items: list[dict] = []
-        files = sorted(DATA_DIR.glob("*.md"))
-        if not files:
-            print(f"Нет файлов в {DATA_DIR}", file=sys.stderr)
-            return 1
-        for path in files:
-            items = add_file(path, items)
-            print(f"+ {path.name} → {path.stem}")
-        save_json(items)
-        print(f"Записано {len(items)} олимпиад → {OUT_PATH.relative_to(ROOT)}")
+        total = 0
+        for kind in KINDS:
+            total += sync_kind(kind)
+        if total == 0:
+            print(f"Нет файлов в {DATA_DIR / 'olymps'} и {DATA_DIR / 'conferences'}", file=sys.stderr)
         return 0
 
     if not args.md_file:
@@ -522,11 +578,14 @@ def main() -> int:
         print(f"Файл не найден: {path}", file=sys.stderr)
         return 1
 
-    items = load_json()
+    kind = detect_kind(path)
+    items = load_json(kind)
     items = add_file(path, items)
-    save_json(items)
+    save_json(items, kind)
     print(f"Добавлено/обновлено: {path.stem}")
-    print(f"Всего олимпиад: {len(items)} → {OUT_PATH.relative_to(ROOT)}")
+    print(
+        f"Всего {KINDS[kind]['label']}: {len(items)} → {KINDS[kind]['out'].relative_to(ROOT)}"
+    )
     return 0
 
 

@@ -27,8 +27,8 @@ jobs:
       - name: Cache-bust assets and Pages fallbacks
         run: |
           V="${GITHUB_SHA:-$(date +%s)}"
-          sed -i.bak "s/[?]v=[^\"]*/?v=${V}/g" site/index.html
-          rm -f site/index.html.bak
+          sed -i.bak "s/[?]v=[^\"]*/?v=${V}/g" site/index.html site/conferences.html
+          rm -f site/index.html.bak site/conferences.html.bak
           cp site/index.html site/404.html
           touch site/.nojekyll
 

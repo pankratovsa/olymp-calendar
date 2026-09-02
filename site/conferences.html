@@ -13,21 +13,21 @@
     })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Календарь олимпиад</title>
+  <title>Календарь конференций</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css?v=dev" />
 </head>
-<body data-kind="olympiads">
+<body data-kind="conferences">
   <div class="atmosphere" aria-hidden="true"></div>
 
   <header class="topbar">
     <div class="topbar__lead">
       <p class="brand">Календарь</p>
       <nav class="site-nav" aria-label="Разделы">
-        <a class="site-nav__link is-active" href="index.html" aria-current="page">Олимпиады</a>
-        <a class="site-nav__link" href="conferences.html">Конференции</a>
+        <a class="site-nav__link" href="index.html">Олимпиады</a>
+        <a class="site-nav__link is-active" href="conferences.html" aria-current="page">Конференции</a>
       </nav>
     </div>
     <label class="current-date">
@@ -47,9 +47,9 @@
       </div>
     </section>
 
-    <section class="section section--fold" aria-label="Олимпиады">
+    <section class="section section--fold" aria-label="Конференции">
       <button type="button" class="fold-toggle" id="olympiads-toggle" aria-expanded="false" aria-controls="olympiads-panel">
-        <span>Олимпиады</span>
+        <span>Конференции</span>
         <span class="fold-toggle__chevron" aria-hidden="true"></span>
       </button>
       <div class="fold-panel" id="olympiads-panel" hidden>
@@ -73,7 +73,7 @@
   </main>
 
   <footer class="footer">
-    <p>Календарь школьных олимпиад</p>
+    <p>Календарь конференций</p>
   </footer>
 
   <dialog class="tour-dialog" id="tour-dialog">

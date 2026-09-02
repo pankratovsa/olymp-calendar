@@ -1,3 +1,16 @@
+const PAGE_KIND =
+  document.body?.dataset?.kind === "conferences" ? "conferences" : "olympiads";
+const DATA_FILE =
+  PAGE_KIND === "conferences" ? "conferences.json" : "olympiads.json";
+const EMPTY_COPY =
+  PAGE_KIND === "conferences"
+    ? "Пока нет конференций."
+    : "Пока нет олимпиад.";
+const LOAD_ERROR_COPY =
+  PAGE_KIND === "conferences"
+    ? "Не удалось загрузить данные конференций."
+    : "Не удалось загрузить данные олимпиад.";
+
 const state = {
   olympiads: [],
   currentDate: toISODate(new Date()),
@@ -753,6 +766,12 @@ function renderCalendar() {
   const thead = table.querySelector("thead");
   const tbody = table.querySelector("tbody");
 
+  if (!weeks.length) {
+    thead.innerHTML = "";
+    tbody.innerHTML = `<tr><td class="cal-empty">${EMPTY_COPY}</td></tr>`;
+    return;
+  }
+
   thead.innerHTML = `<tr>
     <th class="cal-corner">Неделя</th>
     ${olympiads
@@ -1068,17 +1087,20 @@ async function init() {
     );
     if (verRes.ok) {
       const ver = await verRes.json();
-      if (ver?.v) bust = ver.v;
+      const kindStamp = ver?.[PAGE_KIND];
+      if (kindStamp?.v) bust = kindStamp.v;
+      else if (ver?.v) bust = ver.v;
     }
   } catch (_) {
     /* offline / first run */
   }
   const res = await fetch(
-    new URL(`data/olympiads.json?v=${encodeURIComponent(bust)}`, siteRoot),
+    new URL(`data/${DATA_FILE}?v=${encodeURIComponent(bust)}`, siteRoot),
     fetchOpts
   );
-  if (!res.ok) throw new Error("Не удалось загрузить data/olympiads.json");
-  state.olympiads = await res.json();
+  if (!res.ok) throw new Error(`Не удалось загрузить data/${DATA_FILE}`);
+  const payload = await res.json();
+  state.olympiads = Array.isArray(payload) ? payload : [];
 
   bindChrome();
   document.getElementById("reset-filters").addEventListener("click", resetFilters);
@@ -1092,5 +1114,5 @@ async function init() {
 init().catch((err) => {
   console.error(err);
   document.getElementById("cards").innerHTML =
-    `<p>Не удалось загрузить данные олимпиад.</p>`;
+    `<p>${LOAD_ERROR_COPY}</p>`;
 });

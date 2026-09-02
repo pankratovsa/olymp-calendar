@@ -1,7 +1,7 @@
 [
   {
     "id": "2x2",
-    "source": "data/2x2.md",
+    "source": "data/olymps/2x2.md",
     "title": "Олимпиада начальной школы 2x2",
     "shortTitle": "2x2",
     "subjects": [
@@ -58,7 +58,7 @@
   },
   {
     "id": "winkid",
-    "source": "data/winkid.md",
+    "source": "data/olymps/winkid.md",
     "title": "Winkid",
     "shortTitle": "Winkid",
     "subjects": [
@@ -490,7 +490,7 @@
   },
   {
     "id": "belchonok_info",
-    "source": "data/belchonok_info.md",
+    "source": "data/olymps/belchonok_info.md",
     "title": "Университетская олимпиада школьников «Бельчонок» Информатика",
     "shortTitle": "Бельчонок Информатика",
     "subjects": [
@@ -582,7 +582,7 @@
   },
   {
     "id": "belchonok_math",
-    "source": "data/belchonok_math.md",
+    "source": "data/olymps/belchonok_math.md",
     "title": "Университетская олимпиада школьников «Бельчонок» Математика",
     "shortTitle": "Бельчонок Математика",
     "subjects": [
@@ -673,8 +673,100 @@
     ]
   },
   {
+    "id": "vshosh_math",
+    "source": "data/olymps/vshosh_math.md",
+    "title": "Всероссийска олимпиада школькников Математика",
+    "shortTitle": "ВСОШ Математика",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      4,
+      5,
+      6
+    ],
+    "description": "Всероссийская олимпиада школьников",
+    "website": "https://vos.olimpiada.ru/2026/school",
+    "tours": [
+      {
+        "name": "Школьный этап",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2026-10-16",
+          "end": "2026-10-16",
+          "raw": "16.10.2026",
+          "multiDay": false,
+          "labelStart": "16.10",
+          "labelEnd": "16.10",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "raw": "1.09.2026",
+          "multiDay": false,
+          "labelStart": "1.09",
+          "labelEnd": "1.09",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "vshosh_rus",
+    "source": "data/olymps/vshosh_rus.md",
+    "title": "Всероссийска олимпиада школькников Русский язык",
+    "shortTitle": "ВСОШ Русский",
+    "subjects": [
+      "Русский"
+    ],
+    "grades": [
+      4,
+      5,
+      6
+    ],
+    "description": "Всероссийская олимпиада школьников",
+    "website": "https://vos.olimpiada.ru/2026/school",
+    "tours": [
+      {
+        "name": "Школьный этап",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2026-10-01",
+          "end": "2026-10-01",
+          "raw": "1.10.2026",
+          "multiDay": false,
+          "labelStart": "1.10",
+          "labelEnd": "1.10",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "raw": "1.09.2026",
+          "multiDay": false,
+          "labelStart": "1.09",
+          "labelEnd": "1.09",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
     "id": "open_kazan",
-    "source": "data/open_kazan.md",
+    "source": "data/olymps/open_kazan.md",
     "title": "Открытая городская олимпиада по математике г. Казани для 2-6 классов",
     "shortTitle": "Казанская Открытая",
     "subjects": [
@@ -789,7 +881,7 @@
   },
   {
     "id": "kenguru",
-    "source": "data/kenguru.md",
+    "source": "data/olymps/kenguru.md",
     "title": "Международный игровой конкурс по математике «Кенгуру",
     "shortTitle": "Кенгуру",
     "subjects": [
@@ -854,7 +946,7 @@
   },
   {
     "id": "we_ingneers",
-    "source": "data/we_ingneers.md",
+    "source": "data/olymps/we_ingneers.md",
     "title": "Городской политехнической Олимпиаде «Мы инженеры». Успех Самара.",
     "shortTitle": "Мы-Инженеры",
     "subjects": [
@@ -913,7 +1005,7 @@
   },
   {
     "id": "ntl_2x2",
-    "source": "data/ntl_2x2.md",
+    "source": "data/olymps/ntl_2x2.md",
     "title": "Осеннюю математическая олимпиада НТЛ 2x2",
     "shortTitle": "НТЛ 2x2",
     "subjects": [
@@ -974,7 +1066,7 @@
   },
   {
     "id": "kurova",
-    "source": "data/kurova.md",
+    "source": "data/olymps/kurova.md",
     "title": "Региональная олимпиада школьников по математике имени В.А. Курова",
     "shortTitle": "Олимпиада им. Курова",
     "subjects": [
@@ -1105,7 +1197,7 @@
   },
   {
     "id": "autumn_olymp",
-    "source": "data/autumn_olymp.md",
+    "source": "data/olymps/autumn_olymp.md",
     "title": "Осенний Олим",
     "shortTitle": "Осенний Олим",
     "subjects": [
@@ -1200,7 +1292,7 @@
   },
   {
     "id": "shkolkovo",
-    "source": "data/shkolkovo.md",
+    "source": "data/olymps/shkolkovo.md",
     "title": "Первая Математическая олимпиада школьников\" Школково",
     "shortTitle": "Первая Математическая",
     "subjects": [
@@ -1260,7 +1352,7 @@
   },
   {
     "id": "spb_junior",
-    "source": "data/spb_junior.md",
+    "source": "data/olymps/spb_junior.md",
     "title": "Санкт-Петербургская математическая олимпиада начальной школы",
     "shortTitle": "Петербургская начальной школы",
     "subjects": [
@@ -1357,8 +1449,67 @@
     ]
   },
   {
+    "id": "123_newyear",
+    "source": "data/olymps/123_newyear.md",
+    "title": "Новогодний \"Раз-Два-Три",
+    "shortTitle": "Раз-Два-Три",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "description": "Открытая устная математическая олимпиада \"Новогодний \"РАЗ-ДВА-ТРИ!\":\n\n[math123.ru](https://math123.ru/)",
+    "website": "https://math123.ru/",
+    "tours": [
+      {
+        "name": "Основной Тур",
+        "type": "offline",
+        "city": "Москва",
+        "cities": [
+          "Москва",
+          "Санкт-Петербург"
+        ],
+        "places": [
+          {
+            "city": "Москва",
+            "venues": []
+          },
+          {
+            "city": "Санкт-Петербург",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2026-12-06",
+          "end": "2026-12-06",
+          "raw": "06.12.2026",
+          "multiDay": false,
+          "labelStart": "6.12",
+          "labelEnd": "6.12",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "raw": "01.09.2026",
+          "multiDay": false,
+          "labelStart": "1.09",
+          "labelEnd": "1.09",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
     "id": "systematica",
-    "source": "data/systematica.md",
+    "source": "data/olymps/systematica.md",
     "title": "Международная олимпиада по математике «Систематика",
     "shortTitle": "Систематика",
     "subjects": [
@@ -1452,8 +1603,98 @@
     ]
   },
   {
+    "id": "formula_edinstva",
+    "source": "data/olymps/formula_edinstva.md",
+    "title": "Формула Единства",
+    "shortTitle": "Формула Единства",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "description": "Объединённая международная олимпиада «Формула Единства» / «Третье тысячелетие» возникла как союз двух математических олимпиад:\n\n«Формула Единства», проведённой в 2012/13 г. и «Третье тысячелетие», проводимой с 2001 г.",
+    "website": "https://www.formulo.org/ru/olymp/",
+    "tours": [
+      {
+        "name": "Отборочный Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2025-10-15",
+          "end": "2026-11-05",
+          "raw": "15.10.2025-5.11.2026",
+          "multiDay": true,
+          "labelStart": "15.10",
+          "labelEnd": "5.11",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-09-02",
+          "end": "2026-09-02",
+          "raw": "02.09.2026",
+          "multiDay": false,
+          "labelStart": "2.09",
+          "labelEnd": "2.09",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      },
+      {
+        "name": "Заключительный Тур",
+        "type": "offline",
+        "city": "Москва",
+        "cities": [
+          "Москва",
+          "Санкт-Петербург"
+        ],
+        "places": [
+          {
+            "city": "Москва",
+            "venues": []
+          },
+          {
+            "city": "Санкт-Петербург",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2026-03-09",
+          "end": "2026-03-09",
+          "raw": "09.03.2026",
+          "multiDay": false,
+          "labelStart": "9.03",
+          "labelEnd": "9.03",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-01-15",
+          "end": "2026-01-15",
+          "raw": "15.01.2026",
+          "multiDay": false,
+          "labelStart": "15.01",
+          "labelEnd": "15.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      }
+    ]
+  },
+  {
     "id": "umsh",
-    "source": "data/umsh.md",
+    "source": "data/olymps/umsh.md",
     "title": "Олимпиада ЮМШ",
     "shortTitle": "ЮМШ",
     "subjects": [
@@ -1475,12 +1716,12 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2026-09-14",
-          "end": "2026-09-14",
-          "raw": "14.09.2026 10:00-15:00 msk",
+          "start": "2026-09-13",
+          "end": "2026-09-13",
+          "raw": "13.09.2026 10:00-15:00 msk",
           "multiDay": false,
-          "labelStart": "14.09",
-          "labelEnd": "14.09",
+          "labelStart": "13.09",
+          "labelEnd": "13.09",
           "yearExplicit": true,
           "time": "10:00",
           "timeEnd": "15:00",
@@ -1506,12 +1747,12 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2026-10-04",
-          "end": "2026-10-04",
-          "raw": "4.10.2026 16:00-21:00",
+          "start": "2026-10-17",
+          "end": "2026-10-17",
+          "raw": "17.10.2026 16:00-21:00",
           "multiDay": false,
-          "labelStart": "4.10",
-          "labelEnd": "4.10",
+          "labelStart": "17.10",
+          "labelEnd": "17.10",
           "yearExplicit": true,
           "time": "16:00",
           "timeEnd": "21:00",
@@ -1548,24 +1789,24 @@
         ],
         "venues": [],
         "date": {
-          "start": "2026-01-18",
-          "end": "2026-01-18",
-          "raw": "18.01.2026",
+          "start": "2027-01-17",
+          "end": "2027-01-17",
+          "raw": "17.01.2027",
           "multiDay": false,
-          "labelStart": "18.01",
-          "labelEnd": "18.01",
+          "labelStart": "17.01",
+          "labelEnd": "17.01",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         },
         "announced": {
-          "start": "2025-10-04",
-          "end": "2025-10-04",
-          "raw": "4.10.2025",
+          "start": "2026-09-02",
+          "end": "2026-09-02",
+          "raw": "2.09.2026",
           "multiDay": false,
-          "labelStart": "4.10",
-          "labelEnd": "4.10",
+          "labelStart": "2.09",
+          "labelEnd": "2.09",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         }
       }
     ]
