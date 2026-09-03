@@ -440,25 +440,44 @@ function olympiadCities(olympiad) {
   return [...cities];
 }
 
-/** Все туры только в Самаре — не в 1–4 / 5–8, только в «Олимпиады Самара». */
-function isSamaraOnly(olympiad) {
+function isFinalTourName(name) {
+  return /заключительн|финал/i.test(name || "");
+}
+
+/** Заключительный тур: по названию, иначе последний очный, иначе последний. */
+function finalTour(olympiad) {
   const tours = olympiad.tours || [];
-  if (!tours.length) return false;
-  return tours.every((t) => {
-    const cities = tourCities(t);
-    return cities.length > 0 && cities.every((c) => c === "Самара");
-  });
+  if (!tours.length) return null;
+  const named = tours.filter((t) => isFinalTourName(t.name));
+  const namedOffline = named.filter((t) => t.type !== "online");
+  if (namedOffline.length) return namedOffline[namedOffline.length - 1];
+  if (named.length) return named[named.length - 1];
+  const offline = tours.filter((t) => t.type !== "online");
+  if (offline.length) return offline[offline.length - 1];
+  return tours[tours.length - 1];
+}
+
+/** Заключительный тур только в Самаре — не в 1–4 / 5–8. */
+function isSamaraFinal(olympiad) {
+  const tour = finalTour(olympiad);
+  if (!tour) return false;
+  const cities = tourCities(tour);
+  return cities.length > 0 && cities.every((c) => c === "Самара");
+}
+
+function hasSamaraTour(olympiad) {
+  return olympiadCities(olympiad).includes("Самара");
 }
 
 function olympiadMatchesSection(olympiad, section = PAGE_SECTION) {
   if (!section || section.kind === "conferences") return true;
   if (section.grades?.length) {
-    if (isSamaraOnly(olympiad)) return false;
+    if (isSamaraFinal(olympiad)) return false;
     const grades = new Set((olympiad.grades || []).map(Number));
     return section.grades.some((g) => grades.has(g));
   }
   if (section.city) {
-    return olympiadCities(olympiad).includes(section.city);
+    return hasSamaraTour(olympiad);
   }
   return true;
 }
