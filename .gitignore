@@ -1,2 +1,20 @@
 .DS_Store
-*.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Office lock/temp files
+~$*
+**/~$*
+
+# Local source dumps (Word and similar)
+**/source/*.docx
+**/source/*.doc
+**/source/*.docm
+**/source/*.xlsx
+**/source/*.xls
+**/source/*.xlsm
+**/source/*.pptx
+**/source/*.ppt
+**/source/*.pdf
+**/source/*.zip
+**/source/*.rar
