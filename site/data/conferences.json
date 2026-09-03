@@ -1,5 +1,557 @@
 [
   {
+    "id": "conf_multi_vot_mir",
+    "source": "data/conferences/conf_multi_vot_mir.md",
+    "title": "Междисциплинарная научно-практическая конференция «Вот мир, который я люблю»",
+    "shortTitle": "Вот мир, который я люблю",
+    "subjects": [
+      "Межпредметная"
+    ],
+    "grades": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "description": "Исследовательские и проектные работы на стыке дисциплин.",
+    "website": "https://forms.yandex.ru/u/649bfa4be010db018961c17b/",
+    "tours": [
+      {
+        "name": "Отборочный Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2027-03-01",
+          "end": "2027-03-15",
+          "raw": "01.03.2027-15.03.2027",
+          "multiDay": true,
+          "labelStart": "1.03",
+          "labelEnd": "15.03",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2027-02-15",
+          "end": "2027-02-15",
+          "raw": "15.02.2027",
+          "multiDay": false,
+          "labelStart": "15.02",
+          "labelEnd": "15.02",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      },
+      {
+        "name": "Очный Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Школа №47"
+            ]
+          }
+        ],
+        "venues": [
+          "Школа №47"
+        ],
+        "date": {
+          "start": "2027-04-01",
+          "end": "2027-04-01",
+          "raw": "01.04.2027 10:00",
+          "multiDay": false,
+          "labelStart": "1.04",
+          "labelEnd": "1.04",
+          "yearExplicit": true,
+          "time": "10:00",
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2027-02-15",
+          "end": "2027-02-15",
+          "raw": "15.02.2027",
+          "multiDay": false,
+          "labelStart": "15.02",
+          "labelEnd": "15.02",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "conf_multi_lobachevsky",
+    "source": "data/conferences/conf_multi_lobachevsky.md",
+    "title": "Всероссийская научная конференция учащихся «Лобачевский. Прорыв»",
+    "shortTitle": "Лобачевский. Прорыв",
+    "subjects": [
+      "Межпредметная"
+    ],
+    "grades": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "description": "Конкурс научных исследований / конференция КФУ имени Н. И. Лобачевского. Даты ниже — сезон 2025–2026 (прошлый год).",
+    "website": "https://kpfu.ru/",
+    "tours": [
+      {
+        "name": "Отборочный Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2026-01-12",
+          "end": "2026-02-09",
+          "raw": "12.01.2026-09.02.2026",
+          "multiDay": true,
+          "labelStart": "12.01",
+          "labelEnd": "9.02",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-01-12",
+          "end": "2026-01-12",
+          "raw": "12.01.2026",
+          "multiDay": false,
+          "labelStart": "12.01",
+          "labelEnd": "12.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      },
+      {
+        "name": "Заключительный Тур",
+        "type": "offline",
+        "city": "Казань",
+        "cities": [
+          "Казань"
+        ],
+        "places": [
+          {
+            "city": "Казань",
+            "venues": [
+              "КФУ"
+            ]
+          }
+        ],
+        "venues": [
+          "КФУ"
+        ],
+        "date": {
+          "start": "2026-03-27",
+          "end": "2026-03-29",
+          "raw": "27.03.2026-29.03.2026",
+          "multiDay": true,
+          "labelStart": "27.03",
+          "labelEnd": "29.03",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-01-12",
+          "end": "2026-01-12",
+          "raw": "12.01.2026",
+          "multiDay": false,
+          "labelStart": "12.01",
+          "labelEnd": "12.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      }
+    ]
+  },
+  {
+    "id": "conf_multi_lomonosov_openings",
+    "source": "data/conferences/conf_multi_lomonosov_openings.md",
+    "title": "Открытые городские Ломоносовские чтения «Мои личные открытия»",
+    "shortTitle": "Ломоносовские чтения",
+    "subjects": [
+      "Межпредметная"
+    ],
+    "grades": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "description": "Научные исследования, технологические проекты и педагогические практики.",
+    "website": null,
+    "tours": [
+      {
+        "name": "Отборочный Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2027-02-15",
+          "end": "2027-02-26",
+          "raw": "15.02.2027-26.02.2027",
+          "multiDay": true,
+          "labelStart": "15.02",
+          "labelEnd": "26.02",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2027-02-01",
+          "end": "2027-02-01",
+          "raw": "01.02.2027",
+          "multiDay": false,
+          "labelStart": "1.02",
+          "labelEnd": "1.02",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      },
+      {
+        "name": "Заключительный Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Школа №6"
+            ]
+          }
+        ],
+        "venues": [
+          "Школа №6"
+        ],
+        "date": {
+          "start": "2027-03-20",
+          "end": "2027-03-20",
+          "raw": "20.03.2027 10:00",
+          "multiDay": false,
+          "labelStart": "20.03",
+          "labelEnd": "20.03",
+          "yearExplicit": true,
+          "time": "10:00",
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2027-02-01",
+          "end": "2027-02-01",
+          "raw": "01.02.2027",
+          "multiDay": false,
+          "labelStart": "1.02",
+          "labelEnd": "1.02",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "conf_multi_pervye_shagi",
+    "source": "data/conferences/conf_multi_pervye_shagi.md",
+    "title": "VIII городская конференция исследовательских работ «Первые шаги в науку»",
+    "shortTitle": "Первые шаги в науку",
+    "subjects": [
+      "Межпредметная"
+    ],
+    "grades": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "description": "Публичная защита самостоятельных исследовательских работ.",
+    "website": null,
+    "tours": [
+      {
+        "name": "Школьный этап",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2026-09-01",
+          "end": "2027-01-31",
+          "raw": "01.09.2026-31.01.2027",
+          "multiDay": true,
+          "labelStart": "1.09",
+          "labelEnd": "31.01",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "raw": "01.09.2026",
+          "multiDay": false,
+          "labelStart": "1.09",
+          "labelEnd": "1.09",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      },
+      {
+        "name": "Заключительный Тур 1-2",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Школа №10 «Успех»"
+            ]
+          }
+        ],
+        "venues": [
+          "Школа №10 «Успех»"
+        ],
+        "date": {
+          "start": "2027-02-27",
+          "end": "2027-02-27",
+          "raw": "27.02.2027 10:00",
+          "multiDay": false,
+          "labelStart": "27.02",
+          "labelEnd": "27.02",
+          "yearExplicit": true,
+          "time": "10:00",
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2027-02-05",
+          "end": "2027-02-05",
+          "raw": "05.02.2027",
+          "multiDay": false,
+          "labelStart": "5.02",
+          "labelEnd": "5.02",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      },
+      {
+        "name": "Заключительный Тур 3-4",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Школа №10 «Успех»"
+            ]
+          }
+        ],
+        "venues": [
+          "Школа №10 «Успех»"
+        ],
+        "date": {
+          "start": "2027-03-13",
+          "end": "2027-03-13",
+          "raw": "13.03.2027 10:00",
+          "multiDay": false,
+          "labelStart": "13.03",
+          "labelEnd": "13.03",
+          "yearExplicit": true,
+          "time": "10:00",
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2027-02-05",
+          "end": "2027-02-05",
+          "raw": "05.02.2027",
+          "multiDay": false,
+          "labelStart": "5.02",
+          "labelEnd": "5.02",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "conf_eng_tech_steps",
+    "source": "data/conferences/conf_eng_tech_steps.md",
+    "title": "Городская научно-практическая конференция «Первые шаги в мир технических наук»",
+    "shortTitle": "Первые шаги в технические науки",
+    "subjects": [
+      "Инженер"
+    ],
+    "grades": [
+      3,
+      4
+    ],
+    "description": "Защита исследовательских и проектных работ технической направленности.",
+    "website": "https://forms.yandex.ru/cloud/69fc625c068ff05b920d5a09",
+    "tours": [
+      {
+        "name": "Заочный Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2026-12-01",
+          "end": "2026-12-21",
+          "raw": "01.12.2026-21.12.2026",
+          "multiDay": true,
+          "labelStart": "1.12",
+          "labelEnd": "21.12",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2026-11-01",
+          "end": "2026-11-01",
+          "raw": "01.11.2026",
+          "multiDay": false,
+          "labelStart": "1.11",
+          "labelEnd": "1.11",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      },
+      {
+        "name": "Очный Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Школа №85"
+            ]
+          }
+        ],
+        "venues": [
+          "Школа №85"
+        ],
+        "date": {
+          "start": "2027-01-30",
+          "end": "2027-01-30",
+          "raw": "30.01.2027 10:00",
+          "multiDay": false,
+          "labelStart": "30.01",
+          "labelEnd": "30.01",
+          "yearExplicit": true,
+          "time": "10:00",
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2026-11-01",
+          "end": "2026-11-01",
+          "raw": "01.11.2026",
+          "multiDay": false,
+          "labelStart": "1.11",
+          "labelEnd": "1.11",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "conf_multi_festival_nauki",
+    "source": "data/conferences/conf_multi_festival_nauki.md",
+    "title": "Областная конференция для младших школьников «Фестиваль науки»",
+    "shortTitle": "Фестиваль науки",
+    "subjects": [
+      "Межпредметная"
+    ],
+    "grades": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "description": "Областная конференция младших школьников. В календаре участника — очный этап 01.02 в СамЛИТ (сезон 2025–2026).",
+    "website": "https://samlit.net/",
+    "sortOrder": 0,
+    "tours": [
+      {
+        "name": "Основной Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "СамЛИТ"
+            ]
+          }
+        ],
+        "venues": [
+          "СамЛИТ"
+        ],
+        "date": {
+          "start": "2026-02-01",
+          "end": "2026-02-01",
+          "raw": "01.02.2026",
+          "multiDay": false,
+          "labelStart": "1.02",
+          "labelEnd": "1.02",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-01-01",
+          "end": "2026-01-01",
+          "raw": "01.01.2026",
+          "multiDay": false,
+          "labelStart": "1.01",
+          "labelEnd": "1.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      }
+    ]
+  },
+  {
     "id": "shag_junior",
     "source": "data/conferences/shag_junior.md",
     "title": "Национальное соревнование юных исследователей и разработчиков «Шаг в будущее, Юниор»",
@@ -44,15 +596,230 @@
           "labelStart": "19.10",
           "labelEnd": "23.10",
           "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-04-01",
+          "end": "2026-04-01",
+          "raw": "01.04.2026",
+          "multiDay": false,
+          "labelStart": "1.04",
+          "labelEnd": "1.04",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      },
+      {
+        "name": "Региональный Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Лицей №1 «Спутник»"
+            ]
+          }
+        ],
+        "venues": [
+          "Лицей №1 «Спутник»"
+        ],
+        "date": {
+          "start": "2026-03-01",
+          "end": "2026-03-01",
+          "raw": "01.03.2026",
+          "multiDay": false,
+          "labelStart": "1.03",
+          "labelEnd": "1.03",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-02-01",
+          "end": "2026-02-01",
+          "raw": "01.02.2026",
+          "multiDay": false,
+          "labelStart": "1.02",
+          "labelEnd": "1.02",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      }
+    ]
+  },
+  {
+    "id": "conf_multi_yunye_lomonosovtsy",
+    "source": "data/conferences/conf_multi_yunye_lomonosovtsy.md",
+    "title": "Открытые городские чтения «Юные ломоносовцы»",
+    "shortTitle": "Юные ломоносовцы",
+    "subjects": [
+      "Межпредметная"
+    ],
+    "grades": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "description": "Защита учебно-исследовательских и проектных работ.",
+    "website": null,
+    "tours": [
+      {
+        "name": "Отборочный Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2027-01-25",
+          "end": "2027-02-07",
+          "raw": "25.01.2027-07.02.2027",
+          "multiDay": true,
+          "labelStart": "25.01",
+          "labelEnd": "7.02",
+          "yearExplicit": true,
           "accuracy": "confirmed"
         },
         "announced": {
-          "start": "2026-09-01",
-          "end": "2026-09-01",
-          "raw": "01.09.2026",
+          "start": "2027-01-01",
+          "end": "2027-01-01",
+          "raw": "01.01.2027",
           "multiDay": false,
-          "labelStart": "1.09",
-          "labelEnd": "1.09",
+          "labelStart": "1.01",
+          "labelEnd": "1.01",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      },
+      {
+        "name": "Заключительный Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Школа №6"
+            ]
+          }
+        ],
+        "venues": [
+          "Школа №6"
+        ],
+        "date": {
+          "start": "2027-02-27",
+          "end": "2027-02-27",
+          "raw": "27.02.2027 10:00",
+          "multiDay": false,
+          "labelStart": "27.02",
+          "labelEnd": "27.02",
+          "yearExplicit": true,
+          "time": "10:00",
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2027-01-01",
+          "end": "2027-01-01",
+          "raw": "01.01.2027",
+          "multiDay": false,
+          "labelStart": "1.01",
+          "labelEnd": "1.01",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "conf_multi_ya_issledovatel",
+    "source": "data/conferences/conf_multi_ya_issledovatel.md",
+    "title": "XVIII городская межшкольная конференция «Я — исследователь»",
+    "shortTitle": "Я — исследователь",
+    "subjects": [
+      "Межпредметная"
+    ],
+    "grades": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "description": "Конференция самостоятельных исследовательских работ.",
+    "website": null,
+    "tours": [
+      {
+        "name": "Школьный этап",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2026-12-07",
+          "end": "2026-12-29",
+          "raw": "07.12.2026-29.12.2026",
+          "multiDay": true,
+          "labelStart": "7.12",
+          "labelEnd": "29.12",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2026-12-01",
+          "end": "2026-12-01",
+          "raw": "01.12.2026",
+          "multiDay": false,
+          "labelStart": "1.12",
+          "labelEnd": "1.12",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      },
+      {
+        "name": "Заключительный Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2027-04-10",
+          "end": "2027-04-10",
+          "raw": "10.04.2027",
+          "multiDay": false,
+          "labelStart": "10.04",
+          "labelEnd": "10.04",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2026-12-01",
+          "end": "2026-12-01",
+          "raw": "01.12.2026",
+          "multiDay": false,
+          "labelStart": "1.12",
+          "labelEnd": "1.12",
           "yearExplicit": true,
           "accuracy": "confirmed"
         }

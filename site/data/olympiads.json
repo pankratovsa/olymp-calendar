@@ -1,7 +1,7 @@
 [
   {
     "id": "2x2",
-    "source": "data/olymps/2x2.md",
+    "source": "data/olymps/engineer/2x2.md",
     "title": "Олимпиада начальной школы 2x2",
     "shortTitle": "2x2",
     "subjects": [
@@ -57,8 +57,103 @@
     ]
   },
   {
+    "id": "olymp_math_2x2_grade5",
+    "source": "data/olymps/engineer/olymp_math_2x2_grade5.md",
+    "title": "Олимпиада пятиклассников творческой лаборатории 2×2",
+    "shortTitle": "2×2 пятиклассники",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      5
+    ],
+    "description": "Открытая олимпиада Творческой лаборатории «Дважды Два» для школьников не старше 5 класса. Два тура: письменный (для всех желающих) и устный (по результатам письменного тура и дипломам других олимпиад того же уровня). Даты ниже — сезон 2025–2026 (прошлый год).",
+    "website": "https://www.mathbaby.ru/olympiads/olimpiada-5-klassa",
+    "tours": [
+      {
+        "name": "Письменный Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2026-01-25",
+          "end": "2026-01-25",
+          "raw": "25.01.2026",
+          "multiDay": false,
+          "labelStart": "25.01",
+          "labelEnd": "25.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-01-18",
+          "end": "2026-01-18",
+          "raw": "18.01.2026",
+          "multiDay": false,
+          "labelStart": "18.01",
+          "labelEnd": "18.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      },
+      {
+        "name": "Устный Тур",
+        "type": "offline",
+        "city": "Москва",
+        "cities": [
+          "Москва",
+          "Ижевск"
+        ],
+        "places": [
+          {
+            "city": "Москва",
+            "venues": [
+              "Школа 2086"
+            ]
+          },
+          {
+            "city": "Ижевск",
+            "venues": []
+          }
+        ],
+        "venues": [
+          "Школа 2086"
+        ],
+        "date": {
+          "start": "2026-03-22",
+          "end": "2026-03-22",
+          "raw": "22.03.2026",
+          "multiDay": false,
+          "labelStart": "22.03",
+          "labelEnd": "22.03",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-01-18",
+          "end": "2026-01-18",
+          "raw": "18.01.2026",
+          "multiDay": false,
+          "labelStart": "18.01",
+          "labelEnd": "18.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      }
+    ]
+  },
+  {
     "id": "winkid",
-    "source": "data/olymps/winkid.md",
+    "source": "data/olymps/engineer/winkid.md",
     "title": "Winkid",
     "shortTitle": "Winkid",
     "subjects": [
@@ -489,8 +584,66 @@
     ]
   },
   {
+    "id": "olymp_multi_albatyreva",
+    "source": "data/olymps/engineer/olymp_multi_albatyreva.md",
+    "title": "Городская предметная олимпиада имени Е. Г. Албатыревой",
+    "shortTitle": "Албатырева",
+    "subjects": [
+      "Русский",
+      "Математика",
+      "Окружающий мир"
+    ],
+    "grades": [
+      4
+    ],
+    "description": "Отдельные предметные работы для 4 классов.",
+    "website": null,
+    "tours": [
+      {
+        "name": "Основной Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Школа №16"
+            ]
+          }
+        ],
+        "venues": [
+          "Школа №16"
+        ],
+        "date": {
+          "start": "2027-02-13",
+          "end": "2027-02-13",
+          "raw": "13.02.2027 10:00",
+          "multiDay": false,
+          "labelStart": "13.02",
+          "labelEnd": "13.02",
+          "yearExplicit": true,
+          "time": "10:00",
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2027-02-01",
+          "end": "2027-02-01",
+          "raw": "01.02.2027",
+          "multiDay": false,
+          "labelStart": "1.02",
+          "labelEnd": "1.02",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
     "id": "belchonok_info",
-    "source": "data/olymps/belchonok_info.md",
+    "source": "data/olymps/engineer/belchonok_info.md",
     "title": "Университетская олимпиада школьников «Бельчонок» Информатика",
     "shortTitle": "Бельчонок Информатика",
     "subjects": [
@@ -582,7 +735,7 @@
   },
   {
     "id": "belchonok_math",
-    "source": "data/olymps/belchonok_math.md",
+    "source": "data/olymps/engineer/belchonok_math.md",
     "title": "Университетская олимпиада школьников «Бельчонок» Математика",
     "shortTitle": "Бельчонок Математика",
     "subjects": [
@@ -674,7 +827,7 @@
   },
   {
     "id": "vshosh_math",
-    "source": "data/olymps/vshosh_math.md",
+    "source": "data/olymps/engineer/vshosh_math.md",
     "title": "Всероссийска олимпиада школькников Математика",
     "shortTitle": "ВСОШ Математика",
     "subjects": [
@@ -720,7 +873,7 @@
   },
   {
     "id": "vshosh_rus",
-    "source": "data/olymps/vshosh_rus.md",
+    "source": "data/olymps/engineer/vshosh_rus.md",
     "title": "Всероссийска олимпиада школькников Русский язык",
     "shortTitle": "ВСОШ Русский",
     "subjects": [
@@ -765,8 +918,68 @@
     ]
   },
   {
+    "id": "olymp_multi_zvezdny_olimp",
+    "source": "data/olymps/engineer/olymp_multi_zvezdny_olimp.md",
+    "title": "Городская интегрированная олимпиада «Звёздный олимп»",
+    "shortTitle": "Звёздный олимп",
+    "subjects": [
+      "Русский",
+      "Математика",
+      "Окружающий мир"
+    ],
+    "grades": [
+      2,
+      3,
+      4
+    ],
+    "description": "Индивидуальные задания по единому интегрированному тексту.",
+    "website": "https://persp.ru",
+    "tours": [
+      {
+        "name": "Основной Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Гимназия «Перспектива»"
+            ]
+          }
+        ],
+        "venues": [
+          "Гимназия «Перспектива»"
+        ],
+        "date": {
+          "start": "2027-03-20",
+          "end": "2027-03-20",
+          "raw": "20.03.2027 10:00",
+          "multiDay": false,
+          "labelStart": "20.03",
+          "labelEnd": "20.03",
+          "yearExplicit": true,
+          "time": "10:00",
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2027-02-11",
+          "end": "2027-02-11",
+          "raw": "11.02.2027",
+          "multiDay": false,
+          "labelStart": "11.02",
+          "labelEnd": "11.02",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
     "id": "open_kazan",
-    "source": "data/olymps/open_kazan.md",
+    "source": "data/olymps/engineer/open_kazan.md",
     "title": "Открытая городская олимпиада по математике г. Казани для 2-6 классов",
     "shortTitle": "Казанская Открытая",
     "subjects": [
@@ -881,7 +1094,7 @@
   },
   {
     "id": "kenguru",
-    "source": "data/olymps/kenguru.md",
+    "source": "data/olymps/engineer/kenguru.md",
     "title": "Международный игровой конкурс по математике «Кенгуру",
     "shortTitle": "Кенгуру",
     "subjects": [
@@ -945,8 +1158,214 @@
     ]
   },
   {
+    "id": "olymp_math_lomonosov",
+    "source": "data/olymps/engineer/olymp_math_lomonosov.md",
+    "title": "Олимпиада школьников «Ломоносов» по математике",
+    "shortTitle": "Ломоносов",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "description": "Олимпиада МГУ «Ломоносов» по математике (не путать с Турниром имени М. В. Ломоносова). Даты ниже — сезон 2025–2026 (прошлый год).",
+    "website": "https://olymp.msu.ru/",
+    "tours": [
+      {
+        "name": "Отборочный Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2025-11-29",
+          "end": "2025-12-06",
+          "raw": "29.11.2025-06.12.2025",
+          "multiDay": true,
+          "labelStart": "29.11",
+          "labelEnd": "6.12",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2025-10-24",
+          "end": "2025-10-24",
+          "raw": "24.10.2025",
+          "multiDay": false,
+          "labelStart": "24.10",
+          "labelEnd": "24.10",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      },
+      {
+        "name": "Заключительный Тур",
+        "type": "offline",
+        "city": "Москва",
+        "cities": [
+          "Москва"
+        ],
+        "places": [
+          {
+            "city": "Москва",
+            "venues": [
+              "МГУ"
+            ]
+          }
+        ],
+        "venues": [
+          "МГУ"
+        ],
+        "date": {
+          "start": "2026-03-29",
+          "end": "2026-03-29",
+          "raw": "29.03.2026 11:00 msk",
+          "multiDay": false,
+          "labelStart": "29.03",
+          "labelEnd": "29.03",
+          "yearExplicit": true,
+          "time": "11:00",
+          "timezone": "MSK",
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-03-20",
+          "end": "2026-03-20",
+          "raw": "20.03.2026",
+          "multiDay": false,
+          "labelStart": "20.03",
+          "labelEnd": "20.03",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      }
+    ]
+  },
+  {
+    "id": "olymp_math_perestrelka",
+    "source": "data/olymps/engineer/olymp_math_perestrelka.md",
+    "title": "XX городская, V региональная олимпиада «Математическая перестрелка»",
+    "shortTitle": "Математическая перестрелка",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      5,
+      6,
+      7
+    ],
+    "description": "Командное математическое соревнование: личная блиц-олимпиада и командная перестрелка.",
+    "website": null,
+    "tours": [
+      {
+        "name": "Основной Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "СМТЛ"
+            ]
+          }
+        ],
+        "venues": [
+          "СМТЛ"
+        ],
+        "date": {
+          "start": "2027-04-10",
+          "end": "2027-04-10",
+          "raw": "10.04.2027 10:00",
+          "multiDay": false,
+          "labelStart": "10.04",
+          "labelEnd": "10.04",
+          "yearExplicit": true,
+          "time": "10:00",
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2027-03-01",
+          "end": "2027-03-01",
+          "raw": "01.03.2027",
+          "multiDay": false,
+          "labelStart": "1.03",
+          "labelEnd": "1.03",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "olymp_math_marathon",
+    "source": "data/olymps/engineer/olymp_math_marathon.md",
+    "title": "Городская олимпиада по математике «Математический марафон»",
+    "shortTitle": "Математический марафон",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      5,
+      6
+    ],
+    "description": "Индивидуальное решение нестандартных математических задач.",
+    "website": null,
+    "tours": [
+      {
+        "name": "Основной Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Лицей «Созвездие» №131"
+            ]
+          }
+        ],
+        "venues": [
+          "Лицей «Созвездие» №131"
+        ],
+        "date": {
+          "start": "2027-01-23",
+          "end": "2027-01-23",
+          "raw": "23.01.2027 12:00",
+          "multiDay": false,
+          "labelStart": "23.01",
+          "labelEnd": "23.01",
+          "yearExplicit": true,
+          "time": "12:00",
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2027-01-01",
+          "end": "2027-01-01",
+          "raw": "01.01.2027",
+          "multiDay": false,
+          "labelStart": "1.01",
+          "labelEnd": "1.01",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
     "id": "we_ingneers",
-    "source": "data/olymps/we_ingneers.md",
+    "source": "data/olymps/engineer/we_ingneers.md",
     "title": "Городской политехнической Олимпиаде «Мы инженеры». Успех Самара.",
     "shortTitle": "Мы-Инженеры",
     "subjects": [
@@ -1005,7 +1424,7 @@
   },
   {
     "id": "ntl_2x2",
-    "source": "data/olymps/ntl_2x2.md",
+    "source": "data/olymps/engineer/ntl_2x2.md",
     "title": "Осеннюю математическая олимпиада НТЛ 2x2",
     "shortTitle": "НТЛ 2x2",
     "subjects": [
@@ -1065,8 +1484,276 @@
     ]
   },
   {
+    "id": "olymp_math_energy_hope",
+    "source": "data/olymps/engineer/olymp_math_energy_hope.md",
+    "title": "Олимпиада школьников «Надежда энергетики» по математике",
+    "shortTitle": "Надежда энергетики",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "description": "Олимпиада НИУ «МЭИ». Отборочный этап — дистанционно (несколько потоков/попыток), заключительный — очно на площадках вузов. Также есть направления физика, информатика и компьютерное моделирование (отдельные туры по предметам на том же сайте).\n\nДаты ниже — сезон 2025–2026 (прошлый год). Расписание 2026–2027 на energy-hope.ru ожидается около октября 2026.",
+    "website": "https://www.energy-hope.ru/",
+    "tours": [
+      {
+        "name": "Тренировочный Тур 1",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2025-10-26",
+          "end": "2025-10-26",
+          "raw": "26.10.2025",
+          "multiDay": false,
+          "labelStart": "26.10",
+          "labelEnd": "26.10",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2025-10-09",
+          "end": "2025-10-09",
+          "raw": "09.10.2025",
+          "multiDay": false,
+          "labelStart": "9.10",
+          "labelEnd": "9.10",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      },
+      {
+        "name": "Тренировочный Тур 2",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2025-11-09",
+          "end": "2025-11-09",
+          "raw": "09.11.2025",
+          "multiDay": false,
+          "labelStart": "9.11",
+          "labelEnd": "9.11",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2025-10-09",
+          "end": "2025-10-09",
+          "raw": "09.10.2025",
+          "multiDay": false,
+          "labelStart": "9.10",
+          "labelEnd": "9.10",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      },
+      {
+        "name": "Отборочный Тур 1",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2025-11-16",
+          "end": "2025-11-16",
+          "raw": "16.11.2025 11:00 msk",
+          "multiDay": false,
+          "labelStart": "16.11",
+          "labelEnd": "16.11",
+          "yearExplicit": true,
+          "time": "11:00",
+          "timezone": "MSK",
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2025-10-09",
+          "end": "2025-10-09",
+          "raw": "09.10.2025",
+          "multiDay": false,
+          "labelStart": "9.10",
+          "labelEnd": "9.10",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      },
+      {
+        "name": "Отборочный Тур 2",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2025-11-29",
+          "end": "2025-11-29",
+          "raw": "29.11.2025 11:00 msk",
+          "multiDay": false,
+          "labelStart": "29.11",
+          "labelEnd": "29.11",
+          "yearExplicit": true,
+          "time": "11:00",
+          "timezone": "MSK",
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2025-10-09",
+          "end": "2025-10-09",
+          "raw": "09.10.2025",
+          "multiDay": false,
+          "labelStart": "9.10",
+          "labelEnd": "9.10",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      },
+      {
+        "name": "Заключительный Тур",
+        "type": "offline",
+        "city": "Москва",
+        "cities": [
+          "Москва"
+        ],
+        "places": [
+          {
+            "city": "Москва",
+            "venues": [
+              "НИУ МЭИ"
+            ]
+          }
+        ],
+        "venues": [
+          "НИУ МЭИ"
+        ],
+        "date": {
+          "start": "2026-03-15",
+          "end": "2026-03-15",
+          "raw": "15.03.2026 11:00 msk",
+          "multiDay": false,
+          "labelStart": "15.03",
+          "labelEnd": "15.03",
+          "yearExplicit": true,
+          "time": "11:00",
+          "timezone": "MSK",
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-03-01",
+          "end": "2026-03-01",
+          "raw": "01.03.2026",
+          "multiDay": false,
+          "labelStart": "1.03",
+          "labelEnd": "1.03",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      }
+    ]
+  },
+  {
+    "id": "olymp_math_kfu",
+    "source": "data/olymps/engineer/olymp_math_kfu.md",
+    "title": "Межрегиональная предметная олимпиада КФУ по математике",
+    "shortTitle": "Олимпиада КФУ",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "description": "Межрегиональные предметные олимпиады Казанского федерального университета (МПО КФУ). Это отдельное мероприятие от Winkid (winkid.ru): Winkid — серия олимпиад 1–9 классов, МПО КФУ — перечневая олимпиада 5–11 классов.\n\nДаты ниже — сезон 2025–2026 (прошлый год): отбор 05–30.11.2025, очный тур по математике 16.01.2026.",
+    "website": "http://malun.kpfu.ru/mpo",
+    "tours": [
+      {
+        "name": "Отборочный Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2025-11-05",
+          "end": "2025-11-30",
+          "raw": "05.11.2025-30.11.2025",
+          "multiDay": true,
+          "labelStart": "5.11",
+          "labelEnd": "30.11",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2025-10-01",
+          "end": "2025-10-01",
+          "raw": "01.10.2025",
+          "multiDay": false,
+          "labelStart": "1.10",
+          "labelEnd": "1.10",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      },
+      {
+        "name": "Заключительный Тур",
+        "type": "offline",
+        "city": "Казань",
+        "cities": [
+          "Казань"
+        ],
+        "places": [
+          {
+            "city": "Казань",
+            "venues": [
+              "КФУ"
+            ]
+          }
+        ],
+        "venues": [
+          "КФУ"
+        ],
+        "date": {
+          "start": "2026-01-16",
+          "end": "2026-01-16",
+          "raw": "16.01.2026",
+          "multiDay": false,
+          "labelStart": "16.01",
+          "labelEnd": "16.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2025-11-05",
+          "end": "2025-11-05",
+          "raw": "05.11.2025",
+          "multiDay": false,
+          "labelStart": "5.11",
+          "labelEnd": "5.11",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      }
+    ]
+  },
+  {
     "id": "kurova",
-    "source": "data/olymps/kurova.md",
+    "source": "data/olymps/engineer/kurova.md",
     "title": "Региональная олимпиада школьников по математике имени В.А. Курова",
     "shortTitle": "Олимпиада им. Курова",
     "subjects": [
@@ -1197,7 +1884,7 @@
   },
   {
     "id": "autumn_olymp",
-    "source": "data/olymps/autumn_olymp.md",
+    "source": "data/olymps/engineer/autumn_olymp.md",
     "title": "Осенний Олим",
     "shortTitle": "Осенний Олим",
     "subjects": [
@@ -1292,7 +1979,7 @@
   },
   {
     "id": "shkolkovo",
-    "source": "data/olymps/shkolkovo.md",
+    "source": "data/olymps/engineer/shkolkovo.md",
     "title": "Первая Математическая олимпиада школьников\" Школково",
     "shortTitle": "Первая Математическая",
     "subjects": [
@@ -1352,7 +2039,7 @@
   },
   {
     "id": "spb_junior",
-    "source": "data/olymps/spb_junior.md",
+    "source": "data/olymps/engineer/spb_junior.md",
     "title": "Санкт-Петербургская математическая олимпиада начальной школы",
     "shortTitle": "Петербургская начальной школы",
     "subjects": [
@@ -1449,8 +2136,97 @@
     ]
   },
   {
+    "id": "olymp_math_pokori",
+    "source": "data/olymps/engineer/olymp_math_pokori.md",
+    "title": "Олимпиада «Покори Воробьёвы горы!» по математике",
+    "shortTitle": "Покори Воробьёвы горы",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "description": "Олимпиада МГУ «Покори Воробьёвы горы!» по математике. Даты ниже — сезон 2025–2026 (прошлый год).",
+    "website": "https://pvg.mk.ru/",
+    "tours": [
+      {
+        "name": "Отборочный Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2025-12-15",
+          "end": "2026-01-19",
+          "raw": "15.12.2025-19.01.2026",
+          "multiDay": true,
+          "labelStart": "15.12",
+          "labelEnd": "19.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2025-12-01",
+          "end": "2025-12-01",
+          "raw": "01.12.2025",
+          "multiDay": false,
+          "labelStart": "1.12",
+          "labelEnd": "1.12",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      },
+      {
+        "name": "Заключительный Тур",
+        "type": "offline",
+        "city": "Москва",
+        "cities": [
+          "Москва"
+        ],
+        "places": [
+          {
+            "city": "Москва",
+            "venues": [
+              "МГУ"
+            ]
+          }
+        ],
+        "venues": [
+          "МГУ"
+        ],
+        "date": {
+          "start": "2026-04-05",
+          "end": "2026-04-05",
+          "raw": "05.04.2026",
+          "multiDay": false,
+          "labelStart": "5.04",
+          "labelEnd": "5.04",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-03-17",
+          "end": "2026-03-17",
+          "raw": "17.03.2026",
+          "multiDay": false,
+          "labelStart": "17.03",
+          "labelEnd": "17.03",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      }
+    ]
+  },
+  {
     "id": "123_newyear",
-    "source": "data/olymps/123_newyear.md",
+    "source": "data/olymps/engineer/123_newyear.md",
     "title": "Новогодний \"Раз-Два-Три",
     "shortTitle": "Раз-Два-Три",
     "subjects": [
@@ -1509,8 +2285,8 @@
   },
   {
     "id": "systematica",
-    "source": "data/olymps/systematica.md",
-    "title": "Международная олимпиада по математике «Систематика",
+    "source": "data/olymps/engineer/systematica.md",
+    "title": "Международная олимпиада по математике «Систематика»",
     "shortTitle": "Систематика",
     "subjects": [
       "Математика"
@@ -1528,11 +2304,11 @@
       10,
       11
     ],
-    "description": "Международная олимпиада по математике \"Систематика\"",
+    "description": "Международная олимпиада по математике «Систематика». Осень 2026 — 21-й сезон. Зима — 20-й сезон (зима 2026) по расписанию systematika.org/olimpiada.",
     "website": "https://systematika.org/olimpiada/math/",
     "tours": [
       {
-        "name": "1 Тур Онлайн",
+        "name": "Осенний отборочный",
         "type": "online",
         "city": null,
         "cities": [],
@@ -1560,7 +2336,7 @@
         }
       },
       {
-        "name": "2 Тур",
+        "name": "Осенний заключительный",
         "type": "offline",
         "city": "Самара",
         "cities": [
@@ -1590,12 +2366,261 @@
           "accuracy": "confirmed"
         },
         "announced": {
-          "start": "2026-08-16",
-          "end": "2026-08-16",
-          "raw": "16.08.2026",
+          "start": "2026-10-29",
+          "end": "2026-10-29",
+          "raw": "29.10.2026",
           "multiDay": false,
-          "labelStart": "16.08",
-          "labelEnd": "16.08",
+          "labelStart": "29.10",
+          "labelEnd": "29.10",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      },
+      {
+        "name": "Зимний отборочный",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2026-01-13",
+          "end": "2026-02-02",
+          "raw": "13.01.2026-02.02.2026",
+          "multiDay": true,
+          "labelStart": "13.01",
+          "labelEnd": "2.02",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-01-13",
+          "end": "2026-01-13",
+          "raw": "13.01.2026",
+          "multiDay": false,
+          "labelStart": "13.01",
+          "labelEnd": "13.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      },
+      {
+        "name": "Зимний заключительный",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Искра (Купцова)"
+            ]
+          }
+        ],
+        "venues": [
+          "Искра (Купцова)"
+        ],
+        "date": {
+          "start": "2026-03-01",
+          "end": "2026-03-01",
+          "raw": "01.03.2026",
+          "multiDay": false,
+          "labelStart": "1.03",
+          "labelEnd": "1.03",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-03-01",
+          "end": "2026-03-01",
+          "raw": "01.03.2026",
+          "multiDay": false,
+          "labelStart": "1.03",
+          "labelEnd": "1.03",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      }
+    ]
+  },
+  {
+    "id": "olymp_multi_superznayka",
+    "source": "data/olymps/engineer/olymp_multi_superznayka.md",
+    "title": "Открытая городская олимпиада «СуперЗнайка-2027»",
+    "shortTitle": "СуперЗнайка",
+    "subjects": [
+      "Русский",
+      "Математика",
+      "Окружающий мир",
+      "Английский"
+    ],
+    "grades": [
+      4
+    ],
+    "description": "Предметная олимпиада для выпускников начальной школы. Основной этап — первая неделя весенних каникул 2026/27; точные даты публикуются позднее.",
+    "website": "https://www.school120-samara.ru/superznayka.html",
+    "tours": [
+      {
+        "name": "Отборочный Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2026-01-01",
+          "end": "2026-02-28",
+          "raw": "01.01.2026-28.02.2026",
+          "multiDay": true,
+          "labelStart": "1.01",
+          "labelEnd": "28.02",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2027-03-01",
+          "end": "2027-03-01",
+          "raw": "01.03.2027",
+          "multiDay": false,
+          "labelStart": "1.03",
+          "labelEnd": "1.03",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      },
+      {
+        "name": "Основной Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Школа №120",
+              "Школа №149"
+            ]
+          }
+        ],
+        "venues": [
+          "Школа №120",
+          "Школа №149"
+        ],
+        "date": {
+          "start": "2026-03-30",
+          "end": "2026-04-03",
+          "raw": "30.03.2026-03.04.2026",
+          "multiDay": true,
+          "labelStart": "30.03",
+          "labelEnd": "3.04",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2027-03-01",
+          "end": "2027-03-01",
+          "raw": "01.03.2027",
+          "multiDay": false,
+          "labelStart": "1.03",
+          "labelEnd": "1.03",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "olymp_math_samara_oral",
+    "source": "data/olymps/engineer/olymp_math_samara_oral.md",
+    "title": "Устная городская олимпиада по математике для 4–7-х классов городского округа Самара",
+    "shortTitle": "Устная олимпиада Самара",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "description": "Письменный дистанционный отбор и очная устная защита решений.",
+    "website": "https://cloud.mail.ru/public/mUG7/YJkywAJoE",
+    "tours": [
+      {
+        "name": "Отборочный Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2026-10-27",
+          "end": "2026-10-28",
+          "raw": "27.10.2026-28.10.2026",
+          "multiDay": true,
+          "labelStart": "27.10",
+          "labelEnd": "28.10",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "raw": "01.09.2026",
+          "multiDay": false,
+          "labelStart": "1.09",
+          "labelEnd": "1.09",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      },
+      {
+        "name": "Заключительный Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Школа №174"
+            ]
+          }
+        ],
+        "venues": [
+          "Школа №174"
+        ],
+        "date": {
+          "start": "2026-11-21",
+          "end": "2026-11-21",
+          "raw": "21.11.2026 10:00",
+          "multiDay": false,
+          "labelStart": "21.11",
+          "labelEnd": "21.11",
+          "yearExplicit": true,
+          "time": "10:00",
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "raw": "01.09.2026",
+          "multiDay": false,
+          "labelStart": "1.09",
+          "labelEnd": "1.09",
           "yearExplicit": true,
           "accuracy": "confirmed"
         }
@@ -1604,7 +2629,7 @@
   },
   {
     "id": "formula_edinstva",
-    "source": "data/olymps/formula_edinstva.md",
+    "source": "data/olymps/engineer/formula_edinstva.md",
     "title": "Формула Единства",
     "shortTitle": "Формула Единства",
     "subjects": [
@@ -1693,8 +2718,66 @@
     ]
   },
   {
+    "id": "olymp_math_erudit",
+    "source": "data/olymps/engineer/olymp_math_erudit.md",
+    "title": "Городская предметная олимпиада «Эрудит» по русскому языку и математике",
+    "shortTitle": "Эрудит",
+    "subjects": [
+      "Русский",
+      "Математика"
+    ],
+    "grades": [
+      2,
+      3,
+      4
+    ],
+    "description": "Две отдельные индивидуальные предметные олимпиады для начальных классов.",
+    "website": null,
+    "tours": [
+      {
+        "name": "Основной Тур",
+        "type": "offline",
+        "city": "Самара",
+        "cities": [
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Самара",
+            "venues": [
+              "Лицей «Созвездие» №131"
+            ]
+          }
+        ],
+        "venues": [
+          "Лицей «Созвездие» №131"
+        ],
+        "date": {
+          "start": "2026-11-21",
+          "end": "2026-11-21",
+          "raw": "21.11.2026",
+          "multiDay": false,
+          "labelStart": "21.11",
+          "labelEnd": "21.11",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2026-11-01",
+          "end": "2026-11-01",
+          "raw": "01.11.2026",
+          "multiDay": false,
+          "labelStart": "1.11",
+          "labelEnd": "1.11",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
     "id": "umsh",
-    "source": "data/olymps/umsh.md",
+    "source": "data/olymps/engineer/umsh.md",
     "title": "Олимпиада ЮМШ",
     "shortTitle": "ЮМШ",
     "subjects": [

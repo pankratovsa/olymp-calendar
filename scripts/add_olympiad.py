@@ -47,6 +47,7 @@ SECTION_ALIASES = {
     "классы": "grades",
     "описание": "description",
     "сайт": "website",
+    "порядок": "sortOrder",
     "туры": "tours",
     "мероприятия": "tours",
     "сессии": "tours",
@@ -419,6 +420,7 @@ def parse_olympiad(md: str, source: str) -> dict:
         "grades": [],
         "description": "",
         "website": None,
+        "sortOrder": None,
         "tours": [],
     }
 
@@ -495,6 +497,11 @@ def parse_olympiad(md: str, source: str) -> dict:
             site = extract_website(desc)
             if site:
                 olympiad["website"] = site
+        elif level == 2 and key == "sortOrder":
+            try:
+                olympiad["sortOrder"] = int(body.strip())
+            except ValueError:
+                olympiad["sortOrder"] = None
         elif level in (2, 3) and key == "website":
             olympiad["website"] = extract_website(body) or body.strip() or olympiad["website"]
 
@@ -502,6 +509,8 @@ def parse_olympiad(md: str, source: str) -> dict:
 
     if not olympiad["shortTitle"]:
         olympiad["shortTitle"] = olympiad["title"] or olympiad["id"]
+    if olympiad.get("sortOrder") is None:
+        olympiad.pop("sortOrder", None)
 
     return olympiad
 
@@ -581,7 +590,7 @@ def sync_kind(kind: str) -> int:
     cfg = KINDS[kind]
     cfg["dir"].mkdir(parents=True, exist_ok=True)
     items: list[dict] = []
-    files = sorted(cfg["dir"].glob("*.md"))
+    files = sorted(p for p in cfg["dir"].rglob("*.md") if p.is_file())
     for path in files:
         items = add_file(path, items)
         print(f"+ {path.relative_to(ROOT)} → {path.stem}")

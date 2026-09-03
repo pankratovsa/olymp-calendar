@@ -1,15 +1,69 @@
-const PAGE_KIND =
-  document.body?.dataset?.kind === "conferences" ? "conferences" : "olympiads";
-const DATA_FILE =
-  PAGE_KIND === "conferences" ? "conferences.json" : "olympiads.json";
-const EMPTY_COPY =
-  PAGE_KIND === "conferences"
-    ? "Пока нет конференций."
-    : "Пока нет олимпиад.";
-const LOAD_ERROR_COPY =
-  PAGE_KIND === "conferences"
-    ? "Не удалось загрузить данные конференций."
-    : "Не удалось загрузить данные олимпиад.";
+const SECTIONS = [
+  {
+    id: "conferences",
+    href: "conferences.html",
+    label: "Конференции",
+    kind: "conferences",
+    empty: "Пока нет конференций.",
+    loadError: "Не удалось загрузить данные конференций.",
+  },
+  {
+    id: "grades-1-4",
+    href: "index.html",
+    label: "Олимпиады 1–4",
+    kind: "olympiads",
+    grades: [1, 2, 3, 4],
+    empty: "Пока нет олимпиад для 1–4 классов.",
+    loadError: "Не удалось загрузить данные олимпиад.",
+  },
+  {
+    id: "grades-5-8",
+    href: "olymp-5-8.html",
+    label: "Олимпиады 5–8",
+    kind: "olympiads",
+    grades: [5, 6, 7, 8],
+    empty: "Пока нет олимпиад для 5–8 классов.",
+    loadError: "Не удалось загрузить данные олимпиад.",
+  },
+  {
+    id: "samara",
+    href: "olymp-samara.html",
+    label: "Олимпиады Самара",
+    kind: "olympiads",
+    city: "Самара",
+    empty: "Пока нет олимпиад в Самаре.",
+    loadError: "Не удалось загрузить данные олимпиад.",
+  },
+];
+
+function sectionFromHash() {
+  const hash = decodeURIComponent((location.hash || "").replace(/^#\/?/, ""));
+  return SECTIONS.find((s) => s.id === hash) || null;
+}
+
+function resolveSection() {
+  return (
+    sectionFromHash() ||
+    SECTIONS.find((s) => s.id === document.body?.dataset?.section) ||
+    SECTIONS[1]
+  );
+}
+
+let PAGE_SECTION = resolveSection();
+let PAGE_KIND = PAGE_SECTION.kind;
+const dataCache = { olympiads: null, conferences: null };
+
+function dataFileFor(kind) {
+  return kind === "conferences" ? "conferences.json" : "olympiads.json";
+}
+
+function emptyCopy() {
+  return PAGE_SECTION.empty;
+}
+
+function loadErrorCopy() {
+  return PAGE_SECTION.loadError;
+}
 
 const state = {
   olympiads: [],
@@ -108,9 +162,12 @@ function isWinkid(olympiad) {
   return olympiad.id === "winkid" || /winkid/i.test(olympiad.shortTitle || "");
 }
 
-/** Колонки — только по дате первого тура (раньше слева). */
+/** Колонки — сначала явный порядок, затем дата первого тура (раньше слева). */
 function orderedOlympiads() {
-  return [...state.olympiads].sort((a, b) => {
+  return sectionOlympiads().sort((a, b) => {
+    const ao = Number.isFinite(a.sortOrder) ? a.sortOrder : 1000;
+    const bo = Number.isFinite(b.sortOrder) ? b.sortOrder : 1000;
+    if (ao !== bo) return ao - bo;
     const as = olympiadEarliestStart(a) || "9999-12-31";
     const bs = olympiadEarliestStart(b) || "9999-12-31";
     if (as !== bs) return as.localeCompare(bs);
@@ -375,6 +432,41 @@ function sortCitiesFirst(cities) {
   });
 }
 
+function olympiadCities(olympiad) {
+  const cities = new Set();
+  for (const t of olympiad.tours || []) {
+    tourCities(t).forEach((c) => cities.add(c));
+  }
+  return [...cities];
+}
+
+/** Все туры только в Самаре — не в 1–4 / 5–8, только в «Олимпиады Самара». */
+function isSamaraOnly(olympiad) {
+  const tours = olympiad.tours || [];
+  if (!tours.length) return false;
+  return tours.every((t) => {
+    const cities = tourCities(t);
+    return cities.length > 0 && cities.every((c) => c === "Самара");
+  });
+}
+
+function olympiadMatchesSection(olympiad, section = PAGE_SECTION) {
+  if (!section || section.kind === "conferences") return true;
+  if (section.grades?.length) {
+    if (isSamaraOnly(olympiad)) return false;
+    const grades = new Set((olympiad.grades || []).map(Number));
+    return section.grades.some((g) => grades.has(g));
+  }
+  if (section.city) {
+    return olympiadCities(olympiad).includes(section.city);
+  }
+  return true;
+}
+
+function sectionOlympiads() {
+  return state.olympiads.filter((o) => olympiadMatchesSection(o));
+}
+
 function hasFormatFilter() {
   const { cities, types } = state.filters;
   return types.has("online") || types.has("offline") || cities.size > 0;
@@ -453,7 +545,7 @@ function renderMarkers(tour) {
 }
 
 function allFilterCities() {
-  return collectFilterOptions(state.olympiads).cities;
+  return collectFilterOptions(sectionOlympiads()).cities;
 }
 
 function toggleFilterChip(group, value) {
@@ -499,7 +591,7 @@ function chipHtml(group, item) {
 }
 
 function renderFilters() {
-  const opts = collectFilterOptions(state.olympiads);
+  const opts = collectFilterOptions(sectionOlympiads());
   const root = document.getElementById("filters");
 
   const formatChips = [
@@ -768,7 +860,7 @@ function renderCalendar() {
 
   if (!weeks.length) {
     thead.innerHTML = "";
-    tbody.innerHTML = `<tr><td class="cal-empty">${EMPTY_COPY}</td></tr>`;
+    tbody.innerHTML = `<tr><td class="cal-empty">${emptyCopy()}</td></tr>`;
     return;
   }
 
@@ -1049,7 +1141,55 @@ function resetFilters() {
   applyFilters();
 }
 
+function renderSiteNav() {
+  const root = document.getElementById("site-nav");
+  if (!root) return;
+  root.innerHTML = SECTIONS.map((s) => {
+    const active = s.id === PAGE_SECTION.id;
+    return `<a class="site-nav__link${active ? " is-active" : ""}" href="#${s.id}" data-section="${s.id}"${
+      active ? ' aria-current="page"' : ""
+    }>${escapeHtml(s.label)}</a>`;
+  }).join("");
+}
+
+function syncHash(section) {
+  const next = `#${section.id}`;
+  if (location.hash === next) return;
+  const url = new URL(location.href);
+  url.hash = section.id;
+  history.replaceState({ section: section.id }, "", url);
+}
+
+function goToSection(section) {
+  if (location.hash === `#${section.id}`) {
+    applySection(section).catch(showLoadError);
+    return;
+  }
+  const url = new URL(location.href);
+  url.hash = section.id;
+  history.pushState({ section: section.id }, "", url);
+  applySection(section).catch(showLoadError);
+}
+
+function showLoadError(err) {
+  console.error(err);
+  const cards = document.getElementById("cards");
+  if (cards) cards.innerHTML = `<p>${loadErrorCopy()}</p>`;
+}
+
+function applySectionChrome() {
+  document.title = `Календарь — ${PAGE_SECTION.label}`;
+  const foldLabel = document.getElementById("fold-label");
+  if (foldLabel) foldLabel.textContent = PAGE_SECTION.label;
+  const foldSection = document.querySelector(".section--fold");
+  if (foldSection) foldSection.setAttribute("aria-label", PAGE_SECTION.label);
+  const footer = document.querySelector(".footer p");
+  if (footer) footer.textContent = `Календарь · ${PAGE_SECTION.label}`;
+}
+
 function bindChrome() {
+  renderSiteNav();
+  applySectionChrome();
   const dateInput = document.getElementById("current-date");
   dateInput.value = state.currentDate;
   dateInput.addEventListener("change", () => {
@@ -1074,10 +1214,34 @@ function bindChrome() {
     foldBtn.setAttribute("aria-expanded", String(!open));
     foldPanel.hidden = open;
   });
+
+  const nav = document.getElementById("site-nav");
+  nav?.addEventListener("click", (e) => {
+    const a = e.target.closest("a[data-section]");
+    if (!a) return;
+    const section = SECTIONS.find((s) => s.id === a.dataset.section);
+    if (!section) return;
+    e.preventDefault();
+    goToSection(section);
+  });
+
+  window.addEventListener("popstate", () => {
+    applySection(resolveSection()).catch(showLoadError);
+  });
+  window.addEventListener("hashchange", () => {
+    applySection(resolveSection()).catch(showLoadError);
+  });
 }
 
-async function init() {
-  const siteRoot = new URL("../", import.meta.url);
+function siteRootUrl() {
+  const el = document.querySelector('script[src*="app.js"]');
+  if (el?.src) return new URL("../", el.src);
+  return new URL("./", location.href);
+}
+
+async function loadKindData(kind) {
+  if (dataCache[kind]) return dataCache[kind];
+  const siteRoot = siteRootUrl();
   const fetchOpts = { cache: "no-store" };
   let bust = String(Date.now());
   try {
@@ -1087,32 +1251,51 @@ async function init() {
     );
     if (verRes.ok) {
       const ver = await verRes.json();
-      const kindStamp = ver?.[PAGE_KIND];
+      const kindStamp = ver?.[kind];
       if (kindStamp?.v) bust = kindStamp.v;
       else if (ver?.v) bust = ver.v;
     }
   } catch (_) {
     /* offline / first run */
   }
+  const file = dataFileFor(kind);
   const res = await fetch(
-    new URL(`data/${DATA_FILE}?v=${encodeURIComponent(bust)}`, siteRoot),
+    new URL(`data/${file}?v=${encodeURIComponent(bust)}`, siteRoot),
     fetchOpts
   );
-  if (!res.ok) throw new Error(`Не удалось загрузить data/${DATA_FILE}`);
+  if (!res.ok) throw new Error(`Не удалось загрузить data/${file}`);
   const payload = await res.json();
-  state.olympiads = Array.isArray(payload) ? payload : [];
+  dataCache[kind] = Array.isArray(payload) ? payload : [];
+  return dataCache[kind];
+}
 
-  bindChrome();
-  document.getElementById("reset-filters").addEventListener("click", resetFilters);
-
+function renderSectionContent() {
+  renderSiteNav();
+  applySectionChrome();
+  Object.values(state.filters).forEach((s) => s.clear());
   renderFilters();
   renderCards();
   renderCalendar();
   updateResetVisibility();
 }
 
+async function applySection(section) {
+  PAGE_SECTION = section;
+  PAGE_KIND = section.kind;
+  state.olympiads = await loadKindData(section.kind);
+  renderSectionContent();
+}
+
+async function init() {
+  const section = resolveSection();
+  syncHash(section);
+  renderSiteNav();
+  bindChrome();
+  document.getElementById("reset-filters").addEventListener("click", resetFilters);
+  await applySection(section);
+}
+
 init().catch((err) => {
-  console.error(err);
-  document.getElementById("cards").innerHTML =
-    `<p>${LOAD_ERROR_COPY}</p>`;
+  showLoadError(err);
+  renderSiteNav();
 });
