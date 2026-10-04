@@ -666,7 +666,7 @@
       10,
       11
     ],
-    "description": "Олимпиада школьников «Бельчонок» проводится Сибирским федеральным университетом с 2012 года.\n\nСоревнование проходит для учащихся 2-11 классов по шести предметам в два этапа:\n\n- отборочный – дистанционно на сайте олимпиады;\n- заключительный – очно на базе СФУ и на региональных площадках.",
+    "description": "Олимпиада школьников «Бельчонок» проводится Сибирским федеральным университетом с 2012 года.\n\nСоревнование проходит для учащихся 2-11 классов по шести предметам в два этапа:\n\n- отборочный – дистанционно на сайте олимпиады;\n- заключительный – очно на базе СФУ и на региональных площадках.\n\nСезон 2026/27: отбор 01.10.2026–12.01.2027; заключительный по информатике — 14.02.2027.",
     "website": "https://dovuz.sfu.ru/abiturientu-sfu/olimpiady/belchonok",
     "tours": [
       {
@@ -677,24 +677,24 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2025-10-01",
-          "end": "2026-01-13",
-          "raw": "1.10.2025-13.01.2026",
+          "start": "2026-10-01",
+          "end": "2027-01-12",
+          "raw": "01.10.2026-12.01.2027",
           "multiDay": true,
           "labelStart": "1.10",
-          "labelEnd": "13.01",
+          "labelEnd": "12.01",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         },
         "announced": {
-          "start": "2025-10-01",
-          "end": "2025-10-01",
-          "raw": "1.10.2025",
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "raw": "01.09.2026",
           "multiDay": false,
-          "labelStart": "1.10",
-          "labelEnd": "1.10",
+          "labelStart": "1.09",
+          "labelEnd": "1.09",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         }
       },
       {
@@ -726,24 +726,24 @@
           "СамЛит"
         ],
         "date": {
-          "start": "2026-02-08",
-          "end": "2026-02-08",
-          "raw": "08.02.2026",
+          "start": "2027-02-14",
+          "end": "2027-02-14",
+          "raw": "14.02.2027",
           "multiDay": false,
-          "labelStart": "8.02",
-          "labelEnd": "8.02",
+          "labelStart": "14.02",
+          "labelEnd": "14.02",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         },
         "announced": {
-          "start": "2025-10-01",
-          "end": "2025-10-01",
-          "raw": "1.10.2025",
+          "start": "2027-01-18",
+          "end": "2027-01-18",
+          "raw": "18.01.2027",
           "multiDay": false,
-          "labelStart": "1.10",
-          "labelEnd": "1.10",
+          "labelStart": "18.01",
+          "labelEnd": "18.01",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         }
       }
     ]
@@ -768,7 +768,7 @@
       10,
       11
     ],
-    "description": "Олимпиада школьников «Бельчонок» проводится Сибирским федеральным университетом с 2012 года.\n\nСоревнование проходит для учащихся 2-11 классов по шести предметам в два этапа:\n\n- отборочный – дистанционно на сайте олимпиады;\n- заключительный – очно на базе СФУ и на региональных площадках.",
+    "description": "Олимпиада школьников «Бельчонок» проводится Сибирским федеральным университетом с 2012 года.\n\nСоревнование проходит для учащихся 2-11 классов по шести предметам в два этапа:\n\n- отборочный – дистанционно на сайте олимпиады;\n- заключительный – очно на базе СФУ и на региональных площадках.\n\nСезон 2026/27: отбор 01.10.2026–12.01.2027; заключительный по математике — 07.02.2027.",
     "website": "https://dovuz.sfu.ru/abiturientu-sfu/olimpiady/belchonok",
     "tours": [
       {
@@ -779,24 +779,24 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2025-10-01",
-          "end": "2026-01-13",
-          "raw": "1.10.2025-13.01.2026",
+          "start": "2026-10-01",
+          "end": "2027-01-12",
+          "raw": "01.10.2026-12.01.2027",
           "multiDay": true,
           "labelStart": "1.10",
-          "labelEnd": "13.01",
+          "labelEnd": "12.01",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         },
         "announced": {
-          "start": "2025-10-01",
-          "end": "2025-10-01",
-          "raw": "1.10.2025",
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "raw": "01.09.2026",
           "multiDay": false,
-          "labelStart": "1.10",
-          "labelEnd": "1.10",
+          "labelStart": "1.09",
+          "labelEnd": "1.09",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         }
       },
       {
@@ -828,24 +828,24 @@
           "СамЛит"
         ],
         "date": {
-          "start": "2026-02-15",
-          "end": "2026-02-15",
-          "raw": "15.02.2026",
+          "start": "2027-02-07",
+          "end": "2027-02-07",
+          "raw": "07.02.2027",
           "multiDay": false,
-          "labelStart": "15.02",
-          "labelEnd": "15.02",
+          "labelStart": "7.02",
+          "labelEnd": "7.02",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         },
         "announced": {
-          "start": "2025-10-01",
-          "end": "2025-10-01",
-          "raw": "1.10.2025",
+          "start": "2027-01-18",
+          "end": "2027-01-18",
+          "raw": "18.01.2027",
           "multiDay": false,
-          "labelStart": "1.10",
-          "labelEnd": "1.10",
+          "labelStart": "18.01",
+          "labelEnd": "18.01",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         }
       }
     ]
@@ -1123,9 +1123,100 @@
     ]
   },
   {
+    "id": "kvadriga",
+    "source": "data/olymps/engineer/kvadriga.md",
+    "title": "Всероссийская интегрированная олимпиада «Квадрига»",
+    "shortTitle": "Квадрига",
+    "subjects": [
+      "Метапредметная"
+    ],
+    "grades": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "description": "Интегрированная олимпиада для начальной школы: совместный проект школы «Квадривиум» (СПб) и школы «Летово» (Москва). Фокус на навыках — понимание текста, исследование задачи, аргументация, командная работа. Задания объединены культурно-историческим контекстом (тема 2026/27 пока не объявлена).",
+    "website": "https://quadriga-olympics.ru/",
+    "tours": [
+      {
+        "name": "Заочный отборочный Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2026-11-16",
+          "end": "2027-01-18",
+          "raw": "16.11.2026-18.01.2027",
+          "multiDay": true,
+          "labelStart": "16.11",
+          "labelEnd": "18.01",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "raw": "01.09.2026",
+          "multiDay": false,
+          "labelStart": "1.09",
+          "labelEnd": "1.09",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      },
+      {
+        "name": "Заключительный Тур",
+        "type": "offline",
+        "city": "Санкт-Петербург",
+        "cities": [
+          "Санкт-Петербург",
+          "Москва"
+        ],
+        "places": [
+          {
+            "city": "Санкт-Петербург",
+            "venues": [
+              "Частная начальная школа «Квадривиум»"
+            ]
+          },
+          {
+            "city": "Москва",
+            "venues": []
+          }
+        ],
+        "venues": [
+          "Частная начальная школа «Квадривиум»"
+        ],
+        "date": {
+          "start": "2027-02-21",
+          "end": "2027-02-22",
+          "raw": "21.02.2027-22.02.2027",
+          "multiDay": true,
+          "labelStart": "21.02",
+          "labelEnd": "22.02",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "raw": "01.09.2026",
+          "multiDay": false,
+          "labelStart": "1.09",
+          "labelEnd": "1.09",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
     "id": "kenguru",
     "source": "data/olymps/engineer/kenguru.md",
-    "title": "Международный игровой конкурс по математике «Кенгуру",
+    "title": "Международный игровой конкурс по математике «Кенгуру»",
     "shortTitle": "Кенгуру",
     "subjects": [
       "Математика"
@@ -1143,7 +1234,7 @@
       10,
       11
     ],
-    "description": "Международный игровой конкурс по математике «Кенгуру",
+    "description": "Международный игровой конкурс по математике «Кенгуру». Сезон 2026/27: основной тур 18.03.2027; очный финал — конец мая 2027 (точная дата будет объявлена позже).",
     "website": "https://ipokengu.ru/",
     "tours": [
       {
@@ -1165,22 +1256,62 @@
           "СИПКРО"
         ],
         "date": {
-          "start": "2026-03-19",
-          "end": "2026-03-19",
-          "raw": "19.03.2026",
+          "start": "2027-03-18",
+          "end": "2027-03-18",
+          "raw": "18.03.2027",
           "multiDay": false,
-          "labelStart": "19.03",
-          "labelEnd": "19.03",
+          "labelStart": "18.03",
+          "labelEnd": "18.03",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        },
+        "announced": {
+          "start": "2026-08-31",
+          "end": "2026-08-31",
+          "raw": "31.08.2026",
+          "multiDay": false,
+          "labelStart": "31.08",
+          "labelEnd": "31.08",
+          "yearExplicit": true,
+          "accuracy": "confirmed"
+        }
+      },
+      {
+        "name": "Заключительный Тур",
+        "type": "offline",
+        "city": "Санкт-Петербург",
+        "cities": [
+          "Санкт-Петербург",
+          "Новосибирск"
+        ],
+        "places": [
+          {
+            "city": "Санкт-Петербург",
+            "venues": []
+          },
+          {
+            "city": "Новосибирск",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2027-05-25",
+          "end": "2027-05-25",
+          "raw": "25.05.2027",
+          "multiDay": false,
+          "labelStart": "25.05",
+          "labelEnd": "25.05",
           "yearExplicit": true,
           "accuracy": "approximate"
         },
         "announced": {
-          "start": "2025-11-14",
-          "end": "2025-11-14",
-          "raw": "14.11.2025",
+          "start": "2026-06-01",
+          "end": "2026-06-01",
+          "raw": "01.06.2026",
           "multiDay": false,
-          "labelStart": "14.11",
-          "labelEnd": "14.11",
+          "labelStart": "1.06",
+          "labelEnd": "1.06",
           "yearExplicit": true,
           "accuracy": "approximate"
         }
@@ -1714,7 +1845,7 @@
       10,
       11
     ],
-    "description": "Межрегиональные предметные олимпиады Казанского федерального университета (МПО КФУ). Это отдельное мероприятие от Winkid (winkid.ru): Winkid — серия олимпиад 1–9 классов, МПО КФУ — перечневая олимпиада 5–11 классов.\n\nДаты ниже — сезон 2025–2026 (прошлый год): отбор 05–30.11.2025, очный тур по математике 16.01.2026.",
+    "description": "Межрегиональные предметные олимпиады Казанского федерального университета (МПО КФУ). Это отдельное мероприятие от Winkid (winkid.ru): Winkid — серия олимпиад 1–9 классов, МПО КФУ — перечневая олимпиада 5–11 классов.\n\nСезон 2026/27: отбор 26.10.2026–23.11.2026, заключительный этап 13.01.2027–07.02.2027.",
     "website": "http://malun.kpfu.ru/mpo",
     "tours": [
       {
@@ -1725,24 +1856,24 @@
         "places": [],
         "venues": [],
         "date": {
-          "start": "2025-11-05",
-          "end": "2025-11-30",
-          "raw": "05.11.2025-30.11.2025",
+          "start": "2026-10-26",
+          "end": "2026-11-23",
+          "raw": "26.10.2026-23.11.2026",
           "multiDay": true,
-          "labelStart": "5.11",
-          "labelEnd": "30.11",
+          "labelStart": "26.10",
+          "labelEnd": "23.11",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         },
         "announced": {
-          "start": "2025-10-01",
-          "end": "2025-10-01",
-          "raw": "01.10.2025",
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "raw": "01.09.2026",
           "multiDay": false,
-          "labelStart": "1.10",
-          "labelEnd": "1.10",
+          "labelStart": "1.09",
+          "labelEnd": "1.09",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         }
       },
       {
@@ -1764,24 +1895,24 @@
           "КФУ"
         ],
         "date": {
-          "start": "2026-01-16",
-          "end": "2026-01-16",
-          "raw": "16.01.2026",
-          "multiDay": false,
-          "labelStart": "16.01",
-          "labelEnd": "16.01",
+          "start": "2027-01-13",
+          "end": "2027-02-07",
+          "raw": "13.01.2027-07.02.2027",
+          "multiDay": true,
+          "labelStart": "13.01",
+          "labelEnd": "7.02",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         },
         "announced": {
-          "start": "2025-11-05",
-          "end": "2025-11-05",
-          "raw": "05.11.2025",
+          "start": "2026-10-26",
+          "end": "2026-10-26",
+          "raw": "26.10.2026",
           "multiDay": false,
-          "labelStart": "5.11",
-          "labelEnd": "5.11",
+          "labelStart": "26.10",
+          "labelEnd": "26.10",
           "yearExplicit": true,
-          "accuracy": "approximate"
+          "accuracy": "confirmed"
         }
       }
     ]
@@ -2586,6 +2717,136 @@
           "labelEnd": "1.03",
           "yearExplicit": true,
           "accuracy": "confirmed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "tiim",
+    "source": "data/olymps/engineer/tiim.md",
+    "title": "Олимпиада школьников «ТИИМ — Технологии. Интеллект. Информатика. Математика» (математика)",
+    "shortTitle": "ТИИМ",
+    "subjects": [
+      "Математика"
+    ],
+    "grades": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "description": "Олимпиада по нестандартным задачам математики. Координатор — МТУСИ. В проекте перечня РСОШ на 2026/27 (№ 6.2469), математика — 2 уровень. Участие бесплатное. К заключительному туру допускаются победители и призёры отборочного.",
+    "website": "https://xn--h1aamv.xn--p1ai/",
+    "tours": [
+      {
+        "name": "Очный отборочный Тур",
+        "type": "offline",
+        "city": "Москва",
+        "cities": [
+          "Москва",
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Москва",
+            "venues": []
+          },
+          {
+            "city": "Самара",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2026-11-07",
+          "end": "2026-11-08",
+          "raw": "07.11.2026-08.11.2026",
+          "multiDay": true,
+          "labelStart": "7.11",
+          "labelEnd": "8.11",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-04-28",
+          "end": "2026-04-28",
+          "raw": "28.04.2026",
+          "multiDay": false,
+          "labelStart": "28.04",
+          "labelEnd": "28.04",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      },
+      {
+        "name": "Дистанционный отборочный Тур",
+        "type": "online",
+        "city": null,
+        "cities": [],
+        "places": [],
+        "venues": [],
+        "date": {
+          "start": "2026-11-09",
+          "end": "2027-01-10",
+          "raw": "09.11.2026-10.01.2027",
+          "multiDay": true,
+          "labelStart": "9.11",
+          "labelEnd": "10.01",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-04-28",
+          "end": "2026-04-28",
+          "raw": "28.04.2026",
+          "multiDay": false,
+          "labelStart": "28.04",
+          "labelEnd": "28.04",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        }
+      },
+      {
+        "name": "Заключительный Тур",
+        "type": "offline",
+        "city": "Москва",
+        "cities": [
+          "Москва",
+          "Самара"
+        ],
+        "places": [
+          {
+            "city": "Москва",
+            "venues": []
+          },
+          {
+            "city": "Самара",
+            "venues": []
+          }
+        ],
+        "venues": [],
+        "date": {
+          "start": "2027-02-07",
+          "end": "2027-02-07",
+          "raw": "07.02.2027",
+          "multiDay": false,
+          "labelStart": "7.02",
+          "labelEnd": "7.02",
+          "yearExplicit": true,
+          "accuracy": "approximate"
+        },
+        "announced": {
+          "start": "2026-04-28",
+          "end": "2026-04-28",
+          "raw": "28.04.2026",
+          "multiDay": false,
+          "labelStart": "28.04",
+          "labelEnd": "28.04",
+          "yearExplicit": true,
+          "accuracy": "approximate"
         }
       }
     ]
